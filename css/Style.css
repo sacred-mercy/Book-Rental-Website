@@ -1,0 +1,254 @@
+/* CUSTOMIZE THE DARK MODE
+------------------------------------------------------------------------------------------------ */
+.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* CUSTOMIZE THE NAVBAR
+------------------------------------------------------------------------------------------------ */
+/*.nav-item:hover {
+    color: white !important;
+}*/
+
+#navbar navbar .navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.dropdown-item-text:hover {
+    color: rgb(196, 199, 201) !important;
+}
+
+.login-btn:hover {
+    background-color: black !important;
+}
+
+.search-btn:hover {
+    background-color: rgb(59, 59, 59) !important;
+    border-radius: 100px !important;
+}
+
+.dropdown-divider {
+    color: white !important;
+}
+
+@media only screen and (max-width: 988px) {
+    .login-margin {
+        margin-top: 8px;
+    }
+}
+
+/* CUSTOMIZE THE CAROUSEL
+------------------------------------------------------------------------------------------------ */
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+
+.carousel {
+    margin-bottom: 4rem;
+}
+
+.carousel-caption {
+    bottom: 3rem;
+    z-index: 10;
+}
+
+.carousel-item {
+    height: 29rem;
+}
+
+.carousel-item>img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30rem;
+}
+
+.carousel-justify {
+    flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    #myCarousel .carousel-inner .carousel-item p {
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width: 802px) {
+    #myCarousel .carousel-inner .carousel-item p {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    #myCarousel .carousel-inner .carousel-item p {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .carousel-item {
+        height: 26rem;
+    }
+
+    .carousel-item>img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 26rem;
+    }
+}
+
+@media only screen and (max-width: 510px) {
+    .carousel-item {
+        height: 18.8rem;
+    }
+
+    .carousel-item>img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 23rem;
+    }
+
+    #myCarousel .carousel-inner .carousel-item p {
+        font-size: 9px;
+    }
+}
+
+
+
+/* CUSTOMIZE THE PRODUCT CARDS
+------------------------------------------------------------------------------------------------ */
+.overlay {
+    position: absolute;
+    left: 49.9%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(92, 95, 236, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+
+.rent-btn {
+    justify-content: center;
+    display: flex;
+    background-color: #fff;
+    color: #252525;
+    font-weight: 700;
+    width: 60%;
+    border-radius: 200px !important;
+    box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.2);
+}
+
+.rent-btn:hover {
+    color: #fff;
+    background-color: #f15fa3;
+    transition: all ease 0.3s;
+}
+
+.card:hover .overlay {
+    visibility: visible;
+    animation: fade 0.5s;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .card card-text {
+        font-size: 200px !important;
+    }
+}
+
+/* CUSTOMIZE THE FOOTER
+------------------------------------------------------------------------------------------------ */
+#footer {
+    background: #404040;
+    padding: 0 0 10px 0;
+    color: #fff;
+    font-size: 14px
+}
+
+#footer .copyright {
+    text-align: center;
+    padding-top: 10px
+}
+
+/* CUSTOMIZE THE SCROLL TO TOP BUTTON
+------------------------------------------------------------------------------------------------ */
+#ScrollUpBtn {
+    position: fixed;
+    right: 2%;
+    bottom: 4%;
+    height: 2.5rem;
+    width: 2.5rem;
+    border: none;
+    border-radius: 1.25rem;
+    text-align: center;
+    cursor: pointer;
+    z-index: 500;
+    outline: none;
+    display: block;
+    background: #ff3030;
+}
+
+#ScrollUpBtn span {
+    line-height: 2.6rem;
+}
+
+#ScrollUpBtn:hover {
+    background-color: rgb(255, 0, 0);
+}
+
+#dark-btn {
+    position: fixed;
+    left: 0%;
+    bottom: 5%;
+    height: 2.5rem;
+    width: 2.5rem;
+    border: none;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    box-shadow: 0 0 4px rgba(82, 76, 76, .5);
+    transition: all .2s ease-in;
+    text-align: center;
+    cursor: pointer;
+    z-index: 500;
+    outline: none;
+    display: block;
+    background-color: black;
+}
+
+#Dark-btn span {
+    line-height: 0.5rem;
+}

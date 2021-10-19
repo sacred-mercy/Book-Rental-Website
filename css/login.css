@@ -1,0 +1,169 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(255, 255, 255);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+.example {
+  
+  overflow-y: scroll; /* Add the ability to scroll */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.example::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+/*navbar*/
+.topnav {
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.topnav img {
+  cursor: pointer;
+  margin-left: 30px;
+  margin-top: 6px;
+}
+
+.topnav ul {
+  flex: 1;
+  text-align: right;
+  margin-top: 8px;
+  margin-right: 30px;
+}
+
+.topnav ul li {
+  display: inline-block;
+  list-style: none;
+  cursor: pointer;
+  color: black;
+  margin-top: 3px;
+  margin-bottom: 0px;
+  margin-right: 30px;
+}
+
+.topnav ul li a {
+  color: black;
+  text-decoration: none;
+  position: relative;
+}
+
+.topnav ul li a::after {
+  content: '';
+  width: 0;
+  height: 2px;
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: black;
+  transition: width 0.3s;
+}
+
+.topnav ul li a:hover::after {
+  width: 56%;
+}
+
+img{
+  margin-top: 30px;
+  margin-left:40px;
+}
+
+.Frm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form {
+  background-color: rgb(255, 255, 255);
+  width: 400px;
+  border-radius: 8px;
+  padding: 21px 35px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, .15);
+}
+
+.title {
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+
+.inputContainer {
+  position: relative;
+  height: 45px;
+  width: 90%;
+  margin-bottom: 17px;
+}
+
+.input {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  border: 1px solid #DADCE0;
+  border-radius: 7px;
+  font-size: 16px;
+  padding: 0 20px;
+  outline: none;
+  background: none;
+  z-index: 1;
+}
+
+
+
+.submitBtn {
+  display: block;
+  text-align: center;
+  padding: 15px 175px;
+  border: none;
+  background-color: rgb(10, 102, 194);
+  color: white;
+  border-radius: 200px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+.submitBtn:hover {
+  background-color: rgb(0, 65, 130);
+}
+
+.signIn {
+  text-align: center;
+  text-decoration: none;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  text-align: center;
+}
+
+.loginsubmitBtn{
+  display: block;
+  text-align: center;
+  padding: 15px 105px;
+  border: none;
+  background-color: rgb(10, 102, 194);
+  color: white;
+  border-radius: 200px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 30px;
+
+}
+
+.loginsubmitBtn:hover {
+  background-color: rgb(0, 65, 130);
+}
