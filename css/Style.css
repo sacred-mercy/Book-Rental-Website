@@ -218,7 +218,7 @@ html {
     cursor: pointer;
     z-index: 500;
     outline: none;
-    display: block;
+    display: none;
     background: #ff3030;
 }
 
