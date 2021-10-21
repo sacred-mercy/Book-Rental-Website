@@ -210,8 +210,8 @@ html {
     position: fixed;
     right: 2%;
     bottom: 4%;
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 2rem;
+    width: 2rem;
     border: none;
     border-radius: 1.25rem;
     text-align: center;
@@ -219,17 +219,15 @@ html {
     z-index: 500;
     outline: none;
     display: none;
-    background: #ff3030;
-}
-
-#ScrollUpBtn span {
-    line-height: 2.6rem;
+    background: rgb(9, 105, 218);
 }
 
 #ScrollUpBtn:hover {
-    background-color: rgb(255, 0, 0);
+    background-color: rgb(8, 97, 199);
 }
 
+/* CUSTOMIZE DARK MODE BUTTON
+------------------------------------------------------------------------------------------------ */
 #dark-btn {
     position: fixed;
     left: 0%;

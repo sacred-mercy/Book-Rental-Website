@@ -241,8 +241,8 @@
 
     <!-------------------------------------------------SCROLL UP BUTTON------------------------------------------------------------>
     <div id="scrollBtn">
-        <button onclick="topFunction()" id="ScrollUpBtn" title="Go to top"><span><i
-                    class="fas fa-arrow-up fs-4"></i></span></button>
+        <button onclick="topFunction()" id="ScrollUpBtn" title="Go to top"><span>
+                <i class="fas fa-chevron-up text-white"></i></span></button>
         <script>
             var mybutton = document.getElementById("ScrollUpBtn");
 
@@ -267,8 +267,16 @@
 
     <!--------------------------------------------------DARK MODE BUTTON----------------------------------------------------------->
     <div id="dark-btn">
-        <button onclick="DarkMode()" id="dark-btn" title="Toggle Dark Mode">
+        <button onclick="DarkMode()" id="dark-btn" title="Toggle Light/Dark Mode">
             <span><i class="fas fa-adjust fa-lg text-white"></i></span></button>
+
+        <script>
+            //Dark Mode
+            function DarkMode() {
+                var element = document.body;
+                element.classList.toggle("dark-mode");
+            }
+        </script>
     </div>
 </body>
 
