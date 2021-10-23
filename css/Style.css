@@ -1,8 +1,8 @@
 /* CUSTOMIZE THE DARK MODE
 ------------------------------------------------------------------------------------------------ */
 .dark-mode {
-    background-color: black;
-    color: white;
+    background-color: rgb(24, 26, 27);
+    color: rgb(211, 207, 202);
 }
 
 html {
@@ -11,10 +11,6 @@ html {
 
 /* CUSTOMIZE THE NAVBAR
 ------------------------------------------------------------------------------------------------ */
-/*.nav-item:hover {
-    color: white !important;
-}*/
-
 #navbar navbar .navbar-toggler:focus {
     box-shadow: none;
 }
