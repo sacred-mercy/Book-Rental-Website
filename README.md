@@ -6,7 +6,7 @@ BACHELOR OF SCIENCE To DEPARTMENT OF COMPUTER APPLICATION UTTARANCHAL INSTITUTE 
 
 Under the Supervision of:                                Submitted by:
 Dr. Sunil Shukla                                          Name: Gaurav Singh 
-Assistant Professor                                       Roll No: 201000007
+Associate Professor                                       Roll No: 201000007
                                                           Batch-no: 2020- 2023
 
 
