@@ -11,8 +11,8 @@ html {
 
 /* CUSTOMIZE THE NAVBAR
 ------------------------------------------------------------------------------------------------ */
-#navbar navbar .navbar-toggler:focus {
-    box-shadow: none;
+.navbar-toggler:focus {
+    box-shadow: none !important;
 }
 
 .dropdown-item-text:hover {
