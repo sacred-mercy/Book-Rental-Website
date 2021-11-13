@@ -35,7 +35,7 @@
           <a
             class="navbar-brand img-fluid"
             style="line-height: 0% !important"
-            href="index.html"
+            href="index.php"
             ><img src="Img/logo.png" alt="logo" height="30"
           /></a>
           <button
@@ -52,7 +52,7 @@
           <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav navb me-auto">
               <li class="nav-item">
-                <a id="#home" class="nav-link active" href="/index.html"
+                <a id="#home" class="nav-link active" href="/index.php"
                   ><i class="fas fa-home"></i> Home</a
                 >
               </li>
@@ -124,7 +124,7 @@
             <div class="login-margin flex-wrap">
               <span
                 ><button
-                  onclick="window.location.href='html/SignIn.html';"
+                  onclick="window.location.href='html/SignIn.php';"
                   type="button"
                   class="
                     btn-dark btn
