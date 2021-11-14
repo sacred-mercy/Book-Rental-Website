@@ -1,23 +1,3 @@
-<?php
-require('connection.php');
-require('function.php');
-$msg='';
-if(isset($_POST['submit'])) {
-  $email = getSafeValue($con,$_POST['email']);
-  $password = getSafeValue($con,$_POST['password']);
-  $sql="select * from admin where email='$email' and password='$password'";
-  $res=mysqli_query($con,$sql);
-  $count=mysqli_num_rows($res);
-  if($count>0) {
-    $_SESSION['ADMIN_LOGIN']='yes';
-    $_SESSION['ADMIN_email']=$email;
-    header('location:categories.php');
-    die();
-  } else{
-    $msg="Invalid Username/Password";
-  }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,7 +5,7 @@ if(isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Icon -->
-    <link rel="shortcut icon" href="../Img/icon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="Img\icon.png" type="image/x-icon" />
     <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
@@ -48,19 +28,11 @@ if(isset($_POST['submit'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Default JS-->
     <script src="js/script.js"></script>
-    <title>Register | Book Rental</title>
+    <title>SignIn | Book Rental</title>
   </head>
 
   <body>
-    <div class="container-fluid">
-      <a class="ms-1" href="../index.php"
-        ><img
-          src="../Img/logo.png"
-          alt="logo"
-          style="margin-top: 1vw !important"
-          height="40vw"
-      /></a>
-    </div>
+    <div class=""><a href="Admin\login.php">Admin Login</a></div>
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12 col-xl-11">
@@ -99,9 +71,7 @@ if(isset($_POST['submit'])) {
                       <label for="Password">Password</label>
                     </div>
                   </div>
-                  <div class="mt-2 mb-1 d-flex justify-content-center field_error">
-                    <?php echo $msg?>
-                  </div>
+                  
 
                   <div class="d-flex justify-content-center mt-3 mb-3 mb-lg-4">
                     <button

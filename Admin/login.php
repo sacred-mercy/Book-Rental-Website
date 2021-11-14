@@ -11,7 +11,7 @@ if(isset($_POST['submit'])) {
   if($count>0) {
     $_SESSION['ADMIN_LOGIN']='yes';
     $_SESSION['ADMIN_email']=$email;
-    header('location:index.php');
+    header('location:dashboard.php');
     die();
   } else{
     $msg="Invalid Username/Password";
@@ -52,6 +52,7 @@ if(isset($_POST['submit'])) {
   </head>
 
   <body>
+    <div class=""><a href="..\SignIn.php">User Login</a></div>
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12 col-xl-11">
