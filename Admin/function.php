@@ -7,10 +7,10 @@ function pr($arr){
 function prx($arr) {
     echo '<pre>';
     print_r($arr);
-    die(;)
+    die();
 }
 
-function getSafeValue($con,str) {
+function getSafeValue($con,$str) {
     if($str!='') {
         return mysqli_real_escape_string($con,$str);
     }
