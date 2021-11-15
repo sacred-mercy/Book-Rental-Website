@@ -1,5 +1,5 @@
 <?php 
-require('header.php');
+require('topNav.php');
 
 if(isset($_GET['type']) && $_GET['type']!=' ') {
   $type=getSafeValue($con,$_GET['type']);
@@ -29,38 +29,41 @@ $res=mysqli_query($con,$sql);
     <main style="margin-top: 58px">
       <div class="container pt-4">
         <h4 class="fs-2 text-center ">Categories</h4><hr><br>
-        <h5 class="btn btn-white"><a href="manageCategories.php">Add Categories</a></h5>
+        <h5 class="btn btn-white ms-4 px-2 py-1 fs-6 "><a class="link-dark" href="manageCategories.php">Add Categories</a></h5>
       </div>
       <div class="card-body">
         <table class="table">
           <thead>
             <tr>
-              <th class="serial">S. No.</th>
               <th>ID</th>
               <th>Categories</th>
+              <th>Status</th>
+              <th></th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             <?php
-            $i=1;
             while($row=mysqli_fetch_assoc($res)) {?>
             <tr>
-              <td class="serial"><?php echo $i ?></td>
               <td> <?php echo $row['id'] ?> </td>
               <td> <?php echo $row['category'] ?> </td>
               <td> 
                 <?php 
                 if($row['status']==1) {
-                  echo "<a href='?type=status&operation=deactive&id=".$row['id'].
+                  echo "<a class='link-white btn btn-success px-2 py-1' href='?type=status&operation=deactive&id=".$row['id'].
                   "'>Active</a>&nbsp&nbsp";
                 }else{
-                  echo "<a href='?type=status&operation=active&id=".$row['id'].
+                  echo "<a class='link-white btn btn-warning px-2 py-1' href='?type=status&operation=active&id=".$row['id'].
                   "'>Deactive</a>&nbsp&nbsp";
                 }
-                echo "<a href='?type=delete&id=".$row['id']."'>Delete</a> ";
-                // echo "$nbsp&nbsp <a href='?type=delete&id=".$row['id']."'>Edit</a> ";
                 ?> 
+              </td>
+              <td> <?php echo "<a class='link-white btn btn-primary px-2 py-1' href='manageCategories.php?id=".$row['id'].
+                              "'>Edit</a>";?> 
+              </td>
+              <td> <?php echo "<a class='link-white btn btn-danger px-2 py-1' href='?type=delete&id=".$row['id'].
+                              "'>Delete</a>";?> 
               </td>
             </tr>
             <?php } ?>

@@ -73,7 +73,7 @@ if(isset($_SESSION['ADMIN_LOGIN']) && $_SESSION['ADMIN_LOGIN'] !=' ') {
               ><span>User</span></a
             >
             <a
-              href="#"
+              href="contactUs.php"
               class="list-group-item list-group-item-action py-2 ripple"
             >
               <span>Contact Us</span>
