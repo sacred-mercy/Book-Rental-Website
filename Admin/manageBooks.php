@@ -6,13 +6,13 @@ $msg='';
 
 if(isset($_GET['id']) && $_GET['id']!='') {
     $id=getSafeValue($con,$_GET['id']);
-    $sql=mysqli_query($con,"select * from categories where id='$id'");
+    $sql=mysqli_query($con,"select * from books where id='$id'");
     $check=mysqli_num_rows($sql);
     if($check>0) {
         $row=mysqli_fetch_assoc($sql);
         $categories=$row['category'];
     }else {
-        echo "<script>window.location.href='categories.php';</script>";
+        echo "<script>window.location.href='books.php';</script>";
         exit;
     }
     
@@ -20,7 +20,7 @@ if(isset($_GET['id']) && $_GET['id']!='') {
 
 if(isset($_POST['submit'])) {
     $category=getSafeValue($con,$_POST['category']);
-    $sql=mysqli_query($con,"select * from categories where category='$category'");
+    $sql=mysqli_query($con,"select * from books where name='$name'");
     $check=mysqli_num_rows($sql);
     if($check>0) {
         if(isset($_GET['id']) && $_GET['id']!='') {
@@ -50,10 +50,15 @@ if(isset($_POST['submit'])) {
 ?>
     <main style="margin-top: 58px">
       <div class="container pt-4">
-        <h4 class="fs-2 text-center ">Manage Category</h4><hr><br>
+        <h4 class="fs-2 text-center ">Manage Books</h4><hr><br>
       </div>  
 
       <form method="post">
+        <div class="form-outline mb-4 mx-5">
+            <input type="text" name="category"  value="<?php echo $categories?>" id="category" class="form-control" required />
+            <label class="form-label" for="category">Enter category name</label>
+        </div>
+
         <div class="form-outline mb-4 mx-5">
             <input type="text" name="category"  value="<?php echo $categories?>" id="category" class="form-control" required />
             <label class="form-label" for="category">Enter category name</label>

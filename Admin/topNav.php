@@ -17,7 +17,7 @@ if(isset($_SESSION['ADMIN_LOGIN']) && $_SESSION['ADMIN_LOGIN'] !=' ') {
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Material Design for Bootstrap</title>
+    <title>Admin Panel</title>
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
@@ -57,7 +57,7 @@ if(isset($_SESSION['ADMIN_LOGIN']) && $_SESSION['ADMIN_LOGIN'] !=' ') {
               <span>Categories</span>
             </a>
             <a
-              href="#"
+              href="books.php"
               class="list-group-item list-group-item-action py-2 ripple"
             >
               <span>Books list </span>
