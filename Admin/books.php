@@ -82,7 +82,8 @@ $res=mysqli_query($con,$sql);
               </td>
               <td>
                   <?php
-                  echo "<a class='link-white btn btn-danger px-2 py-1' href='?type=delete&id=".$row['id']."'>Delete</a>";?>
+                  echo "<a class='link-white btn btn-danger px-2 py-1' href='?type=delete&id=".$row['id']."'>Delete</a>";
+                  ?>
               </td>
             </tr>
             <?php } ?>
