@@ -71,9 +71,9 @@ $rfs-breakpoint-unit-cache: unit($rfs-breakpoint);
 
 // Calculate the media query value
 $rfs-mq-value: if(
-  $rfs-breakpoint-unit == px,
-  #{$rfs-breakpoint}px,
-  #{$rfs-breakpoint / $rfs-rem-value}#{$rfs-breakpoint-unit}
+                $rfs-breakpoint-unit == px,
+                #{$rfs-breakpoint}px,
+                #{$rfs-breakpoint / $rfs-rem-value}#{$rfs-breakpoint-unit}
 );
 $rfs-mq-property-width: if($rfs-mode == max-media-query, max-width, min-width);
 $rfs-mq-property-height: if($rfs-mode == max-media-query, max-height, min-height);

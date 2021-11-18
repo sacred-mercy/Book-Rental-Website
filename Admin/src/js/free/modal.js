@@ -1,4 +1,4 @@
-import { getjQuery, getSelectorFromElement, onDOMContentLoaded } from '../mdb/util/index';
+import {getjQuery, getSelectorFromElement, onDOMContentLoaded} from '../mdb/util/index';
 import EventHandler from '../mdb/dom/event-handler';
 import SelectorEngine from '../mdb/dom/selector-engine';
 import BSModal from '../bootstrap/mdb-prefix/modal';
@@ -28,65 +28,65 @@ const EVENT_SHOWN = `shown${EVENT_KEY}`;
 const SELECTOR_DATA_TOGGLE = '[data-mdb-toggle="modal"]';
 
 class Modal extends BSModal {
-  constructor(element, data) {
-    super(element, data);
+    constructor(element, data) {
+        super(element, data);
 
-    this._init();
-  }
+        this._init();
+    }
 
-  dispose() {
-    EventHandler.off(this._element, EVENT_SHOW_BS);
-    EventHandler.off(this._element, EVENT_SHOWN_BS);
-    EventHandler.off(this._element, EVENT_HIDE_BS);
-    EventHandler.off(this._element, EVENT_HIDDEN_BS);
-    EventHandler.off(this._element, EVENT_HIDE_PREVENTED_BS);
+    dispose() {
+        EventHandler.off(this._element, EVENT_SHOW_BS);
+        EventHandler.off(this._element, EVENT_SHOWN_BS);
+        EventHandler.off(this._element, EVENT_HIDE_BS);
+        EventHandler.off(this._element, EVENT_HIDDEN_BS);
+        EventHandler.off(this._element, EVENT_HIDE_PREVENTED_BS);
 
-    super.dispose();
-  }
+        super.dispose();
+    }
 
-  // Getters
-  static get NAME() {
-    return NAME;
-  }
+    // Getters
+    static get NAME() {
+        return NAME;
+    }
 
-  // Private
-  _init() {
-    this._bindShowEvent();
-    this._bindShownEvent();
-    this._bindHideEvent();
-    this._bindHiddenEvent();
-    this._bindHidePreventedEvent();
-  }
+    // Private
+    _init() {
+        this._bindShowEvent();
+        this._bindShownEvent();
+        this._bindHideEvent();
+        this._bindHiddenEvent();
+        this._bindHidePreventedEvent();
+    }
 
-  _bindShowEvent() {
-    EventHandler.on(this._element, EVENT_SHOW_BS, (e) => {
-      EventHandler.trigger(this._element, EVENT_SHOW, { relatedTarget: e.relatedTarget });
-    });
-  }
+    _bindShowEvent() {
+        EventHandler.on(this._element, EVENT_SHOW_BS, (e) => {
+            EventHandler.trigger(this._element, EVENT_SHOW, {relatedTarget: e.relatedTarget});
+        });
+    }
 
-  _bindShownEvent() {
-    EventHandler.on(this._element, EVENT_SHOWN_BS, (e) => {
-      EventHandler.trigger(this._element, EVENT_SHOWN, { relatedTarget: e.relatedTarget });
-    });
-  }
+    _bindShownEvent() {
+        EventHandler.on(this._element, EVENT_SHOWN_BS, (e) => {
+            EventHandler.trigger(this._element, EVENT_SHOWN, {relatedTarget: e.relatedTarget});
+        });
+    }
 
-  _bindHideEvent() {
-    EventHandler.on(this._element, EVENT_HIDE_BS, () => {
-      EventHandler.trigger(this._element, EVENT_HIDE);
-    });
-  }
+    _bindHideEvent() {
+        EventHandler.on(this._element, EVENT_HIDE_BS, () => {
+            EventHandler.trigger(this._element, EVENT_HIDE);
+        });
+    }
 
-  _bindHiddenEvent() {
-    EventHandler.on(this._element, EVENT_HIDDEN_BS, () => {
-      EventHandler.trigger(this._element, EVENT_HIDDEN);
-    });
-  }
+    _bindHiddenEvent() {
+        EventHandler.on(this._element, EVENT_HIDDEN_BS, () => {
+            EventHandler.trigger(this._element, EVENT_HIDDEN);
+        });
+    }
 
-  _bindHidePreventedEvent() {
-    EventHandler.on(this._element, EVENT_HIDE_PREVENTED_BS, () => {
-      EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED);
-    });
-  }
+    _bindHidePreventedEvent() {
+        EventHandler.on(this._element, EVENT_HIDE_PREVENTED_BS, () => {
+            EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED);
+        });
+    }
 }
 
 /**
@@ -96,13 +96,13 @@ class Modal extends BSModal {
  */
 
 SelectorEngine.find(SELECTOR_DATA_TOGGLE).forEach((el) => {
-  const selector = getSelectorFromElement(el);
-  const selectorElement = SelectorEngine.findOne(selector);
+    const selector = getSelectorFromElement(el);
+    const selectorElement = SelectorEngine.findOne(selector);
 
-  let instance = Modal.getInstance(selectorElement);
-  if (!instance) {
-    instance = new Modal(selectorElement);
-  }
+    let instance = Modal.getInstance(selectorElement);
+    if (!instance) {
+        instance = new Modal(selectorElement);
+    }
 });
 
 /**
@@ -113,17 +113,17 @@ SelectorEngine.find(SELECTOR_DATA_TOGGLE).forEach((el) => {
  */
 
 onDOMContentLoaded(() => {
-  const $ = getjQuery();
+    const $ = getjQuery();
 
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME];
-    $.fn[NAME] = Modal.jQueryInterface;
-    $.fn[NAME].Constructor = Modal;
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Modal.jQueryInterface;
-    };
-  }
+    if ($) {
+        const JQUERY_NO_CONFLICT = $.fn[NAME];
+        $.fn[NAME] = Modal.jQueryInterface;
+        $.fn[NAME].Constructor = Modal;
+        $.fn[NAME].noConflict = () => {
+            $.fn[NAME] = JQUERY_NO_CONFLICT;
+            return Modal.jQueryInterface;
+        };
+    }
 });
 
 export default Modal;

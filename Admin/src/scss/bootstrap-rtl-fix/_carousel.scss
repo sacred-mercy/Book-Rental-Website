@@ -113,20 +113,22 @@
     opacity: $carousel-control-hover-opacity;
   }
 }
+
 .carousel-control-prev {
   left: 0;
   background-image: if(
-    $enable-gradients,
-    linear-gradient(90deg, rgba($black, 0.25), rgba($black, 0.001)),
-    null
+                  $enable-gradients,
+                  linear-gradient(90deg, rgba($black, 0.25), rgba($black, 0.001)),
+                  null
   );
 }
+
 .carousel-control-next {
   right: 0;
   background-image: if(
-    $enable-gradients,
-    linear-gradient(270deg, rgba($black, 0.25), rgba($black, 0.001)),
-    null
+                  $enable-gradients,
+                  linear-gradient(270deg, rgba($black, 0.25), rgba($black, 0.001)),
+                  null
   );
 }
 
@@ -152,6 +154,7 @@
 .carousel-control-prev-icon {
   background-image: escape-svg($carousel-control-prev-icon-bg);
 }
+
 .carousel-control-next-icon {
   background-image: escape-svg($carousel-control-next-icon-bg);
 }

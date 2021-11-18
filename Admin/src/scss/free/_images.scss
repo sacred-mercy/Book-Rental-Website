@@ -26,6 +26,7 @@
   .mask {
     opacity: 0;
     transition: $image-hover-overlay-transition;
+
     &:hover {
       opacity: 1;
     }
@@ -37,6 +38,7 @@
   video {
     transition: $image-hover-zoom-transition;
   }
+
   &:hover {
     img,
     video {
@@ -49,6 +51,7 @@
 .card.hover-shadow {
   box-shadow: none;
   transition: $image-hover-shadow-transition;
+
   &:hover {
     box-shadow: $image-hover-shadow-box-shadow;
     transition: $image-hover-shadow-transition;

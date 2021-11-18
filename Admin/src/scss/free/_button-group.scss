@@ -36,14 +36,17 @@
   > .btn {
     box-shadow: none;
   }
+
   > .btn-group {
     box-shadow: none;
   }
+
   > .btn-link {
     &:first-child {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
+
     &:last-child {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;

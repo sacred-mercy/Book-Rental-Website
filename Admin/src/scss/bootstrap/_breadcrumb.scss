@@ -19,7 +19,7 @@
       padding-right: $breadcrumb-item-padding-x;
       color: $breadcrumb-divider-color;
       content: var(--#{$variable-prefix}breadcrumb-divider, escape-svg($breadcrumb-divider)) #{'/* rtl:'}
-        var(--#{$variable-prefix}breadcrumb-divider, escape-svg($breadcrumb-divider-flipped)) #{'*/'};
+      var(--#{$variable-prefix}breadcrumb-divider, escape-svg($breadcrumb-divider-flipped)) #{'*/'};
     }
   }
 

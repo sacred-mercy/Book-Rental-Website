@@ -7,9 +7,11 @@
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET
+SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET
+time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,19 +29,19 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
-CREATE TABLE `admin` (
-  `id` int(11) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `password` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE ` admin `
+(
+    `id` int(11
+) NOT NULL, ` email` varchar(50) NOT NULL, ` password` varchar(20) NOT NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `email`, `password`) VALUES
-(1, 'gauravnegi9634@gmail.com', 'gaurav'),
-(2, 'charu@gmail.com', 'charu');
+INSERT INTO ` admin ` (` id `, ` email `, ` password `)
+VALUES (1, 'gauravnegi9634@gmail.com', 'gaurav'),
+       (2, 'charu@gmail.com', 'charu');
 
 -- --------------------------------------------------------
 
@@ -47,31 +49,20 @@ INSERT INTO `admin` (`id`, `email`, `password`) VALUES
 -- Table structure for table `books`
 --
 
-CREATE TABLE `books` (
-  `id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
-  `ISBN` varchar(20) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `img` varchar(255) NOT NULL,
-  `author` varchar(75) NOT NULL,
-  `mrp` int(11) NOT NULL,
-  `security` int(11) NOT NULL,
-  `price` int(11) NOT NULL,
-  `qty` int(11) NOT NULL,
-  `short_desc` varchar(2000) NOT NULL,
-  `description` text NOT NULL,
-  `meta_title` varchar(2000) NOT NULL,
-  `meta_desc` varchar(2000) NOT NULL,
-  `meta_keyword` varchar(2000) NOT NULL,
-  `status` tinyint(4) NOT NULL
+CREATE TABLE ` books `
+(
+    `id` int(11
+) NOT NULL, ` category_id` int(11) NOT NULL, ` ISBN` varchar(20) NOT NULL, ` name` varchar(255) NOT NULL, ` img` varchar(255) NOT NULL, ` author` varchar(75) NOT NULL, ` mrp` int(11) NOT NULL, ` security` int(11) NOT NULL, ` price` int(11) NOT NULL, ` qty` int(11) NOT NULL, ` short_desc` varchar(2000) NOT NULL, ` description ` text NOT NULL, ` meta_title` varchar(2000) NOT NULL, ` meta_desc` varchar(2000) NOT NULL, ` meta_keyword` varchar(2000) NOT NULL, ` status ` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`id`, `category_id`, `ISBN`, `name`, `img`, `author`, `mrp`, `security`, `price`, `qty`, `short_desc`, `description`, `meta_title`, `meta_desc`, `meta_keyword`, `status`) VALUES
-(1, 7, '978-93-5141-670-8', 'Gulliver\'s Travels', '', 'Jonathan Swift', 175, 100, 130, 6, '', '', '', '', '', 0);
+INSERT INTO ` books ` (` id `, ` category_id `, ` ISBN `, ` name `, ` img `, ` author `, ` mrp `, ` security `, `
+                         price `, ` qty `, ` short_desc `, ` description `, ` meta_title `, ` meta_desc `, `
+                         meta_keyword `, ` status `)
+VALUES (1, 7, '978-93-5141-670-8', 'Gulliver\'s Travels', '', 'Jonathan Swift', 175, 100, 130, 6, '', '', '', '', '', 0);
 
 -- --------------------------------------------------------
 

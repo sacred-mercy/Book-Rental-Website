@@ -10,12 +10,12 @@
   box-shadow: $btn-box-shadow;
   font-weight: $btn-font-weight;
   @include button-size-mdb(
-    $btn-padding-top,
-    $btn-padding-right,
-    $btn-padding-bottom,
-    $btn-padding-left,
-    $btn-font-size,
-    $btn-line-height
+                  $btn-padding-top,
+                  $btn-padding-right,
+                  $btn-padding-bottom,
+                  $btn-padding-left,
+                  $btn-font-size,
+                  $btn-line-height
   );
 
   &:hover {
@@ -73,10 +73,10 @@
   border-style: solid;
   box-shadow: none;
   @include button-outline-size-mdb(
-    $btn-outline-padding-top,
-    $btn-outline-padding-right,
-    $btn-outline-padding-bottom,
-    $btn-outline-padding-left
+                  $btn-outline-padding-top,
+                  $btn-outline-padding-right,
+                  $btn-outline-padding-bottom,
+                  $btn-outline-padding-left
   );
 
   &:hover {
@@ -107,19 +107,19 @@
 
   &.btn-lg {
     @include button-outline-size-mdb(
-      $btn-outline-padding-top-lg,
-      $btn-outline-padding-right-lg,
-      $btn-outline-padding-bottom-lg,
-      $btn-outline-padding-left-lg
+                    $btn-outline-padding-top-lg,
+                    $btn-outline-padding-right-lg,
+                    $btn-outline-padding-bottom-lg,
+                    $btn-outline-padding-left-lg
     );
   }
 
   &.btn-sm {
     @include button-outline-size-mdb(
-      $btn-outline-padding-top-sm,
-      $btn-outline-padding-right-sm,
-      $btn-outline-padding-bottom-sm,
-      $btn-outline-padding-left-sm
+                    $btn-outline-padding-top-sm,
+                    $btn-outline-padding-right-sm,
+                    $btn-outline-padding-bottom-sm,
+                    $btn-outline-padding-left-sm
     );
   }
 }
@@ -150,23 +150,23 @@
 
 .btn-lg {
   @include button-size-mdb(
-    $btn-padding-top-lg,
-    $btn-padding-right-lg,
-    $btn-padding-bottom-lg,
-    $btn-padding-left-lg,
-    $btn-font-size-lg,
-    $btn-line-height-lg
+                  $btn-padding-top-lg,
+                  $btn-padding-right-lg,
+                  $btn-padding-bottom-lg,
+                  $btn-padding-left-lg,
+                  $btn-font-size-lg,
+                  $btn-line-height-lg
   );
 }
 
 .btn-sm {
   @include button-size-mdb(
-    $btn-padding-top-sm,
-    $btn-padding-right-sm,
-    $btn-padding-bottom-sm,
-    $btn-padding-left-sm,
-    $btn-font-size-sm,
-    $btn-line-height-sm
+                  $btn-padding-top-sm,
+                  $btn-padding-right-sm,
+                  $btn-padding-bottom-sm,
+                  $btn-padding-left-sm,
+                  $btn-font-size-sm,
+                  $btn-line-height-sm
   );
 }
 
@@ -328,26 +328,31 @@
     opacity: 0;
     transition: transform 0.4s, opacity 0.4s;
     z-index: -1;
+
     li {
       z-index: 0;
       display: flex;
       margin-right: auto;
       margin-bottom: $fixed-action-btn-li-margin-bottom;
       margin-left: auto;
+
       &:first-of-type {
         margin-top: $fixed-action-btn-li-margin-bottom / 2;
       }
     }
+
     a {
       &.btn {
         opacity: 0;
         transition: opacity 0.4s ease-in;
+
         &.shown {
           opacity: 1;
         }
       }
     }
   }
+
   &.active ul {
     opacity: 1;
   }

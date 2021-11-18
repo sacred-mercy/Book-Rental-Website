@@ -3,9 +3,11 @@
   padding: $note-padding;
   border-left: $note-border-width solid;
   border-radius: $note-border-radius;
+
   strong {
     font-weight: $note-strong-font-weight;
   }
+
   p {
     font-weight: $note-paragraph-font-weight;
   }

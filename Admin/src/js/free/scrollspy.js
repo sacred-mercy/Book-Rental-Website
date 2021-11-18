@@ -1,4 +1,4 @@
-import { getjQuery, onDOMContentLoaded } from '../mdb/util/index';
+import {getjQuery, onDOMContentLoaded} from '../mdb/util/index';
 import EventHandler from '../mdb/dom/event-handler';
 import SelectorEngine from '../mdb/dom/selector-engine';
 import Manipulator from '../mdb/dom/manipulator';
@@ -23,38 +23,38 @@ const SELECTOR_DATA_SPY = '[data-mdb-spy="scroll"]';
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`;
 
 class ScrollSpy extends BSScrollSpy {
-  constructor(element, data) {
-    super(element, data);
+    constructor(element, data) {
+        super(element, data);
 
-    this._scrollElement = element.tagName === 'BODY' ? window : element;
+        this._scrollElement = element.tagName === 'BODY' ? window : element;
 
-    this._init();
-  }
+        this._init();
+    }
 
-  dispose() {
-    EventHandler.off(this._scrollElement, EVENT_ACTIVATE_BS);
-    this._scrollElement = null;
+    dispose() {
+        EventHandler.off(this._scrollElement, EVENT_ACTIVATE_BS);
+        this._scrollElement = null;
 
-    super.dispose();
-  }
+        super.dispose();
+    }
 
-  // Getters
-  static get NAME() {
-    return NAME;
-  }
+    // Getters
+    static get NAME() {
+        return NAME;
+    }
 
-  // Private
-  _init() {
-    this._bindActivateEvent();
-  }
+    // Private
+    _init() {
+        this._bindActivateEvent();
+    }
 
-  _bindActivateEvent() {
-    EventHandler.on(this._scrollElement, EVENT_ACTIVATE_BS, (e) => {
-      EventHandler.trigger(this._scrollElement, EVENT_ACTIVATE, {
-        relatedTarget: e.relatedTarget,
-      });
-    });
-  }
+    _bindActivateEvent() {
+        EventHandler.on(this._scrollElement, EVENT_ACTIVATE_BS, (e) => {
+            EventHandler.trigger(this._scrollElement, EVENT_ACTIVATE, {
+                relatedTarget: e.relatedTarget,
+            });
+        });
+    }
 }
 
 /**
@@ -64,12 +64,12 @@ class ScrollSpy extends BSScrollSpy {
  */
 
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
-  SelectorEngine.find(SELECTOR_DATA_SPY).forEach((el) => {
-    let instance = ScrollSpy.getInstance(el);
-    if (!instance) {
-      instance = new ScrollSpy(el, Manipulator.getDataAttributes(el));
-    }
-  });
+    SelectorEngine.find(SELECTOR_DATA_SPY).forEach((el) => {
+        let instance = ScrollSpy.getInstance(el);
+        if (!instance) {
+            instance = new ScrollSpy(el, Manipulator.getDataAttributes(el));
+        }
+    });
 });
 
 /**
@@ -80,17 +80,17 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
  */
 
 onDOMContentLoaded(() => {
-  const $ = getjQuery();
+    const $ = getjQuery();
 
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME];
-    $.fn[NAME] = ScrollSpy.jQueryInterface;
-    $.fn[NAME].Constructor = ScrollSpy;
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT;
-      return ScrollSpy.jQueryInterface;
-    };
-  }
+    if ($) {
+        const JQUERY_NO_CONFLICT = $.fn[NAME];
+        $.fn[NAME] = ScrollSpy.jQueryInterface;
+        $.fn[NAME].Constructor = ScrollSpy;
+        $.fn[NAME].noConflict = () => {
+            $.fn[NAME] = JQUERY_NO_CONFLICT;
+            return ScrollSpy.jQueryInterface;
+        };
+    }
 });
 
 export default ScrollSpy;

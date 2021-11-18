@@ -12,56 +12,56 @@
  */
 
 const mapData = (() => {
-  const storeData = {};
-  let id = 1;
-  return {
-    set(element, key, data) {
-      if (typeof element.bsKey === 'undefined') {
-        element.bsKey = {
-          key,
-          id,
-        };
-        id++;
-      }
+    const storeData = {};
+    let id = 1;
+    return {
+        set(element, key, data) {
+            if (typeof element.bsKey === 'undefined') {
+                element.bsKey = {
+                    key,
+                    id,
+                };
+                id++;
+            }
 
-      storeData[element.bsKey.id] = data;
-    },
-    get(element, key) {
-      if (!element || typeof element.bsKey === 'undefined') {
-        return null;
-      }
+            storeData[element.bsKey.id] = data;
+        },
+        get(element, key) {
+            if (!element || typeof element.bsKey === 'undefined') {
+                return null;
+            }
 
-      const keyProperties = element.bsKey;
-      if (keyProperties.key === key) {
-        return storeData[keyProperties.id];
-      }
+            const keyProperties = element.bsKey;
+            if (keyProperties.key === key) {
+                return storeData[keyProperties.id];
+            }
 
-      return null;
-    },
-    delete(element, key) {
-      if (typeof element.bsKey === 'undefined') {
-        return;
-      }
+            return null;
+        },
+        delete(element, key) {
+            if (typeof element.bsKey === 'undefined') {
+                return;
+            }
 
-      const keyProperties = element.bsKey;
-      if (keyProperties.key === key) {
-        delete storeData[keyProperties.id];
-        delete element.bsKey;
-      }
-    },
-  };
+            const keyProperties = element.bsKey;
+            if (keyProperties.key === key) {
+                delete storeData[keyProperties.id];
+                delete element.bsKey;
+            }
+        },
+    };
 })();
 
 const Data = {
-  setData(instance, key, data) {
-    mapData.set(instance, key, data);
-  },
-  getData(instance, key) {
-    return mapData.get(instance, key);
-  },
-  removeData(instance, key) {
-    mapData.delete(instance, key);
-  },
+    setData(instance, key, data) {
+        mapData.set(instance, key, data);
+    },
+    getData(instance, key) {
+        return mapData.get(instance, key);
+    },
+    removeData(instance, key) {
+        mapData.delete(instance, key);
+    },
 };
 
 export default Data;

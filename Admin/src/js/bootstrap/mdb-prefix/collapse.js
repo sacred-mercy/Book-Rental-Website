@@ -6,14 +6,14 @@
  */
 
 import {
-  defineJQueryPlugin,
-  emulateTransitionEnd,
-  getSelectorFromElement,
-  getElementFromSelector,
-  getTransitionDurationFromElement,
-  isElement,
-  reflow,
-  typeCheckConfig,
+    defineJQueryPlugin,
+    emulateTransitionEnd,
+    getSelectorFromElement,
+    getElementFromSelector,
+    getTransitionDurationFromElement,
+    isElement,
+    reflow,
+    typeCheckConfig,
 } from './util/index';
 import Data from './dom/data';
 import EventHandler from './dom/event-handler';
@@ -33,13 +33,13 @@ const EVENT_KEY = `.${DATA_KEY}`;
 const DATA_API_KEY = '.data-api';
 
 const Default = {
-  toggle: true,
-  parent: '',
+    toggle: true,
+    parent: '',
 };
 
 const DefaultType = {
-  toggle: 'boolean',
-  parent: '(string|element)',
+    toggle: 'boolean',
+    parent: '(string|element)',
 };
 
 const EVENT_SHOW = `show${EVENT_KEY}`;
@@ -66,297 +66,297 @@ const SELECTOR_DATA_TOGGLE = '[data-mdb-toggle="collapse"]';
  */
 
 class Collapse extends BaseComponent {
-  constructor(element, config) {
-    super(element);
+    constructor(element, config) {
+        super(element);
 
-    this._isTransitioning = false;
-    this._config = this._getConfig(config);
-    this._triggerArray = SelectorEngine.find(
-      `${SELECTOR_DATA_TOGGLE}[href="#${element.id}"],` +
-        `${SELECTOR_DATA_TOGGLE}[data-mdb-target="#${element.id}"]`
-    );
+        this._isTransitioning = false;
+        this._config = this._getConfig(config);
+        this._triggerArray = SelectorEngine.find(
+            `${SELECTOR_DATA_TOGGLE}[href="#${element.id}"],` +
+            `${SELECTOR_DATA_TOGGLE}[data-mdb-target="#${element.id}"]`
+        );
 
-    const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE);
+        const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE);
 
-    for (let i = 0, len = toggleList.length; i < len; i++) {
-      const elem = toggleList[i];
-      const selector = getSelectorFromElement(elem);
-      const filterElement = SelectorEngine.find(selector).filter(
-        (foundElem) => foundElem === element
-      );
+        for (let i = 0, len = toggleList.length; i < len; i++) {
+            const elem = toggleList[i];
+            const selector = getSelectorFromElement(elem);
+            const filterElement = SelectorEngine.find(selector).filter(
+                (foundElem) => foundElem === element
+            );
 
-      if (selector !== null && filterElement.length) {
-        this._selector = selector;
-        this._triggerArray.push(elem);
-      }
-    }
-
-    this._parent = this._config.parent ? this._getParent() : null;
-
-    if (!this._config.parent) {
-      this._addAriaAndCollapsedClass(this._element, this._triggerArray);
-    }
-
-    if (this._config.toggle) {
-      this.toggle();
-    }
-  }
-
-  // Getters
-
-  static get Default() {
-    return Default;
-  }
-
-  static get DATA_KEY() {
-    return DATA_KEY;
-  }
-
-  // Public
-
-  toggle() {
-    if (this._element.classList.contains(CLASS_NAME_SHOW)) {
-      this.hide();
-    } else {
-      this.show();
-    }
-  }
-
-  show() {
-    if (this._isTransitioning || this._element.classList.contains(CLASS_NAME_SHOW)) {
-      return;
-    }
-
-    let actives;
-    let activesData;
-
-    if (this._parent) {
-      actives = SelectorEngine.find(SELECTOR_ACTIVES, this._parent).filter((elem) => {
-        if (typeof this._config.parent === 'string') {
-          return elem.getAttribute('data-mdb-parent') === this._config.parent;
+            if (selector !== null && filterElement.length) {
+                this._selector = selector;
+                this._triggerArray.push(elem);
+            }
         }
 
-        return elem.classList.contains(CLASS_NAME_COLLAPSE);
-      });
+        this._parent = this._config.parent ? this._getParent() : null;
 
-      if (actives.length === 0) {
-        actives = null;
-      }
-    }
-
-    const container = SelectorEngine.findOne(this._selector);
-    if (actives) {
-      const tempActiveData = actives.find((elem) => container !== elem);
-      activesData = tempActiveData ? Data.getData(tempActiveData, DATA_KEY) : null;
-
-      if (activesData && activesData._isTransitioning) {
-        return;
-      }
-    }
-
-    const startEvent = EventHandler.trigger(this._element, EVENT_SHOW);
-    if (startEvent.defaultPrevented) {
-      return;
-    }
-
-    if (actives) {
-      actives.forEach((elemActive) => {
-        if (container !== elemActive) {
-          Collapse.collapseInterface(elemActive, 'hide');
+        if (!this._config.parent) {
+            this._addAriaAndCollapsedClass(this._element, this._triggerArray);
         }
 
-        if (!activesData) {
-          Data.setData(elemActive, DATA_KEY, null);
+        if (this._config.toggle) {
+            this.toggle();
         }
-      });
     }
 
-    const dimension = this._getDimension();
+    // Getters
 
-    this._element.classList.remove(CLASS_NAME_COLLAPSE);
-    this._element.classList.add(CLASS_NAME_COLLAPSING);
-
-    this._element.style[dimension] = 0;
-
-    if (this._triggerArray.length) {
-      this._triggerArray.forEach((element) => {
-        element.classList.remove(CLASS_NAME_COLLAPSED);
-        element.setAttribute('aria-expanded', true);
-      });
+    static get Default() {
+        return Default;
     }
 
-    this.setTransitioning(true);
-
-    const complete = () => {
-      this._element.classList.remove(CLASS_NAME_COLLAPSING);
-      this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW);
-
-      this._element.style[dimension] = '';
-
-      this.setTransitioning(false);
-
-      EventHandler.trigger(this._element, EVENT_SHOWN);
-    };
-
-    const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
-    const scrollSize = `scroll${capitalizedDimension}`;
-    const transitionDuration = getTransitionDurationFromElement(this._element);
-
-    EventHandler.one(this._element, 'transitionend', complete);
-
-    emulateTransitionEnd(this._element, transitionDuration);
-    this._element.style[dimension] = `${this._element[scrollSize]}px`;
-  }
-
-  hide() {
-    if (this._isTransitioning || !this._element.classList.contains(CLASS_NAME_SHOW)) {
-      return;
+    static get DATA_KEY() {
+        return DATA_KEY;
     }
 
-    const startEvent = EventHandler.trigger(this._element, EVENT_HIDE);
-    if (startEvent.defaultPrevented) {
-      return;
-    }
+    // Public
 
-    const dimension = this._getDimension();
-
-    this._element.style[dimension] = `${this._element.getBoundingClientRect()[dimension]}px`;
-
-    reflow(this._element);
-
-    this._element.classList.add(CLASS_NAME_COLLAPSING);
-    this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW);
-
-    const triggerArrayLength = this._triggerArray.length;
-    if (triggerArrayLength > 0) {
-      for (let i = 0; i < triggerArrayLength; i++) {
-        const trigger = this._triggerArray[i];
-        const elem = getElementFromSelector(trigger);
-
-        if (elem && !elem.classList.contains(CLASS_NAME_SHOW)) {
-          trigger.classList.add(CLASS_NAME_COLLAPSED);
-          trigger.setAttribute('aria-expanded', false);
+    toggle() {
+        if (this._element.classList.contains(CLASS_NAME_SHOW)) {
+            this.hide();
+        } else {
+            this.show();
         }
-      }
     }
 
-    this.setTransitioning(true);
+    show() {
+        if (this._isTransitioning || this._element.classList.contains(CLASS_NAME_SHOW)) {
+            return;
+        }
 
-    const complete = () => {
-      this.setTransitioning(false);
-      this._element.classList.remove(CLASS_NAME_COLLAPSING);
-      this._element.classList.add(CLASS_NAME_COLLAPSE);
-      EventHandler.trigger(this._element, EVENT_HIDDEN);
-    };
+        let actives;
+        let activesData;
 
-    this._element.style[dimension] = '';
-    const transitionDuration = getTransitionDurationFromElement(this._element);
+        if (this._parent) {
+            actives = SelectorEngine.find(SELECTOR_ACTIVES, this._parent).filter((elem) => {
+                if (typeof this._config.parent === 'string') {
+                    return elem.getAttribute('data-mdb-parent') === this._config.parent;
+                }
 
-    EventHandler.one(this._element, 'transitionend', complete);
-    emulateTransitionEnd(this._element, transitionDuration);
-  }
+                return elem.classList.contains(CLASS_NAME_COLLAPSE);
+            });
 
-  setTransitioning(isTransitioning) {
-    this._isTransitioning = isTransitioning;
-  }
+            if (actives.length === 0) {
+                actives = null;
+            }
+        }
 
-  dispose() {
-    super.dispose();
-    this._config = null;
-    this._parent = null;
-    this._triggerArray = null;
-    this._isTransitioning = null;
-  }
+        const container = SelectorEngine.findOne(this._selector);
+        if (actives) {
+            const tempActiveData = actives.find((elem) => container !== elem);
+            activesData = tempActiveData ? Data.getData(tempActiveData, DATA_KEY) : null;
 
-  // Private
+            if (activesData && activesData._isTransitioning) {
+                return;
+            }
+        }
 
-  _getConfig(config) {
-    config = {
-      ...Default,
-      ...config,
-    };
-    config.toggle = Boolean(config.toggle); // Coerce string values
-    typeCheckConfig(NAME, config, DefaultType);
-    return config;
-  }
+        const startEvent = EventHandler.trigger(this._element, EVENT_SHOW);
+        if (startEvent.defaultPrevented) {
+            return;
+        }
 
-  _getDimension() {
-    return this._element.classList.contains(WIDTH) ? WIDTH : HEIGHT;
-  }
+        if (actives) {
+            actives.forEach((elemActive) => {
+                if (container !== elemActive) {
+                    Collapse.collapseInterface(elemActive, 'hide');
+                }
 
-  _getParent() {
-    let { parent } = this._config;
+                if (!activesData) {
+                    Data.setData(elemActive, DATA_KEY, null);
+                }
+            });
+        }
 
-    if (isElement(parent)) {
-      // it's a jQuery object
-      if (typeof parent.jquery !== 'undefined' || typeof parent[0] !== 'undefined') {
-        parent = parent[0];
-      }
-    } else {
-      parent = SelectorEngine.findOne(parent);
+        const dimension = this._getDimension();
+
+        this._element.classList.remove(CLASS_NAME_COLLAPSE);
+        this._element.classList.add(CLASS_NAME_COLLAPSING);
+
+        this._element.style[dimension] = 0;
+
+        if (this._triggerArray.length) {
+            this._triggerArray.forEach((element) => {
+                element.classList.remove(CLASS_NAME_COLLAPSED);
+                element.setAttribute('aria-expanded', true);
+            });
+        }
+
+        this.setTransitioning(true);
+
+        const complete = () => {
+            this._element.classList.remove(CLASS_NAME_COLLAPSING);
+            this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW);
+
+            this._element.style[dimension] = '';
+
+            this.setTransitioning(false);
+
+            EventHandler.trigger(this._element, EVENT_SHOWN);
+        };
+
+        const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
+        const scrollSize = `scroll${capitalizedDimension}`;
+        const transitionDuration = getTransitionDurationFromElement(this._element);
+
+        EventHandler.one(this._element, 'transitionend', complete);
+
+        emulateTransitionEnd(this._element, transitionDuration);
+        this._element.style[dimension] = `${this._element[scrollSize]}px`;
     }
 
-    const selector = `${SELECTOR_DATA_TOGGLE}[data-mdb-parent="${parent}"]`;
+    hide() {
+        if (this._isTransitioning || !this._element.classList.contains(CLASS_NAME_SHOW)) {
+            return;
+        }
 
-    SelectorEngine.find(selector, parent).forEach((element) => {
-      const selected = getElementFromSelector(element);
+        const startEvent = EventHandler.trigger(this._element, EVENT_HIDE);
+        if (startEvent.defaultPrevented) {
+            return;
+        }
 
-      this._addAriaAndCollapsedClass(selected, [element]);
-    });
+        const dimension = this._getDimension();
 
-    return parent;
-  }
+        this._element.style[dimension] = `${this._element.getBoundingClientRect()[dimension]}px`;
 
-  _addAriaAndCollapsedClass(element, triggerArray) {
-    if (!element || !triggerArray.length) {
-      return;
+        reflow(this._element);
+
+        this._element.classList.add(CLASS_NAME_COLLAPSING);
+        this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW);
+
+        const triggerArrayLength = this._triggerArray.length;
+        if (triggerArrayLength > 0) {
+            for (let i = 0; i < triggerArrayLength; i++) {
+                const trigger = this._triggerArray[i];
+                const elem = getElementFromSelector(trigger);
+
+                if (elem && !elem.classList.contains(CLASS_NAME_SHOW)) {
+                    trigger.classList.add(CLASS_NAME_COLLAPSED);
+                    trigger.setAttribute('aria-expanded', false);
+                }
+            }
+        }
+
+        this.setTransitioning(true);
+
+        const complete = () => {
+            this.setTransitioning(false);
+            this._element.classList.remove(CLASS_NAME_COLLAPSING);
+            this._element.classList.add(CLASS_NAME_COLLAPSE);
+            EventHandler.trigger(this._element, EVENT_HIDDEN);
+        };
+
+        this._element.style[dimension] = '';
+        const transitionDuration = getTransitionDurationFromElement(this._element);
+
+        EventHandler.one(this._element, 'transitionend', complete);
+        emulateTransitionEnd(this._element, transitionDuration);
     }
 
-    const isOpen = element.classList.contains(CLASS_NAME_SHOW);
-
-    triggerArray.forEach((elem) => {
-      if (isOpen) {
-        elem.classList.remove(CLASS_NAME_COLLAPSED);
-      } else {
-        elem.classList.add(CLASS_NAME_COLLAPSED);
-      }
-
-      elem.setAttribute('aria-expanded', isOpen);
-    });
-  }
-
-  // Static
-
-  static collapseInterface(element, config) {
-    let data = Data.getData(element, DATA_KEY);
-    const _config = {
-      ...Default,
-      ...Manipulator.getDataAttributes(element),
-      ...(typeof config === 'object' && config ? config : {}),
-    };
-
-    if (!data && _config.toggle && typeof config === 'string' && /show|hide/.test(config)) {
-      _config.toggle = false;
+    setTransitioning(isTransitioning) {
+        this._isTransitioning = isTransitioning;
     }
 
-    if (!data) {
-      data = new Collapse(element, _config);
+    dispose() {
+        super.dispose();
+        this._config = null;
+        this._parent = null;
+        this._triggerArray = null;
+        this._isTransitioning = null;
     }
 
-    if (typeof config === 'string') {
-      if (typeof data[config] === 'undefined') {
-        throw new TypeError(`No method named "${config}"`);
-      }
+    // Private
 
-      data[config]();
+    _getConfig(config) {
+        config = {
+            ...Default,
+            ...config,
+        };
+        config.toggle = Boolean(config.toggle); // Coerce string values
+        typeCheckConfig(NAME, config, DefaultType);
+        return config;
     }
-  }
 
-  static jQueryInterface(config) {
-    return this.each(function () {
-      Collapse.collapseInterface(this, config);
-    });
-  }
+    _getDimension() {
+        return this._element.classList.contains(WIDTH) ? WIDTH : HEIGHT;
+    }
+
+    _getParent() {
+        let {parent} = this._config;
+
+        if (isElement(parent)) {
+            // it's a jQuery object
+            if (typeof parent.jquery !== 'undefined' || typeof parent[0] !== 'undefined') {
+                parent = parent[0];
+            }
+        } else {
+            parent = SelectorEngine.findOne(parent);
+        }
+
+        const selector = `${SELECTOR_DATA_TOGGLE}[data-mdb-parent="${parent}"]`;
+
+        SelectorEngine.find(selector, parent).forEach((element) => {
+            const selected = getElementFromSelector(element);
+
+            this._addAriaAndCollapsedClass(selected, [element]);
+        });
+
+        return parent;
+    }
+
+    _addAriaAndCollapsedClass(element, triggerArray) {
+        if (!element || !triggerArray.length) {
+            return;
+        }
+
+        const isOpen = element.classList.contains(CLASS_NAME_SHOW);
+
+        triggerArray.forEach((elem) => {
+            if (isOpen) {
+                elem.classList.remove(CLASS_NAME_COLLAPSED);
+            } else {
+                elem.classList.add(CLASS_NAME_COLLAPSED);
+            }
+
+            elem.setAttribute('aria-expanded', isOpen);
+        });
+    }
+
+    // Static
+
+    static collapseInterface(element, config) {
+        let data = Data.getData(element, DATA_KEY);
+        const _config = {
+            ...Default,
+            ...Manipulator.getDataAttributes(element),
+            ...(typeof config === 'object' && config ? config : {}),
+        };
+
+        if (!data && _config.toggle && typeof config === 'string' && /show|hide/.test(config)) {
+            _config.toggle = false;
+        }
+
+        if (!data) {
+            data = new Collapse(element, _config);
+        }
+
+        if (typeof config === 'string') {
+            if (typeof data[config] === 'undefined') {
+                throw new TypeError(`No method named "${config}"`);
+            }
+
+            data[config]();
+        }
+    }
+
+    static jQueryInterface(config) {
+        return this.each(function () {
+            Collapse.collapseInterface(this, config);
+        });
+    }
 }
 
 /**
@@ -366,35 +366,35 @@ class Collapse extends BaseComponent {
  */
 
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
-  // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
-  if (
-    event.target.tagName === 'A' ||
-    (event.delegateTarget && event.delegateTarget.tagName === 'A')
-  ) {
-    event.preventDefault();
-  }
-
-  const triggerData = Manipulator.getDataAttributes(this);
-  const selector = getSelectorFromElement(this);
-  const selectorElements = SelectorEngine.find(selector);
-
-  selectorElements.forEach((element) => {
-    const data = Data.getData(element, DATA_KEY);
-    let config;
-    if (data) {
-      // update parent attribute
-      if (data._parent === null && typeof triggerData.parent === 'string') {
-        data._config.parent = triggerData.parent;
-        data._parent = data._getParent();
-      }
-
-      config = 'toggle';
-    } else {
-      config = triggerData;
+    // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
+    if (
+        event.target.tagName === 'A' ||
+        (event.delegateTarget && event.delegateTarget.tagName === 'A')
+    ) {
+        event.preventDefault();
     }
 
-    Collapse.collapseInterface(element, config);
-  });
+    const triggerData = Manipulator.getDataAttributes(this);
+    const selector = getSelectorFromElement(this);
+    const selectorElements = SelectorEngine.find(selector);
+
+    selectorElements.forEach((element) => {
+        const data = Data.getData(element, DATA_KEY);
+        let config;
+        if (data) {
+            // update parent attribute
+            if (data._parent === null && typeof triggerData.parent === 'string') {
+                data._config.parent = triggerData.parent;
+                data._parent = data._getParent();
+            }
+
+            config = 'toggle';
+        } else {
+            config = triggerData;
+        }
+
+        Collapse.collapseInterface(element, config);
+    });
 });
 
 /**

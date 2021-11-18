@@ -292,53 +292,53 @@ $dark: $gray-900 !default;
 
 // scss-docs-start theme-colors-map
 $theme-colors: (
-  'primary': $primary,
-  'secondary': $secondary,
-  'success': $success,
-  'info': $info,
-  'warning': $warning,
-  'danger': $danger,
-  'light': $light,
-  'dark': $dark,
-  'white': $white,
-  'black': $black,
+        'primary': $primary,
+        'secondary': $secondary,
+        'success': $success,
+        'info': $info,
+        'warning': $warning,
+        'danger': $danger,
+        'light': $light,
+        'dark': $dark,
+        'white': $white,
+        'black': $black,
 ) !default;
 // scss-docs-end theme-colors-map
 
 // scss-docs-start note-colors-map
 $note: () !default;
 $note: map-merge(
-  (
-    'primary': (
-      'bgc': lighten($primary, 43%),
-      'border-color': $primary,
-    ),
-    'secondary': (
-      'bgc': lighten($secondary, 33%),
-      'border-color': $secondary,
-    ),
-    'success': (
-      'bgc': lighten($success, 53%),
-      'border-color': $success,
-    ),
-    'danger': (
-      'bgc': lighten($danger, 36%),
-      'border-color': $danger,
-    ),
-    'warning': (
-      'bgc': lighten($warning, 42%),
-      'border-color': $warning,
-    ),
-    'info': (
-      'bgc': lighten($info, 36%),
-      'border-color': $info,
-    ),
-    'light': (
-      'bgc': $light,
-      'border-color': $dark,
-    ),
-  ),
-  $note
+                (
+                        'primary': (
+                                'bgc': lighten($primary, 43%),
+                                'border-color': $primary,
+                        ),
+                        'secondary': (
+                                'bgc': lighten($secondary, 33%),
+                                'border-color': $secondary,
+                        ),
+                        'success': (
+                                'bgc': lighten($success, 53%),
+                                'border-color': $success,
+                        ),
+                        'danger': (
+                                'bgc': lighten($danger, 36%),
+                                'border-color': $danger,
+                        ),
+                        'warning': (
+                                'bgc': lighten($warning, 42%),
+                                'border-color': $warning,
+                        ),
+                        'info': (
+                                'bgc': lighten($info, 36%),
+                                'border-color': $info,
+                        ),
+                        'light': (
+                                'bgc': $light,
+                                'border-color': $dark,
+                        ),
+                ),
+                $note
 );
 // scss-docs-end note-colors-map
 
@@ -369,22 +369,22 @@ $box-shadow-3-top: 0 -10px 20px 0 rgba(0, 0, 0, 0.05) !default;
 
 // scss-docs-start light-shadows-values
 $shadows-light: (
-  '0': $box-shadow-0,
-  '1': $box-shadow-1,
-  '2': $box-shadow-2,
-  '3': $box-shadow-3,
-  '4': $box-shadow-4,
-  '5': $box-shadow-5,
+        '0': $box-shadow-0,
+        '1': $box-shadow-1,
+        '2': $box-shadow-2,
+        '3': $box-shadow-3,
+        '4': $box-shadow-4,
+        '5': $box-shadow-5,
 ) !default;
 // scss-docs-end light-shadows-values
 
 // scss-docs-start strong-shadows-values
 $shadows-strong: (
-  '1': $box-shadow-1-strong,
-  '2': $box-shadow-2-strong,
-  '3': $box-shadow-3-strong,
-  '4': $box-shadow-4-strong,
-  '5': $box-shadow-5-strong,
+        '1': $box-shadow-1-strong,
+        '2': $box-shadow-2-strong,
+        '3': $box-shadow-3-strong,
+        '4': $box-shadow-4-strong,
+        '5': $box-shadow-5-strong,
 ) !default;
 // scss-docs-end strong-shadows-values
 
@@ -487,7 +487,7 @@ $fixed-action-btn-li-margin-bottom: 1.5rem !default;
 
 $btn-group-border-radius: calc(4px - 1px) !default;
 $btn-group-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !default;
+border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !default;
 
 // Forms
 //
@@ -636,7 +636,7 @@ $form-switch-form-check-input-after-height: $form-switch-form-check-input-after-
 $form-switch-form-check-input-after-background-color: $white !default;
 $form-switch-form-check-input-after-margin-top: -0.1875rem !default;
 $form-switch-form-check-input-after-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
-  0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !default;
+0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !default;
 $form-switch-form-check-input-after-transition: background-color 0.2s, transform 0.2s !default;
 
 $form-switch-form-check-input-focus-before-box-shadow: 3px -1px 0px 13px rgba(0, 0, 0, 0.6) !default;
@@ -659,9 +659,9 @@ $form-switch-form-check-input-checked-checkbox-after-background-color: $primary 
 $form-switch-form-check-input-checked-checkbox-after-margin-top: -3px !default;
 $form-switch-form-check-input-checked-checkbox-after-margin-left: 1.0625rem !default;
 $form-switch-form-check-input-checked-checkbox-after-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
-  0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !default;
+0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !default;
 $form-switch-form-check-input-checked-checkbox-after-transition: background-color 0.2s,
-  transform 0.2s !default;
+transform 0.2s !default;
 
 $form-file-height: calc(1.79rem + 0.33rem + 2px) !default;
 
@@ -728,12 +728,12 @@ $form-feedback-invalid-color: $danger !default;
 
 // scss-docs-start form-validation-states
 $form-validation-states-mdb: (
-  'valid': (
-    'color': $form-feedback-valid-color,
-  ),
-  'invalid': (
-    'color': $form-feedback-invalid-color,
-  ),
+        'valid': (
+                'color': $form-feedback-valid-color,
+        ),
+        'invalid': (
+                'color': $form-feedback-invalid-color,
+        ),
 ) !default;
 // scss-docs-end form-validation-states
 

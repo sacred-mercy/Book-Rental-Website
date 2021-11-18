@@ -6,11 +6,11 @@
  */
 
 import {
-  defineJQueryPlugin,
-  emulateTransitionEnd,
-  getTransitionDurationFromElement,
-  reflow,
-  typeCheckConfig,
+    defineJQueryPlugin,
+    emulateTransitionEnd,
+    getTransitionDurationFromElement,
+    reflow,
+    typeCheckConfig,
 } from './util/index';
 import Data from './dom/data';
 import EventHandler from './dom/event-handler';
@@ -39,15 +39,15 @@ const CLASS_NAME_SHOW = 'show';
 const CLASS_NAME_SHOWING = 'showing';
 
 const DefaultType = {
-  animation: 'boolean',
-  autohide: 'boolean',
-  delay: 'number',
+    animation: 'boolean',
+    autohide: 'boolean',
+    delay: 'number',
 };
 
 const Default = {
-  animation: true,
-  autohide: true,
-  delay: 5000,
+    animation: true,
+    autohide: true,
+    delay: 5000,
 };
 
 const SELECTOR_DATA_DISMISS = '[data-mdb-dismiss="toast"]';
@@ -59,152 +59,152 @@ const SELECTOR_DATA_DISMISS = '[data-mdb-dismiss="toast"]';
  */
 
 class Toast extends BaseComponent {
-  constructor(element, config) {
-    super(element);
+    constructor(element, config) {
+        super(element);
 
-    this._config = this._getConfig(config);
-    this._timeout = null;
-    this._setListeners();
-  }
-
-  // Getters
-
-  static get DefaultType() {
-    return DefaultType;
-  }
-
-  static get Default() {
-    return Default;
-  }
-
-  static get DATA_KEY() {
-    return DATA_KEY;
-  }
-
-  // Public
-
-  show() {
-    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW);
-
-    if (showEvent.defaultPrevented) {
-      return;
+        this._config = this._getConfig(config);
+        this._timeout = null;
+        this._setListeners();
     }
 
-    this._clearTimeout();
+    // Getters
 
-    if (this._config.animation) {
-      this._element.classList.add(CLASS_NAME_FADE);
+    static get DefaultType() {
+        return DefaultType;
     }
 
-    const complete = () => {
-      this._element.classList.remove(CLASS_NAME_SHOWING);
-      this._element.classList.add(CLASS_NAME_SHOW);
-
-      EventHandler.trigger(this._element, EVENT_SHOWN);
-
-      if (this._config.autohide) {
-        this._timeout = setTimeout(() => {
-          this.hide();
-        }, this._config.delay);
-      }
-    };
-
-    this._element.classList.remove(CLASS_NAME_HIDE);
-    reflow(this._element);
-    this._element.classList.add(CLASS_NAME_SHOWING);
-    if (this._config.animation) {
-      const transitionDuration = getTransitionDurationFromElement(this._element);
-
-      EventHandler.one(this._element, 'transitionend', complete);
-      emulateTransitionEnd(this._element, transitionDuration);
-    } else {
-      complete();
-    }
-  }
-
-  hide() {
-    if (!this._element.classList.contains(CLASS_NAME_SHOW)) {
-      return;
+    static get Default() {
+        return Default;
     }
 
-    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE);
-
-    if (hideEvent.defaultPrevented) {
-      return;
+    static get DATA_KEY() {
+        return DATA_KEY;
     }
 
-    const complete = () => {
-      this._element.classList.add(CLASS_NAME_HIDE);
-      EventHandler.trigger(this._element, EVENT_HIDDEN);
-    };
+    // Public
 
-    this._element.classList.remove(CLASS_NAME_SHOW);
-    if (this._config.animation) {
-      const transitionDuration = getTransitionDurationFromElement(this._element);
+    show() {
+        const showEvent = EventHandler.trigger(this._element, EVENT_SHOW);
 
-      EventHandler.one(this._element, 'transitionend', complete);
-      emulateTransitionEnd(this._element, transitionDuration);
-    } else {
-      complete();
-    }
-  }
-
-  dispose() {
-    this._clearTimeout();
-
-    if (this._element.classList.contains(CLASS_NAME_SHOW)) {
-      this._element.classList.remove(CLASS_NAME_SHOW);
-    }
-
-    EventHandler.off(this._element, EVENT_CLICK_DISMISS);
-
-    super.dispose();
-    this._config = null;
-  }
-
-  // Private
-
-  _getConfig(config) {
-    config = {
-      ...Default,
-      ...Manipulator.getDataAttributes(this._element),
-      ...(typeof config === 'object' && config ? config : {}),
-    };
-
-    typeCheckConfig(NAME, config, this.constructor.DefaultType);
-
-    return config;
-  }
-
-  _setListeners() {
-    EventHandler.on(this._element, EVENT_CLICK_DISMISS, SELECTOR_DATA_DISMISS, () => this.hide());
-  }
-
-  _clearTimeout() {
-    clearTimeout(this._timeout);
-    this._timeout = null;
-  }
-
-  // Static
-
-  static jQueryInterface(config) {
-    return this.each(function () {
-      let data = Data.getData(this, DATA_KEY);
-      const _config = typeof config === 'object' && config;
-
-      if (!data) {
-        data = new Toast(this, _config);
-      }
-
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`);
+        if (showEvent.defaultPrevented) {
+            return;
         }
 
-        data[config](this);
-      }
-    });
-  }
+        this._clearTimeout();
+
+        if (this._config.animation) {
+            this._element.classList.add(CLASS_NAME_FADE);
+        }
+
+        const complete = () => {
+            this._element.classList.remove(CLASS_NAME_SHOWING);
+            this._element.classList.add(CLASS_NAME_SHOW);
+
+            EventHandler.trigger(this._element, EVENT_SHOWN);
+
+            if (this._config.autohide) {
+                this._timeout = setTimeout(() => {
+                    this.hide();
+                }, this._config.delay);
+            }
+        };
+
+        this._element.classList.remove(CLASS_NAME_HIDE);
+        reflow(this._element);
+        this._element.classList.add(CLASS_NAME_SHOWING);
+        if (this._config.animation) {
+            const transitionDuration = getTransitionDurationFromElement(this._element);
+
+            EventHandler.one(this._element, 'transitionend', complete);
+            emulateTransitionEnd(this._element, transitionDuration);
+        } else {
+            complete();
+        }
+    }
+
+    hide() {
+        if (!this._element.classList.contains(CLASS_NAME_SHOW)) {
+            return;
+        }
+
+        const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE);
+
+        if (hideEvent.defaultPrevented) {
+            return;
+        }
+
+        const complete = () => {
+            this._element.classList.add(CLASS_NAME_HIDE);
+            EventHandler.trigger(this._element, EVENT_HIDDEN);
+        };
+
+        this._element.classList.remove(CLASS_NAME_SHOW);
+        if (this._config.animation) {
+            const transitionDuration = getTransitionDurationFromElement(this._element);
+
+            EventHandler.one(this._element, 'transitionend', complete);
+            emulateTransitionEnd(this._element, transitionDuration);
+        } else {
+            complete();
+        }
+    }
+
+    dispose() {
+        this._clearTimeout();
+
+        if (this._element.classList.contains(CLASS_NAME_SHOW)) {
+            this._element.classList.remove(CLASS_NAME_SHOW);
+        }
+
+        EventHandler.off(this._element, EVENT_CLICK_DISMISS);
+
+        super.dispose();
+        this._config = null;
+    }
+
+    // Private
+
+    _getConfig(config) {
+        config = {
+            ...Default,
+            ...Manipulator.getDataAttributes(this._element),
+            ...(typeof config === 'object' && config ? config : {}),
+        };
+
+        typeCheckConfig(NAME, config, this.constructor.DefaultType);
+
+        return config;
+    }
+
+    _setListeners() {
+        EventHandler.on(this._element, EVENT_CLICK_DISMISS, SELECTOR_DATA_DISMISS, () => this.hide());
+    }
+
+    _clearTimeout() {
+        clearTimeout(this._timeout);
+        this._timeout = null;
+    }
+
+    // Static
+
+    static jQueryInterface(config) {
+        return this.each(function () {
+            let data = Data.getData(this, DATA_KEY);
+            const _config = typeof config === 'object' && config;
+
+            if (!data) {
+                data = new Toast(this, _config);
+            }
+
+            if (typeof config === 'string') {
+                if (typeof data[config] === 'undefined') {
+                    throw new TypeError(`No method named "${config}"`);
+                }
+
+                data[config](this);
+            }
+        });
+    }
 }
 
 /**

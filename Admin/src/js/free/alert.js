@@ -1,4 +1,4 @@
-import { getjQuery, onDOMContentLoaded } from '../mdb/util/index';
+import {getjQuery, onDOMContentLoaded} from '../mdb/util/index';
 import EventHandler from '../mdb/dom/event-handler';
 import SelectorEngine from '../mdb/dom/selector-engine';
 import BSAlert from '../bootstrap/mdb-prefix/alert';
@@ -22,41 +22,41 @@ const EVENT_CLOSED = `closed${EVENT_KEY}`;
 const SELECTOR_ALERT = '.alert';
 
 class Alert extends BSAlert {
-  constructor(element, data = {}) {
-    super(element, data);
+    constructor(element, data = {}) {
+        super(element, data);
 
-    this._init();
-  }
+        this._init();
+    }
 
-  dispose() {
-    EventHandler.off(this._element, EVENT_CLOSE_BS);
-    EventHandler.off(this._element, EVENT_CLOSED_BS);
+    dispose() {
+        EventHandler.off(this._element, EVENT_CLOSE_BS);
+        EventHandler.off(this._element, EVENT_CLOSED_BS);
 
-    super.dispose();
-  }
+        super.dispose();
+    }
 
-  // Getters
-  static get NAME() {
-    return NAME;
-  }
+    // Getters
+    static get NAME() {
+        return NAME;
+    }
 
-  // Private
-  _init() {
-    this._bindCloseEvent();
-    this._bindClosedEvent();
-  }
+    // Private
+    _init() {
+        this._bindCloseEvent();
+        this._bindClosedEvent();
+    }
 
-  _bindCloseEvent() {
-    EventHandler.on(this._element, EVENT_CLOSE_BS, () => {
-      EventHandler.trigger(this._element, EVENT_CLOSE);
-    });
-  }
+    _bindCloseEvent() {
+        EventHandler.on(this._element, EVENT_CLOSE_BS, () => {
+            EventHandler.trigger(this._element, EVENT_CLOSE);
+        });
+    }
 
-  _bindClosedEvent() {
-    EventHandler.on(this._element, EVENT_CLOSED_BS, () => {
-      EventHandler.trigger(this._element, EVENT_CLOSED);
-    });
-  }
+    _bindClosedEvent() {
+        EventHandler.on(this._element, EVENT_CLOSED_BS, () => {
+            EventHandler.trigger(this._element, EVENT_CLOSED);
+        });
+    }
 }
 
 /**
@@ -66,10 +66,10 @@ class Alert extends BSAlert {
  */
 
 SelectorEngine.find(SELECTOR_ALERT).forEach((el) => {
-  let instance = Alert.getInstance(el);
-  if (!instance) {
-    instance = new Alert(el);
-  }
+    let instance = Alert.getInstance(el);
+    if (!instance) {
+        instance = new Alert(el);
+    }
 });
 
 /**
@@ -79,17 +79,17 @@ SelectorEngine.find(SELECTOR_ALERT).forEach((el) => {
  * add .rating to jQuery only if jQuery is present
  */
 onDOMContentLoaded(() => {
-  const $ = getjQuery();
+    const $ = getjQuery();
 
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME];
-    $.fn[NAME] = Alert.jQueryInterface;
-    $.fn[NAME].Constructor = Alert;
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Alert.jQueryInterface;
-    };
-  }
+    if ($) {
+        const JQUERY_NO_CONFLICT = $.fn[NAME];
+        $.fn[NAME] = Alert.jQueryInterface;
+        $.fn[NAME].Constructor = Alert;
+        $.fn[NAME].noConflict = () => {
+            $.fn[NAME] = JQUERY_NO_CONFLICT;
+            return Alert.jQueryInterface;
+        };
+    }
 });
 
 export default Alert;

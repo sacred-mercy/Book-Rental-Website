@@ -6,11 +6,11 @@
  */
 
 import {
-  defineJQueryPlugin,
-  emulateTransitionEnd,
-  getElementFromSelector,
-  getTransitionDurationFromElement,
-  reflow,
+    defineJQueryPlugin,
+    emulateTransitionEnd,
+    getElementFromSelector,
+    getTransitionDurationFromElement,
+    reflow,
 } from './util/index';
 import Data from './dom/data';
 import EventHandler from './dom/event-handler';
@@ -45,7 +45,7 @@ const SELECTOR_NAV_LIST_GROUP = '.nav, .list-group';
 const SELECTOR_ACTIVE = '.active';
 const SELECTOR_ACTIVE_UL = ':scope > li > .active';
 const SELECTOR_DATA_TOGGLE =
-  '[data-mdb-toggle="tab"], [data-mdb-toggle="pill"], [data-mdb-toggle="list"]';
+    '[data-mdb-toggle="tab"], [data-mdb-toggle="pill"], [data-mdb-toggle="list"]';
 const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle';
 const SELECTOR_DROPDOWN_ACTIVE_CHILD = ':scope > .dropdown-menu .active';
 
@@ -56,154 +56,154 @@ const SELECTOR_DROPDOWN_ACTIVE_CHILD = ':scope > .dropdown-menu .active';
  */
 
 class Tab extends BaseComponent {
-  // Getters
+    // Getters
 
-  static get DATA_KEY() {
-    return DATA_KEY;
-  }
-
-  // Public
-
-  show() {
-    if (
-      (this._element.parentNode &&
-        this._element.parentNode.nodeType === Node.ELEMENT_NODE &&
-        this._element.classList.contains(CLASS_NAME_ACTIVE)) ||
-      this._element.classList.contains(CLASS_NAME_DISABLED)
-    ) {
-      return;
+    static get DATA_KEY() {
+        return DATA_KEY;
     }
 
-    let previous;
-    const target = getElementFromSelector(this._element);
-    const listElement = this._element.closest(SELECTOR_NAV_LIST_GROUP);
+    // Public
 
-    if (listElement) {
-      const itemSelector =
-        listElement.nodeName === 'UL' || listElement.nodeName === 'OL'
-          ? SELECTOR_ACTIVE_UL
-          : SELECTOR_ACTIVE;
-      previous = SelectorEngine.find(itemSelector, listElement);
-      previous = previous[previous.length - 1];
-    }
-
-    const hideEvent = previous
-      ? EventHandler.trigger(previous, EVENT_HIDE, {
-          relatedTarget: this._element,
-        })
-      : null;
-
-    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, {
-      relatedTarget: previous,
-    });
-
-    if (showEvent.defaultPrevented || (hideEvent !== null && hideEvent.defaultPrevented)) {
-      return;
-    }
-
-    this._activate(this._element, listElement);
-
-    const complete = () => {
-      EventHandler.trigger(previous, EVENT_HIDDEN, {
-        relatedTarget: this._element,
-      });
-      EventHandler.trigger(this._element, EVENT_SHOWN, {
-        relatedTarget: previous,
-      });
-    };
-
-    if (target) {
-      this._activate(target, target.parentNode, complete);
-    } else {
-      complete();
-    }
-  }
-
-  // Private
-
-  _activate(element, container, callback) {
-    const activeElements =
-      container && (container.nodeName === 'UL' || container.nodeName === 'OL')
-        ? SelectorEngine.find(SELECTOR_ACTIVE_UL, container)
-        : SelectorEngine.children(container, SELECTOR_ACTIVE);
-
-    const active = activeElements[0];
-    const isTransitioning = callback && active && active.classList.contains(CLASS_NAME_FADE);
-
-    const complete = () => this._transitionComplete(element, active, callback);
-
-    if (active && isTransitioning) {
-      const transitionDuration = getTransitionDurationFromElement(active);
-      active.classList.remove(CLASS_NAME_SHOW);
-
-      EventHandler.one(active, 'transitionend', complete);
-      emulateTransitionEnd(active, transitionDuration);
-    } else {
-      complete();
-    }
-  }
-
-  _transitionComplete(element, active, callback) {
-    if (active) {
-      active.classList.remove(CLASS_NAME_ACTIVE);
-
-      const dropdownChild = SelectorEngine.findOne(
-        SELECTOR_DROPDOWN_ACTIVE_CHILD,
-        active.parentNode
-      );
-
-      if (dropdownChild) {
-        dropdownChild.classList.remove(CLASS_NAME_ACTIVE);
-      }
-
-      if (active.getAttribute('role') === 'tab') {
-        active.setAttribute('aria-selected', false);
-      }
-    }
-
-    element.classList.add(CLASS_NAME_ACTIVE);
-    if (element.getAttribute('role') === 'tab') {
-      element.setAttribute('aria-selected', true);
-    }
-
-    reflow(element);
-
-    if (element.classList.contains(CLASS_NAME_FADE)) {
-      element.classList.add(CLASS_NAME_SHOW);
-    }
-
-    if (element.parentNode && element.parentNode.classList.contains(CLASS_NAME_DROPDOWN_MENU)) {
-      const dropdownElement = element.closest(SELECTOR_DROPDOWN);
-
-      if (dropdownElement) {
-        SelectorEngine.find(SELECTOR_DROPDOWN_TOGGLE).forEach((dropdown) =>
-          dropdown.classList.add(CLASS_NAME_ACTIVE)
-        );
-      }
-
-      element.setAttribute('aria-expanded', true);
-    }
-
-    if (callback) {
-      callback();
-    }
-  }
-
-  // Static
-
-  static jQueryInterface(config) {
-    return this.each(function () {
-      const data = Data.getData(this, DATA_KEY) || new Tab(this);
-
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`);
+    show() {
+        if (
+            (this._element.parentNode &&
+                this._element.parentNode.nodeType === Node.ELEMENT_NODE &&
+                this._element.classList.contains(CLASS_NAME_ACTIVE)) ||
+            this._element.classList.contains(CLASS_NAME_DISABLED)
+        ) {
+            return;
         }
 
-        data[config]();
-      }
-    });
-  }
+        let previous;
+        const target = getElementFromSelector(this._element);
+        const listElement = this._element.closest(SELECTOR_NAV_LIST_GROUP);
+
+        if (listElement) {
+            const itemSelector =
+                listElement.nodeName === 'UL' || listElement.nodeName === 'OL'
+                    ? SELECTOR_ACTIVE_UL
+                    : SELECTOR_ACTIVE;
+            previous = SelectorEngine.find(itemSelector, listElement);
+            previous = previous[previous.length - 1];
+        }
+
+        const hideEvent = previous
+            ? EventHandler.trigger(previous, EVENT_HIDE, {
+                relatedTarget: this._element,
+            })
+            : null;
+
+        const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, {
+            relatedTarget: previous,
+        });
+
+        if (showEvent.defaultPrevented || (hideEvent !== null && hideEvent.defaultPrevented)) {
+            return;
+        }
+
+        this._activate(this._element, listElement);
+
+        const complete = () => {
+            EventHandler.trigger(previous, EVENT_HIDDEN, {
+                relatedTarget: this._element,
+            });
+            EventHandler.trigger(this._element, EVENT_SHOWN, {
+                relatedTarget: previous,
+            });
+        };
+
+        if (target) {
+            this._activate(target, target.parentNode, complete);
+        } else {
+            complete();
+        }
+    }
+
+    // Private
+
+    _activate(element, container, callback) {
+        const activeElements =
+            container && (container.nodeName === 'UL' || container.nodeName === 'OL')
+                ? SelectorEngine.find(SELECTOR_ACTIVE_UL, container)
+                : SelectorEngine.children(container, SELECTOR_ACTIVE);
+
+        const active = activeElements[0];
+        const isTransitioning = callback && active && active.classList.contains(CLASS_NAME_FADE);
+
+        const complete = () => this._transitionComplete(element, active, callback);
+
+        if (active && isTransitioning) {
+            const transitionDuration = getTransitionDurationFromElement(active);
+            active.classList.remove(CLASS_NAME_SHOW);
+
+            EventHandler.one(active, 'transitionend', complete);
+            emulateTransitionEnd(active, transitionDuration);
+        } else {
+            complete();
+        }
+    }
+
+    _transitionComplete(element, active, callback) {
+        if (active) {
+            active.classList.remove(CLASS_NAME_ACTIVE);
+
+            const dropdownChild = SelectorEngine.findOne(
+                SELECTOR_DROPDOWN_ACTIVE_CHILD,
+                active.parentNode
+            );
+
+            if (dropdownChild) {
+                dropdownChild.classList.remove(CLASS_NAME_ACTIVE);
+            }
+
+            if (active.getAttribute('role') === 'tab') {
+                active.setAttribute('aria-selected', false);
+            }
+        }
+
+        element.classList.add(CLASS_NAME_ACTIVE);
+        if (element.getAttribute('role') === 'tab') {
+            element.setAttribute('aria-selected', true);
+        }
+
+        reflow(element);
+
+        if (element.classList.contains(CLASS_NAME_FADE)) {
+            element.classList.add(CLASS_NAME_SHOW);
+        }
+
+        if (element.parentNode && element.parentNode.classList.contains(CLASS_NAME_DROPDOWN_MENU)) {
+            const dropdownElement = element.closest(SELECTOR_DROPDOWN);
+
+            if (dropdownElement) {
+                SelectorEngine.find(SELECTOR_DROPDOWN_TOGGLE).forEach((dropdown) =>
+                    dropdown.classList.add(CLASS_NAME_ACTIVE)
+                );
+            }
+
+            element.setAttribute('aria-expanded', true);
+        }
+
+        if (callback) {
+            callback();
+        }
+    }
+
+    // Static
+
+    static jQueryInterface(config) {
+        return this.each(function () {
+            const data = Data.getData(this, DATA_KEY) || new Tab(this);
+
+            if (typeof config === 'string') {
+                if (typeof data[config] === 'undefined') {
+                    throw new TypeError(`No method named "${config}"`);
+                }
+
+                data[config]();
+            }
+        });
+    }
 }
 
 /**
@@ -213,10 +213,10 @@ class Tab extends BaseComponent {
  */
 
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
-  event.preventDefault();
+    event.preventDefault();
 
-  const data = Data.getData(this, DATA_KEY) || new Tab(this);
-  data.show();
+    const data = Data.getData(this, DATA_KEY) || new Tab(this);
+    data.show();
 });
 
 /**

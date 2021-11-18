@@ -1,4 +1,4 @@
-import { getjQuery, onDOMContentLoaded } from '../mdb/util/index';
+import {getjQuery, onDOMContentLoaded} from '../mdb/util/index';
 import EventHandler from '../mdb/dom/event-handler';
 import SelectorEngine from '../mdb/dom/selector-engine';
 import BSPopover from '../bootstrap/mdb-prefix/popover';
@@ -28,65 +28,65 @@ const EVENT_INSERTED = `inserted${EVENT_KEY}`;
 const SELECTOR_DATA_TOGGLE = '[data-mdb-toggle="popover"]';
 
 class Popover extends BSPopover {
-  constructor(element, data) {
-    super(element, data);
+    constructor(element, data) {
+        super(element, data);
 
-    this._init();
-  }
+        this._init();
+    }
 
-  dispose() {
-    EventHandler.off(this.element, EVENT_SHOW_BS);
-    EventHandler.off(this.element, EVENT_SHOWN_BS);
-    EventHandler.off(this.element, EVENT_HIDE_BS);
-    EventHandler.off(this.element, EVENT_HIDDEN_BS);
-    EventHandler.off(this.element, EVENT_INSERTED_BS);
+    dispose() {
+        EventHandler.off(this.element, EVENT_SHOW_BS);
+        EventHandler.off(this.element, EVENT_SHOWN_BS);
+        EventHandler.off(this.element, EVENT_HIDE_BS);
+        EventHandler.off(this.element, EVENT_HIDDEN_BS);
+        EventHandler.off(this.element, EVENT_INSERTED_BS);
 
-    super.dispose();
-  }
+        super.dispose();
+    }
 
-  // Getters
-  static get NAME() {
-    return NAME;
-  }
+    // Getters
+    static get NAME() {
+        return NAME;
+    }
 
-  // Private
-  _init() {
-    this._bindShowEvent();
-    this._bindShownEvent();
-    this._bindHideEvent();
-    this._bindHiddenEvent();
-    this._bindInsertedEvent();
-  }
+    // Private
+    _init() {
+        this._bindShowEvent();
+        this._bindShownEvent();
+        this._bindHideEvent();
+        this._bindHiddenEvent();
+        this._bindInsertedEvent();
+    }
 
-  _bindShowEvent() {
-    EventHandler.on(this.element, EVENT_SHOW_BS, () => {
-      EventHandler.trigger(this.element, EVENT_SHOW);
-    });
-  }
+    _bindShowEvent() {
+        EventHandler.on(this.element, EVENT_SHOW_BS, () => {
+            EventHandler.trigger(this.element, EVENT_SHOW);
+        });
+    }
 
-  _bindShownEvent() {
-    EventHandler.on(this.element, EVENT_SHOWN_BS, () => {
-      EventHandler.trigger(this.element, EVENT_SHOWN);
-    });
-  }
+    _bindShownEvent() {
+        EventHandler.on(this.element, EVENT_SHOWN_BS, () => {
+            EventHandler.trigger(this.element, EVENT_SHOWN);
+        });
+    }
 
-  _bindHideEvent() {
-    EventHandler.on(this.element, EVENT_HIDE_BS, () => {
-      EventHandler.trigger(this.element, EVENT_HIDE);
-    });
-  }
+    _bindHideEvent() {
+        EventHandler.on(this.element, EVENT_HIDE_BS, () => {
+            EventHandler.trigger(this.element, EVENT_HIDE);
+        });
+    }
 
-  _bindHiddenEvent() {
-    EventHandler.on(this.element, EVENT_HIDDEN_BS, () => {
-      EventHandler.trigger(this.element, EVENT_HIDDEN);
-    });
-  }
+    _bindHiddenEvent() {
+        EventHandler.on(this.element, EVENT_HIDDEN_BS, () => {
+            EventHandler.trigger(this.element, EVENT_HIDDEN);
+        });
+    }
 
-  _bindInsertedEvent() {
-    EventHandler.on(this.element, EVENT_INSERTED_BS, () => {
-      EventHandler.trigger(this.element, EVENT_INSERTED);
-    });
-  }
+    _bindInsertedEvent() {
+        EventHandler.on(this.element, EVENT_INSERTED_BS, () => {
+            EventHandler.trigger(this.element, EVENT_INSERTED);
+        });
+    }
 }
 
 /**
@@ -96,10 +96,10 @@ class Popover extends BSPopover {
  */
 
 SelectorEngine.find(SELECTOR_DATA_TOGGLE).forEach((el) => {
-  let instance = Popover.getInstance(el);
-  if (!instance) {
-    instance = new Popover(el);
-  }
+    let instance = Popover.getInstance(el);
+    if (!instance) {
+        instance = new Popover(el);
+    }
 });
 
 /**
@@ -110,17 +110,17 @@ SelectorEngine.find(SELECTOR_DATA_TOGGLE).forEach((el) => {
  */
 
 onDOMContentLoaded(() => {
-  const $ = getjQuery();
+    const $ = getjQuery();
 
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME];
-    $.fn[NAME] = Popover.jQueryInterface;
-    $.fn[NAME].Constructor = Popover;
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Popover.jQueryInterface;
-    };
-  }
+    if ($) {
+        const JQUERY_NO_CONFLICT = $.fn[NAME];
+        $.fn[NAME] = Popover.jQueryInterface;
+        $.fn[NAME].Constructor = Popover;
+        $.fn[NAME].noConflict = () => {
+            $.fn[NAME] = JQUERY_NO_CONFLICT;
+            return Popover.jQueryInterface;
+        };
+    }
 });
 
 export default Popover;

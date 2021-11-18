@@ -28,8 +28,7 @@
         @if type-of($utility) ==
           'map' and
           map-get($utility, rfs) and
-          (map-get($utility, responsive) or $infix == '')
-        {
+          (map-get($utility, responsive) or $infix == '') {
           @include generate-utility($utility, $infix, true);
         }
       }

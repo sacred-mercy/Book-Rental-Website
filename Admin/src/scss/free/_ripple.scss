@@ -21,6 +21,7 @@
   transition-property: transform, opacity;
   transition-timing-function: $cubicBezier, $cubicBezier;
   z-index: 999;
+
   &.active {
     transform: scale(1);
     opacity: 0;

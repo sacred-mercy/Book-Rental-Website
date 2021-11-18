@@ -14,71 +14,71 @@
 const NODE_TEXT = 3;
 
 const SelectorEngine = {
-  closest(element, selector) {
-    return element.closest(selector);
-  },
+    closest(element, selector) {
+        return element.closest(selector);
+    },
 
-  matches(element, selector) {
-    return element.matches(selector);
-  },
+    matches(element, selector) {
+        return element.matches(selector);
+    },
 
-  find(selector, element = document.documentElement) {
-    return [].concat(...Element.prototype.querySelectorAll.call(element, selector));
-  },
+    find(selector, element = document.documentElement) {
+        return [].concat(...Element.prototype.querySelectorAll.call(element, selector));
+    },
 
-  findOne(selector, element = document.documentElement) {
-    return Element.prototype.querySelector.call(element, selector);
-  },
+    findOne(selector, element = document.documentElement) {
+        return Element.prototype.querySelector.call(element, selector);
+    },
 
-  children(element, selector) {
-    const children = [].concat(...element.children);
+    children(element, selector) {
+        const children = [].concat(...element.children);
 
-    return children.filter((child) => child.matches(selector));
-  },
+        return children.filter((child) => child.matches(selector));
+    },
 
-  parents(element, selector) {
-    const parents = [];
+    parents(element, selector) {
+        const parents = [];
 
-    let ancestor = element.parentNode;
+        let ancestor = element.parentNode;
 
-    while (ancestor && ancestor.nodeType === Node.ELEMENT_NODE && ancestor.nodeType !== NODE_TEXT) {
-      if (this.matches(ancestor, selector)) {
-        parents.push(ancestor);
-      }
+        while (ancestor && ancestor.nodeType === Node.ELEMENT_NODE && ancestor.nodeType !== NODE_TEXT) {
+            if (this.matches(ancestor, selector)) {
+                parents.push(ancestor);
+            }
 
-      ancestor = ancestor.parentNode;
-    }
+            ancestor = ancestor.parentNode;
+        }
 
-    return parents;
-  },
+        return parents;
+    },
 
-  prev(element, selector) {
-    let previous = element.previousElementSibling;
+    prev(element, selector) {
+        let previous = element.previousElementSibling;
 
-    while (previous) {
-      if (previous.matches(selector)) {
-        return [previous];
-      }
+        while (previous) {
+            if (previous.matches(selector)) {
+                return [previous];
+            }
 
-      previous = previous.previousElementSibling;
-    }
+            previous = previous.previousElementSibling;
+        }
 
-    return [];
-  },
+        return [];
+    },
 
-  next(element, selector) {
-    let next = element.nextElementSibling;
+    next(element, selector) {
+        let next = element.nextElementSibling;
 
-    while (next) {
-      if (this.matches(next, selector)) {
-        return [next];
-      }
+        while (next) {
+            if (this.matches(next, selector)) {
+                return [next];
+            }
 
-      next = next.nextElementSibling;
-    }
+            next = next.nextElementSibling;
+        }
 
-    return [];
-  },
+        return [];
+    },
 };
 
 export default SelectorEngine;

@@ -6,6 +6,7 @@
     font-size: 1.7rem;
   }
 }
+
 .carousel-control-next-icon {
   &::after {
     content: '\f054';
@@ -14,6 +15,7 @@
     font-size: 1.7rem;
   }
 }
+
 .carousel-indicators {
   [data-mdb-target] {
     @extend [data-bs-target] !optional;

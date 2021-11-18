@@ -16,29 +16,29 @@ import Data from './dom/data';
 const VERSION = '5.0.0-beta2';
 
 class BaseComponent {
-  constructor(element) {
-    if (!element) {
-      return;
+    constructor(element) {
+        if (!element) {
+            return;
+        }
+
+        this._element = element;
+        Data.setData(element, this.constructor.DATA_KEY, this);
     }
 
-    this._element = element;
-    Data.setData(element, this.constructor.DATA_KEY, this);
-  }
+    dispose() {
+        Data.removeData(this._element, this.constructor.DATA_KEY);
+        this._element = null;
+    }
 
-  dispose() {
-    Data.removeData(this._element, this.constructor.DATA_KEY);
-    this._element = null;
-  }
+    /** Static */
 
-  /** Static */
+    static getInstance(element) {
+        return Data.getData(element, this.DATA_KEY);
+    }
 
-  static getInstance(element) {
-    return Data.getData(element, this.DATA_KEY);
-  }
-
-  static get VERSION() {
-    return VERSION;
-  }
+    static get VERSION() {
+        return VERSION;
+    }
 }
 
 export default BaseComponent;

@@ -40,6 +40,7 @@
       border-bottom-right-radius: $pagination-border-radius;
     }
   }
+
   &:not(:first-child) {
     .page-link {
       margin-left: 0;
@@ -54,6 +55,7 @@
       border-top-left-radius: $pagination-border-radius;
       border-bottom-left-radius: $pagination-border-radius;
     }
+
     &:last-child .page-link {
       border-top-right-radius: $pagination-border-radius;
       border-bottom-right-radius: $pagination-border-radius;
@@ -75,6 +77,7 @@
       }
     }
   }
+
   .page-link {
     border-radius: $pagination-circle-border-radius;
     padding-left: $pagination-circle-padding-x;
@@ -87,6 +90,7 @@
       padding-right: $pagination-circle-lg-padding-right;
     }
   }
+
   &.pagination-sm {
     .page-link {
       padding-left: $pagination-circle-sm-padding-left;

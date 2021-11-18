@@ -6,10 +6,10 @@
  */
 
 import {
-  defineJQueryPlugin,
-  emulateTransitionEnd,
-  getElementFromSelector,
-  getTransitionDurationFromElement,
+    defineJQueryPlugin,
+    emulateTransitionEnd,
+    getElementFromSelector,
+    getTransitionDurationFromElement,
 } from './util/index';
 import Data from './dom/data';
 import EventHandler from './dom/event-handler';
@@ -43,82 +43,82 @@ const CLASS_NAME_SHOW = 'show';
  */
 
 class Alert extends BaseComponent {
-  // Getters
+    // Getters
 
-  static get DATA_KEY() {
-    return DATA_KEY;
-  }
-
-  // Public
-
-  close(element) {
-    const rootElement = element ? this._getRootElement(element) : this._element;
-    const customEvent = this._triggerCloseEvent(rootElement);
-
-    if (customEvent === null || customEvent.defaultPrevented) {
-      return;
+    static get DATA_KEY() {
+        return DATA_KEY;
     }
 
-    this._removeElement(rootElement);
-  }
+    // Public
 
-  // Private
+    close(element) {
+        const rootElement = element ? this._getRootElement(element) : this._element;
+        const customEvent = this._triggerCloseEvent(rootElement);
 
-  _getRootElement(element) {
-    return getElementFromSelector(element) || element.closest(`.${CLASS_NAME_ALERT}`);
-  }
+        if (customEvent === null || customEvent.defaultPrevented) {
+            return;
+        }
 
-  _triggerCloseEvent(element) {
-    return EventHandler.trigger(element, EVENT_CLOSE);
-  }
-
-  _removeElement(element) {
-    element.classList.remove(CLASS_NAME_SHOW);
-
-    if (!element.classList.contains(CLASS_NAME_FADE)) {
-      this._destroyElement(element);
-      return;
+        this._removeElement(rootElement);
     }
 
-    const transitionDuration = getTransitionDurationFromElement(element);
+    // Private
 
-    EventHandler.one(element, 'transitionend', () => this._destroyElement(element));
-    emulateTransitionEnd(element, transitionDuration);
-  }
-
-  _destroyElement(element) {
-    if (element.parentNode) {
-      element.parentNode.removeChild(element);
+    _getRootElement(element) {
+        return getElementFromSelector(element) || element.closest(`.${CLASS_NAME_ALERT}`);
     }
 
-    EventHandler.trigger(element, EVENT_CLOSED);
-  }
+    _triggerCloseEvent(element) {
+        return EventHandler.trigger(element, EVENT_CLOSE);
+    }
 
-  // Static
+    _removeElement(element) {
+        element.classList.remove(CLASS_NAME_SHOW);
 
-  static jQueryInterface(config) {
-    return this.each(function () {
-      let data = Data.getData(this, DATA_KEY);
+        if (!element.classList.contains(CLASS_NAME_FADE)) {
+            this._destroyElement(element);
+            return;
+        }
 
-      if (!data) {
-        data = new Alert(this);
-      }
+        const transitionDuration = getTransitionDurationFromElement(element);
 
-      if (config === 'close') {
-        data[config](this);
-      }
-    });
-  }
+        EventHandler.one(element, 'transitionend', () => this._destroyElement(element));
+        emulateTransitionEnd(element, transitionDuration);
+    }
 
-  static handleDismiss(alertInstance) {
-    return function (event) {
-      if (event) {
-        event.preventDefault();
-      }
+    _destroyElement(element) {
+        if (element.parentNode) {
+            element.parentNode.removeChild(element);
+        }
 
-      alertInstance.close(this);
-    };
-  }
+        EventHandler.trigger(element, EVENT_CLOSED);
+    }
+
+    // Static
+
+    static jQueryInterface(config) {
+        return this.each(function () {
+            let data = Data.getData(this, DATA_KEY);
+
+            if (!data) {
+                data = new Alert(this);
+            }
+
+            if (config === 'close') {
+                data[config](this);
+            }
+        });
+    }
+
+    static handleDismiss(alertInstance) {
+        return function (event) {
+            if (event) {
+                event.preventDefault();
+            }
+
+            alertInstance.close(this);
+        };
+    }
 }
 
 /**

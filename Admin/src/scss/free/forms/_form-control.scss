@@ -14,10 +14,12 @@
     border-color: #1266f1;
     box-shadow: inset 0px 0px 0px 1px #1266f1;
   }
+
   &.form-control-sm {
     font-size: 0.775rem;
     line-height: 1.5;
   }
+
   &.form-control-lg {
     line-height: 2.15;
     border-radius: 0.25rem;
@@ -32,6 +34,7 @@
     position: absolute;
     font-size: 0.875em;
     color: #757575;
+
     .form-counter {
       text-align: right;
     }
@@ -59,6 +62,7 @@
     border: 0;
     background: transparent;
     transition: $input-transition;
+
     ~ .form-label {
       position: absolute;
       top: 0;
@@ -70,6 +74,7 @@
       color: $form-label-color;
       margin-bottom: 0;
     }
+
     ~ .form-notch {
       display: flex;
       position: absolute;
@@ -80,6 +85,7 @@
       height: 100%;
       text-align: left;
       pointer-events: none;
+
       div {
         pointer-events: none;
         border: $border-width solid;
@@ -87,6 +93,7 @@
         box-sizing: border-box;
         background: transparent;
       }
+
       .form-notch-leading {
         left: 0;
         top: 0;
@@ -95,6 +102,7 @@
         border-right: none;
         border-radius: $form-notch-leading-border-radius 0 0 $form-notch-leading-border-radius;
       }
+
       .form-notch-middle {
         flex: 0 0 auto;
         width: auto;
@@ -103,6 +111,7 @@
         border-right: none;
         border-left: none;
       }
+
       .form-notch-trailing {
         flex-grow: 1;
         height: 100%;
@@ -110,25 +119,31 @@
         border-radius: 0 $form-notch-trailing-border-radius $form-notch-trailing-border-radius 0;
       }
     }
+
     &:not(.placeholder-active)::placeholder {
       opacity: 0;
     }
+
     &:focus,
     &.active {
       &::placeholder {
         opacity: 1;
       }
     }
+
     &:focus {
       box-shadow: none !important;
     }
+
     &:focus ~ .form-label,
     &.active ~ .form-label {
       transform: $input-focus-active-label-transform;
     }
+
     &:focus ~ .form-label {
       color: $input-focus-label-color;
     }
+
     &:focus ~ .form-notch .form-notch-middle,
     &.active ~ .form-notch .form-notch-middle {
       border-top: none;
@@ -136,48 +151,58 @@
       border-left: none;
       transition: $input-transition;
     }
+
     &:focus ~ .form-notch .form-notch-middle {
       border-bottom: $input-focus-border-width solid;
       border-color: $input-focus-border-color;
     }
+
     &:focus ~ .form-notch .form-notch-leading,
     &.active ~ .form-notch .form-notch-leading {
       border-right: none;
       transition: $input-transition;
     }
+
     &:focus ~ .form-notch .form-notch-leading {
       border-top: $input-focus-border-width solid $input-focus-border-color;
       border-bottom: $input-focus-border-width solid $input-focus-border-color;
       border-left: $input-focus-border-width solid $input-focus-border-color;
     }
+
     &:focus ~ .form-notch .form-notch-trailing,
     &.active ~ .form-notch .form-notch-trailing {
       border-left: none;
       transition: $input-transition;
     }
+
     &:focus ~ .form-notch .form-notch-trailing {
       border-top: $input-focus-border-width solid $input-focus-border-color;
       border-bottom: $input-focus-border-width solid $input-focus-border-color;
       border-right: $input-focus-border-width solid $input-focus-border-color;
     }
+
     &:disabled,
     &.disabled,
     &[readonly] {
       background-color: $input-disabled-background-color;
     }
+
     &.form-control-lg {
       font-size: $input-font-size-lg;
       line-height: $input-line-height-lg;
       padding-left: $input-padding-left-lg;
       padding-right: $input-padding-right-lg;
+
       ~ .form-label {
         padding-top: $form-label-padding-top-lg;
       }
+
       &:focus ~ .form-label,
       &.active ~ .form-label {
         transform: $input-focus-active-label-transform-lg;
       }
     }
+
     &.form-control-sm {
       padding-left: $input-padding-left-sm;
       padding-right: $input-padding-right-sm;
@@ -185,10 +210,12 @@
       padding-bottom: $input-padding-bottom-sm;
       font-size: $input-font-size-sm;
       line-height: $input-line-height-sm;
+
       ~ .form-label {
         padding-top: $form-label-padding-top-sm;
         font-size: $form-label-font-size-sm;
       }
+
       &:focus ~ .form-label,
       &.active ~ .form-label {
         transform: $input-focus-active-label-transform-sm;
@@ -199,25 +226,31 @@
   &.form-white {
     .form-control {
       color: $form-white-input-color;
+
       ~ .form-label {
         color: $form-white-label-color;
       }
+
       ~ .form-notch {
         div {
           border-color: $form-white-notch-div-border-color;
         }
       }
+
       &:focus ~ .form-label {
         color: $form-white-input-focus-label-color;
       }
+
       &:focus ~ .form-notch .form-notch-middle {
         border-color: $form-white-input-focus-border-color;
       }
+
       &:focus ~ .form-notch .form-notch-leading {
         border-top: $input-focus-border-width solid $form-white-input-focus-border-color;
         border-bottom: $input-focus-border-width solid $form-white-input-focus-border-color;
         border-left: $input-focus-border-width solid $form-white-input-focus-border-color;
       }
+
       &:focus ~ .form-notch .form-notch-trailing {
         border-color: $form-white-input-focus-border-color;
       }
