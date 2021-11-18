@@ -1,7 +1,20 @@
 <?php 
 require('topNav.php');
-$res='';
-$categories='';
+$category_id='';
+$ISBN='';
+$name='';
+$author='';
+$mrp='';
+$security='';
+$price='';
+$qty='';
+$img='';
+$description='';
+$short_desc='';
+$meta_title='';
+$meta_desc='';
+$meta_keyword='';
+$error='';
 $msg='';
 
 if(isset($_GET['id']) && $_GET['id']!='') {
@@ -42,7 +55,7 @@ if(isset($_POST['submit'])) {
             echo "<script>window.location.href='categories.php';</script>";
             exit;  
         } else {
-            $res="Error";
+            $error="Error";
         }
     }
 }
@@ -54,20 +67,59 @@ if(isset($_POST['submit'])) {
       </div>  
 
       <form method="post">
+        
+        <!-- ISBN -->
         <div class="form-outline mb-4 mx-5">
-            <input type="text" name="category"  value="<?php echo $categories?>" id="category" class="form-control" required />
-            <label class="form-label" for="category">Enter category name</label>
+            <input type="text" name="ISBN"  value="<?php echo $ISBN?>" id="Book name" class="form-control" required />
+            <label class="form-label" for="Book name">Enter book ISBN</label>
         </div>
 
+        <!-- Book Name -->
         <div class="form-outline mb-4 mx-5">
-            <input type="text" name="category"  value="<?php echo $categories?>" id="category" class="form-control" required />
-            <label class="form-label" for="category">Enter category name</label>
+            <input type="text" name="name"  value="<?php echo $name?>" id="Book name" class="form-control" required />
+            <label class="form-label" for="Book name">Enter book name</label>
         </div>
+        <!-- Book Author -->
+        <div class="form-outline mb-4 mx-5">
+            <input type="text" name="author"  value="<?php echo $author?>" id="Book name" class="form-control" required />
+            <label class="form-label" for="Book name">Enter book author name</label>
+        </div>
+        <!-- MRP -->
+        <div class="form-outline mb-4 mx-5">
+            <input type="text" name="mrp"  value="<?php echo $mrp?>" id="Book name" class="form-control" required />
+            <label class="form-label" for="Book name">Enter MRP</label>
+        </div>
+        <!-- security -->
+        <div class="form-outline mb-4 mx-5">
+            <input type="text" name="security"  value="<?php echo $security?>" id="Book name" class="form-control" required />
+            <label class="form-label" for="Book name">Enter book security charges</label>
+        </div>
+        <!-- qty -->
+        <div class="form-outline mb-4 mx-5">
+            <input type="text" name="qty"  value="<?php echo $qty?>" id="Book name" class="form-control" required />
+            <label class="form-label" for="Book name">Enter book quantity</label>
+        </div>
+        <!-- img -->
+        <div class="form-outline mb-4 mx-5">
+            <label class="form-label ms-2 p-1" for="Book name">Enter book image</label>
+            <input type="file" name="img" id="Book name" class="form-control" required />
+        </div>
+        <!-- description -->
+        <div class="form-outline mb-4 mx-5">
+            <input type="text" name="description"  value="<?php echo $description?>" id="Book name" class="form-control" required />
+            <label class="form-label" for="Book name">Enter book description</label>
+        </div>
+        <!-- short_desc -->
+        <div class="form-outline mb-4 mx-5">
+            <textarea name="short_desc" id="Book name" class="form-control" required ><?php echo $short_desc?></textarea>
+            <label class="form-label" for="Book name">Enter book short description</label>
+        </div>
+
         <div class="mb-1 d-flex justify-content-center field_error">
             <?php echo $msg?>
         </div>
         <div class="mb-1 d-flex justify-content-center">
-            <?php echo $res?>
+            <?php echo $error?>
         </div>
         <!-- Submit button -->
         <div class="text-center">
