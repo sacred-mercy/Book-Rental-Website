@@ -22,7 +22,6 @@ if(isset($_GET['type']) && $_GET['type']!=' ') {
   }
 }
 
-// $sql="select books.*categories.category from books,categories where books.category_id=categories.id order by books.id desc";
 $sql="select books.*, categories.category from books left join categories on books.category_id=categories.id order by books.id asc";
 $res=mysqli_query($con,$sql);
 ?>
@@ -76,11 +75,14 @@ $res=mysqli_query($con,$sql);
                 }
                 ?> 
               </td>
-              <td> <?php echo "<a class='link-white btn btn-primary px-2 py-1' href='manageCategories.php?id=".$row['id'].
-                              "'>Edit</a>";?> 
+              <td>
+                  <?php
+                  echo "<a class='link-white btn btn-primary px-2 py-1' href='manageCategories.php?id=".$row['id']."'>Edit</a>";
+                  ?>
               </td>
-              <td> <?php echo "<a class='link-white btn btn-danger px-2 py-1' href='?type=delete&id=".$row['id'].
-                              "'>Delete</a>";?> 
+              <td>
+                  <?php
+                  echo "<a class='link-white btn btn-danger px-2 py-1' href='?type=delete&id=".$row['id']."'>Delete</a>";?>
               </td>
             </tr>
             <?php } ?>
