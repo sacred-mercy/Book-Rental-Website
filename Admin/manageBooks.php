@@ -1,64 +1,65 @@
 <?php
-require('topNav.php');
-$category_id = '';
-$ISBN = '';
-$name = '';
-$author = '';
-$mrp = '';
-$security = '';
-$price = '';
-$qty = '';
-$img = '';
-$description = '';
-$short_desc = '';
-$meta_title = '';
-$meta_desc = '';
-$meta_keyword = '';
-$error = '';
-$msg = '';
-
-if (isset($_GET['id']) && $_GET['id'] != '') {
+  require('topNav.php');
+  $category_id = '';
+  $ISBN = '';
+  $name = '';
+  $author = '';
+  $mrp = '';
+  $security = '';
+  $rent = '';
+  $price = '';
+  $qty = '';
+  $img = '';
+  $description = '';
+  $short_desc = '';
+  $meta_title = '';
+  $meta_desc = '';
+  $meta_keyword = '';
+  $error = '';
+  $msg = '';
+  
+  if (isset($_GET['id']) && $_GET['id'] != '') {
     $id = getSafeValue($con, $_GET['id']);
     $sql = mysqli_query($con, "select * from books where id='$id'");
     $check = mysqli_num_rows($sql);
     if ($check > 0) {
-        $row = mysqli_fetch_assoc($sql);
-        $categories = $row['category'];
+      $row = mysqli_fetch_assoc($sql);
+      $categories = $row['category'];
     } else {
-        echo "<script>window.location.href='books.php';</script>";
-        exit;
+      echo "<script>window.location.href='books.php';</script>";
+      exit;
     }
-
-}
-
-if (isset($_POST['submit'])) {
+    
+  }
+  
+  if (isset($_POST['submit'])) {
     $category = getSafeValue($con, $_POST['category']);
     $sql = mysqli_query($con, "select * from books where name='$name'");
     $check = mysqli_num_rows($sql);
     if ($check > 0) {
-        if (isset($_GET['id']) && $_GET['id'] != '') {
-            $getData = mysqli_fetch_assoc($sql);
-            if ($id == $getData['id']) {
-
-            } else {
-                $msg = "Category already exist";
-            }
+      if (isset($_GET['id']) && $_GET['id'] != '') {
+        $getData = mysqli_fetch_assoc($sql);
+        if ($id == $getData['id']) {
+        
+        } else {
+          $msg = "Category already exist";
         }
+      }
     }
     if ($msg == '') {
-        if (isset($_GET['id']) && $_GET['id'] != '') {
-            $sql = "update categories set category='$category' where id='$id' ";
-        } else {
-            $sql = "insert into categories(category, status) values('$category', '1')";
-        }
-        if (mysqli_query($con, $sql)) {
-            echo "<script>window.location.href='categories.php';</script>";
-            exit;
-        } else {
-            $error = "Error";
-        }
+      if (isset($_GET['id']) && $_GET['id'] != '') {
+        $sql = "update categories set category='$category' where id='$id' ";
+      } else {
+        $sql = "insert into categories(category, status) values('$category', '1')";
+      }
+      if (mysqli_query($con, $sql)) {
+        echo "<script>window.location.href='categories.php';</script>";
+        exit;
+      } else {
+        $error = "Error";
+      }
     }
-}
+  }
 ?>
 <main style="margin-top: 58px">
     <div class="container pt-4">
@@ -82,12 +83,12 @@ if (isset($_POST['submit'])) {
                 <div>
                     <select class="form-select" name="category_id">
                         <option class="">Select Category</option>
-                        <?php
+                      <?php
                         $categorySql = mysqli_query($con, "select id, category from categories order by category asc");
                         while ($row = mysqli_fetch_assoc($categorySql)) {
-                            echo "<option value=" . $row['id'] . ">" . $row['category'] . "</option>";
+                          echo "<option value=" . $row['id'] . ">" . $row['category'] . "</option>";
                         }
-                        ?>
+                      ?>
                     </select>
                 </div>
             </div>
@@ -105,18 +106,24 @@ if (isset($_POST['submit'])) {
         </div>
         <!-- MRP -->
         <div class="form-outline mb-4 mx-5">
-            <input type="text" name="mrp" value="<?php echo $mrp ?>" id="Book name" class="form-control" required/>
+            <input type="number" name="mrp" value="<?php echo $mrp ?>" id="Book name" class="form-control" required/>
             <label class="form-label" for="Book name">Enter MRP</label>
         </div>
         <!-- security -->
         <div class="form-outline mb-4 mx-5">
-            <input type="text" name="security" value="<?php echo $security ?>" id="Book name" class="form-control"
+            <input type="number" name="security" value="<?php echo $security ?>" id="Book name" class="form-control"
                    required/>
             <label class="form-label" for="Book name">Enter book security charges</label>
         </div>
+        <!-- rent -->
+        <div class="form-outline mb-4 mx-5">
+            <input type="number" name="rent" value="<?php echo $rent ?>" id="Book name" class="form-control"
+                   required/>
+            <label class="form-label" for="Book name">Enter book rent Cost</label>
+        </div>
         <!-- qty -->
         <div class="form-outline mb-4 mx-5">
-            <input type="text" name="qty" value="<?php echo $qty ?>" id="Book name" class="form-control" required/>
+            <input type="number" name="qty" value="<?php echo $qty ?>" id="Book name" class="form-control" required/>
             <label class="form-label" for="Book name">Enter book quantity</label>
         </div>
         <!-- img -->
@@ -139,32 +146,32 @@ if (isset($_POST['submit'])) {
             <label class="form-label" for="Book name">Enter book description</label>
         </div>
 
-        <!-- description -->
+        <!-- meta_title -->
         <div class="form-outline mb-4 mx-5">
-            <textarea name="description" id="Book name" class="form-control"
-                      required><?php echo $description ?></textarea>
-            <label class="form-label" for="Book name">Enter book description</label>
+            <textarea name="meta_title" id="Book name" class="form-control"
+                      required><?php echo $meta_title ?></textarea>
+            <label class="form-label" for="Book name">Enter book meta title</label>
         </div>
 
-        <!-- description -->
+        <!-- meta_desc -->
         <div class="form-outline mb-4 mx-5">
-            <textarea name="description" id="Book name" class="form-control"
-                      required><?php echo $description ?></textarea>
-            <label class="form-label" for="Book name">Enter book description</label>
+            <textarea name="meta_desc" id="Book name" class="form-control"
+                      required><?php echo $meta_desc ?></textarea>
+            <label class="form-label" for="Book name">Enter book meta description</label>
         </div>
 
-        <!-- description -->
+        <!-- meta_keyword -->
         <div class="form-outline mb-4 mx-5">
             <textarea name="description" id="Book name" class="form-control"
-                      required><?php echo $description ?></textarea>
-            <label class="form-label" for="Book name">Enter book description</label>
+                      required><?php echo $meta_keyword ?></textarea>
+            <label class="form-label" for="Book name">Enter book meta keyword</label>
         </div>
 
         <div class="mb-1 d-flex justify-content-center field_error">
-            <?php echo $msg ?>
+          <?php echo $msg ?>
         </div>
         <div class="mb-1 d-flex justify-content-center">
-            <?php echo $error ?>
+          <?php echo $error ?>
         </div>
         <!-- Submit button -->
         <div class="text-center">

@@ -1,22 +1,22 @@
 <?php
-require('connection.php');
-require('function.php');
-$msg = '';
-if (isset($_POST['submit'])) {
+  require('connection.php');
+  require('function.php');
+  $msg = '';
+  if (isset($_POST['submit'])) {
     $email = getSafeValue($con, $_POST['email']);
     $password = getSafeValue($con, $_POST['password']);
     $sql = "select * from admin where email='$email' and password='$password'";
     $res = mysqli_query($con, $sql);
     $count = mysqli_num_rows($res);
     if ($count > 0) {
-        $_SESSION['ADMIN_LOGIN'] = 'yes';
-        $_SESSION['ADMIN_email'] = $email;
-        header('location:categories.php');
-        die();
+      $_SESSION['ADMIN_LOGIN'] = 'yes';
+      $_SESSION['ADMIN_email'] = $email;
+      header('location:categories.php');
+      die();
     } else {
-        $msg = "Invalid Username/Password";
+      $msg = "Invalid Username/Password";
     }
-}
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -92,7 +92,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
                             <div class="mt-2 mb-1 d-flex justify-content-center field_error">
-                                <?php echo $msg ?>
+                              <?php echo $msg ?>
                             </div>
 
                             <div class="d-flex justify-content-center mt-3 mb-3 mb-lg-4">

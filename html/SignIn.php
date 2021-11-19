@@ -1,10 +1,10 @@
 <?php
-require('connection.php');
-require('function.php');
-if (isset($_POST['submit'])) {
+  require('connection.php');
+  require('function.php');
+  if (isset($_POST['submit'])) {
     $email = getSafeValue($con, $_POST['email']);
     $password = getSafeValue($con, $_POST['password']);
-}
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
