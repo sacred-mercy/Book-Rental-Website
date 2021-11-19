@@ -30,6 +30,8 @@
         } else {
           $msg = "Category already exist";
         }
+      } else {
+        $msg = "Category already exist";
       }
     }
     if ($msg == '') {

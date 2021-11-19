@@ -24,7 +24,21 @@
     $check = mysqli_num_rows($sql);
     if ($check > 0) {
       $row = mysqli_fetch_assoc($sql);
-      $categories = $row['category'];
+      $category_id = $row['category_id'];
+      $ISBN = $row['ISBN'];
+      $name = $row['name'];
+      $img = $row['img'];
+      $author = $row['author'];
+      $mrp = $row['mrp'];
+      $rent = $row['rent'];
+      $price = $row['price'];
+      $qty = $row['qty'];
+      $cshort_desc = $row['short_desc'];
+      $cdescription = $row['description'];
+      $meta_title = $row['meta_title'];
+      $meta_desc = $row['meta_desc'];
+      $meta_keyword = $row['meta_keyword'];
+      
     } else {
       echo "<script>window.location.href='books.php';</script>";
       exit;
@@ -33,7 +47,21 @@
   }
   
   if (isset($_POST['submit'])) {
-    $category = getSafeValue($con, $_POST['category']);
+    $category_id = getSafeValue($con, $_POST['category_id']);
+    $ISBN = getSafeValue($con, $_POST['ISBN']);
+    $name = getSafeValue($con, $_POST['name']);
+    $img = getSafeValue($con, $_POST['img']);
+    $author = getSafeValue($con, $_POST['author']);
+    $mrp = getSafeValue($con, $_POST['mrp']);
+    $security = getSafeValue($con, $_POST['security']);
+    $rent = getSafeValue($con, $_POST['rent']);
+    $price = getSafeValue($con, $_POST['price']);
+    $qty = getSafeValue($con, $_POST['qty']);
+    $short_desc = getSafeValue($con, $_POST['short_desc']);
+    $description = getSafeValue($con, $_POST['description']);
+    $meta_title = getSafeValue($con, $_POST['meta_title']);
+    $meta_desc = getSafeValue($con, $_POST['meta_desc']);
+    $meta_keyword = getSafeValue($con, $_POST['meta_keyword']);
     $sql = mysqli_query($con, "select * from books where name='$name'");
     $check = mysqli_num_rows($sql);
     if ($check > 0) {
@@ -42,18 +70,22 @@
         if ($id == $getData['id']) {
         
         } else {
-          $msg = "Category already exist";
+          $msg = "Book already exist";
         }
+      } else {
+        $msg = "Book already exist";
       }
     }
     if ($msg == '') {
       if (isset($_GET['id']) && $_GET['id'] != '') {
-        $sql = "update categories set category='$category' where id='$id' ";
+        $sql = "update books set category_id='$category_id', ISBN='$ISBN', name='$name', img='$img', author='$author', mrp='$mrp', security='$security', rent='$rent', price='$price', qty='$qty', short_desc='$short_desc', description='$description', meta_title='$meta_title', meta_desc='$meta_desc', meta_keyword='$meta_keyword', where id='$id' ";
       } else {
-        $sql = "insert into categories(category, status) values('$category', '1')";
+        $img = rand(1111111111, 2147483647) . '_' . $_FILES['image'] ['name'];
+        move_uploaded_file($_FILES['image'] ['tmp_name'], '../Img/books/' . $_FILES['image'] ['name']);
+        $sql = "insert into books(category_id, ISBN, name, img, author, mrp, security, rent, price, qty, short_desc, description, meta_title, meta_desc, meta_keyword,  status) values('$category_id', '$ISBN', '$name', '$img', '$author', '$mrp', '$security', '$rent', '$price', '$qty', '$short_desc', '$description', '$meta_title', '$meta_desc', '$meta_keyword', '1')";
       }
       if (mysqli_query($con, $sql)) {
-        echo "<script>window.location.href='categories.php';</script>";
+        echo "<script>window.location.href='books.php';</script>";
         exit;
       } else {
         $error = "Error";
@@ -68,7 +100,7 @@
         <br>
     </div>
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <div class="row g-3">
             <div class="col-sm-8">
                 <!-- ISBN -->
@@ -86,7 +118,13 @@
                       <?php
                         $categorySql = mysqli_query($con, "select id, category from categories order by category asc");
                         while ($row = mysqli_fetch_assoc($categorySql)) {
-                          echo "<option value=" . $row['id'] . ">" . $row['category'] . "</option>";
+                          if ($row['id'] == $category_id) {
+                            echo "<option selected value=" . $row['id'] . ">" . $row['category'] . "</option>";
+                            
+                          } else {
+                            echo "<option value=" . $row['id'] . ">" . $row['category'] . "</option>";
+                            
+                          }
                         }
                       ?>
                     </select>
