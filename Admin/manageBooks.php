@@ -7,7 +7,6 @@
   $mrp = '';
   $security = '';
   $rent = '';
-  $price = '';
   $qty = '';
   $img = '';
   $description = '';
@@ -17,8 +16,10 @@
   $meta_keyword = '';
   $error = '';
   $msg = '';
+  $image_required = 'required';
   
   if (isset($_GET['id']) && $_GET['id'] != '') {
+    $image_required = '';
     $id = getSafeValue($con, $_GET['id']);
     $sql = mysqli_query($con, "select * from books where id='$id'");
     $check = mysqli_num_rows($sql);
@@ -30,20 +31,18 @@
       $img = $row['img'];
       $author = $row['author'];
       $mrp = $row['mrp'];
+      $security = $row['security'];
       $rent = $row['rent'];
-      $price = $row['price'];
       $qty = $row['qty'];
-      $cshort_desc = $row['short_desc'];
-      $cdescription = $row['description'];
+      $short_desc = $row['short_desc'];
+      $description = $row['description'];
       $meta_title = $row['meta_title'];
       $meta_desc = $row['meta_desc'];
       $meta_keyword = $row['meta_keyword'];
-      
     } else {
       echo "<script>window.location.href='books.php';</script>";
       exit;
     }
-    
   }
   
   if (isset($_POST['submit'])) {
@@ -55,7 +54,6 @@
     $mrp = getSafeValue($con, $_POST['mrp']);
     $security = getSafeValue($con, $_POST['security']);
     $rent = getSafeValue($con, $_POST['rent']);
-    $price = getSafeValue($con, $_POST['price']);
     $qty = getSafeValue($con, $_POST['qty']);
     $short_desc = getSafeValue($con, $_POST['short_desc']);
     $description = getSafeValue($con, $_POST['description']);
@@ -78,11 +76,11 @@
     }
     if ($msg == '') {
       if (isset($_GET['id']) && $_GET['id'] != '') {
-        $sql = "update books set category_id='$category_id', ISBN='$ISBN', name='$name', img='$img', author='$author', mrp='$mrp', security='$security', rent='$rent', price='$price', qty='$qty', short_desc='$short_desc', description='$description', meta_title='$meta_title', meta_desc='$meta_desc', meta_keyword='$meta_keyword', where id='$id' ";
+        $sql = "update books set category_id='$category_id', ISBN='$ISBN', name='$name', author='$author', mrp='$mrp', security='$security', rent='$rent', qty='$qty', short_desc='$short_desc', description='$description', meta_title='$meta_title', meta_desc='$meta_desc', meta_keyword='$meta_keyword', where id='$id' ";
       } else {
-        $img = rand(1111111111, 2147483647) . '_' . $_FILES['image'] ['name'];
-        move_uploaded_file($_FILES['image'] ['tmp_name'], '../Img/books/' . $_FILES['image'] ['name']);
-        $sql = "insert into books(category_id, ISBN, name, img, author, mrp, security, rent, price, qty, short_desc, description, meta_title, meta_desc, meta_keyword,  status) values('$category_id', '$ISBN', '$name', '$img', '$author', '$mrp', '$security', '$rent', '$price', '$qty', '$short_desc', '$description', '$meta_title', '$meta_desc', '$meta_keyword', '1')";
+        $img = rand(1111111111, 2147483647) . '_' . $_FILES['img'] ['name'];
+        move_uploaded_file($_FILES['img'] ['tmp_name'], '../Img/books/' . $img);
+        $sql = "insert into books(category_id, ISBN, name, author, mrp, security, rent, qty, short_desc, description, meta_title, meta_desc, meta_keyword,  status, img) values('$category_id', '$ISBN', '$name', '$author', '$mrp', '$security', '$rent', '$qty', '$short_desc', '$description', '$meta_title', '$meta_desc', '$meta_keyword', '1', '$img')";
       }
       if (mysqli_query($con, $sql)) {
         echo "<script>window.location.href='books.php';</script>";
@@ -167,7 +165,7 @@
         <!-- img -->
         <div class="form-outline mb-4 mx-5">
             <label class="form-label ms-2 p-1" for="Book name">Enter book image</label>
-            <input type="file" name="img" id="Book name" class="form-control" required/>
+            <input type="file" name="img" id="Book name" class="form-control" <?php echo $image_required ?>/>
         </div>
 
         <!-- short_desc -->
@@ -201,7 +199,7 @@
         <!-- meta_keyword -->
         <div class="form-outline mb-4 mx-5">
             <textarea name="description" id="Book name" class="form-control"
-                      required><?php echo $meta_keyword ?></textarea>
+            ><?php echo $meta_keyword ?></textarea>
             <label class="form-label" for="Book name">Enter book meta keyword</label>
         </div>
 

@@ -58,7 +58,9 @@
                       <td> <?php echo $row['id'] ?> </td>
                       <td> <?php echo $row['ISBN'] ?> </td>
                       <td> <?php echo $row['category'] ?> </td>
-                      <td> <?php echo $row['img'] ?> </td>
+                      <!--                      <td><img src="../Img/books/ -->
+                    <?php //echo $row['img'] ?><!--"/></td>-->
+                      <td><img src="../Img/books/<?php echo $row['img'] ?>" class="card-img"></td>
                       <td> <?php echo $row['name'] ?> </td>
                       <td> <?php echo $row['author'] ?> </td>
                       <td> <?php echo $row['mrp'] ?> </td>
