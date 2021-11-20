@@ -60,10 +60,10 @@
                 <a
                         href="#"
                         class="list-group-item list-group-item-action py-2 ripple"
-                ><span>Order</span></a
+                ><span>Orders</span></a
                 >
                 <a
-                        href="#"
+                        href="users.php"
                         class="list-group-item list-group-item-action py-2 ripple"
                 ><span>User</span></a
                 >
@@ -73,12 +73,6 @@
                 >
                     <span>Contact Us</span>
                 </a>
-                <a
-                        href="#"
-                        class="list-group-item list-group-item-action py-2 ripple"
-                ><span>Orders</span></a
-                >
-
             </div>
         </div>
     </nav>

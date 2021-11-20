@@ -74,12 +74,17 @@
         $msg = "Book already exist";
       }
     }
+    
+    if ($_FILES['img'] ['type'] != '' && ($_FILES['img'] ['type'] != 'image/png' || $_FILES['img'] ['type'] != 'image/jpg' || $_FILES['img'] ['type'] != 'image/jpeg')) {
+      $msg = "please insert PNG,JPG,JPEG image format only";
+    }
+    
     if ($msg == '') {
       if (isset($_GET['id']) && $_GET['id'] != '') {
         $sql = "update books set category_id='$category_id', ISBN='$ISBN', name='$name', author='$author', mrp='$mrp', security='$security', rent='$rent', qty='$qty', short_desc='$short_desc', description='$description', meta_title='$meta_title', meta_desc='$meta_desc', meta_keyword='$meta_keyword', where id='$id' ";
       } else {
         $img = rand(1111111111, 2147483647) . '_' . $_FILES['img'] ['name'];
-        move_uploaded_file($_FILES['img'] ['tmp_name'], '../Img/books/' . $img);
+        move_uploaded_file($_FILES['img'] ['tmp_name'], BOOK_IMAGE_SERVER_PATH . $img);
         $sql = "insert into books(category_id, ISBN, name, author, mrp, security, rent, qty, short_desc, description, meta_title, meta_desc, meta_keyword,  status, img) values('$category_id', '$ISBN', '$name', '$author', '$mrp', '$security', '$rent', '$qty', '$short_desc', '$description', '$meta_title', '$meta_desc', '$meta_keyword', '1', '$img')";
       }
       if (mysqli_query($con, $sql)) {

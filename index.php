@@ -384,7 +384,7 @@
         <span> <i class="fas fa-chevron-up text-white"></i></span>
     </button>
     <script>
-        var mybutton = document.getElementById("ScrollUpBtn");
+        let mybutton = document.getElementById("ScrollUpBtn");
 
         window.onscroll = function () {
             scrollFunction();
@@ -417,7 +417,7 @@
     <script>
         //Dark Mode
         function DarkMode() {
-            var element = document.body;
+            let element = document.body;
             element.classList.toggle("dark-mode");
         }
     </script>
