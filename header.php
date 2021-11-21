@@ -1,3 +1,9 @@
+<?php
+  require('connection.php');
+  require('function.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,39 +11,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- Icon -->
-    <link rel="shortcut icon" href="../Img/icon.png" type="image/x-icon"/>
-    <!-- Google Fonts -->
-    <link
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-            rel="stylesheet"
-    />
+    <link rel="shortcut icon" href="Img/icon.png" type="image/x-icon"/>
+
     <!-- Default CSS -->
-    <link rel="stylesheet" href="../css/Style.css"/>
-    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/Style.css"/>
+    <!-- Bootstrap -->
     <link
             id="theme"
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
             rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    </script>
     <!-- Font Awesome Fonts-->
     <link
             rel="stylesheet"
             href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
     />
-    <!-- Bootstrap JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Default JS-->
-    <script src="../js/script.js"></script>
-    <title>Categories | Book Rental</title>
+    <script src="js/script.js"></script>
+    <title>Home | Book Rental</title>
 </head>
+
 <body>
-<!--------------------------------------------------NAVIGATION BAR------------------------------------------------------------->
 <section id="#navbar">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
         <div class="container-fluid">
-            <a class="navbar-brand img-fluid" href="../index.php"
-            ><img src="../Img/logo.png" alt="logo" height="24.6"
-            /></a>
+            <a
+                    class="navbar-brand img-fluid"
+                    style="line-height: 0% !important"
+                    href="index.php"
+            ><img src="Img/logo.png" alt="logo" height="46vw"
+                /></a>
             <button
                     class="navbar-toggler"
                     title="Menu"
@@ -45,26 +50,22 @@
                     data-bs-toggle="collapse"
                     data-bs-target="#mynavbar"
             >
-            <span style="font-size: 29px; color: #fff">
+            <span style="font-size: 1.8465rem; color: #fff">
               <i class="fas fa-bars"></i>
             </span>
             </button>
             <div class="collapse navbar-collapse" id="mynavbar">
-                <ul class="navbar-nav navb me-auto">
+                <ul class="navbar-nav me-auto fs-5">
                     <li class="nav-item">
-                        <a id="#home" class="nav-link" href="../index.php"
+                        <a id="#home" class="nav-link" href="index.php"
                         ><i class="fas fa-home"></i> Home</a
                         >
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="../html/bookCategory.html"
+                    <li class="nav-item ">
+                        <a class="nav-link " href="bookCategory.php"
                         >Book Categories</a
                         >
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../html/howItWork.html"
-                        >How it works?</a
-                        >
+
                     </li>
                     <li class="nav-item dropdown">
                         <a
@@ -102,7 +103,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../html/aboutUs.html">About Us</a>
+                        <a class="nav-link" href="html/aboutUs.html">About Us</a>
                     </li>
                 </ul>
 
@@ -112,7 +113,11 @@
                             type="text"
                             placeholder="Search by Title or Author..."
                     />
-                    <button class="btn text-white search-btn me-lg-1" type="submit">
+                    <button
+                            title="Search"
+                            class="btn text-white search-btn me-1"
+                            type="submit"
+                    >
                         <i class="fas fa-search"></i>
                     </button>
                 </form>
@@ -120,16 +125,16 @@
                 <div class="login-margin flex-wrap">
               <span
               ><button
-                      onclick="window.location.href='../SignIn.php';"
-                      type="button"
-                      class="
+                          onclick="window.location.href='SignIn.php';"
+                          type="button"
+                          class="
                     btn-dark btn
                     me-2
                     btn-outline-light
                     login-btn
                     text-white
                   "
-              >
+                  >
                   <i class="fas fa-user-circle"></i
                   ><span style="margin-left: 4px">Login</span>
                 </button>
@@ -139,60 +144,6 @@
         </div>
     </nav>
 </section>
-
-<!------------------------------------------------------FOOTER----------------------------------------------------------------->
-<footer id="footer">
-    <div class="container">
-        <div class="copyright">
-            © Copyright <strong><span>Book Rental</span></strong
-        >. All Rights Reserved
-        </div>
-    </div>
-</footer>
-
-<!-------------------------------------------------SCROLL UP BUTTON------------------------------------------------------------>
-<div id="scrollBtn">
-    <button onclick="topFunction()" id="ScrollUpBtn" title="Go to top">
-        <span> <i class="fas fa-chevron-up text-white"></i></span>
-    </button>
-    <script>
-        var mybutton = document.getElementById("ScrollUpBtn");
-
-        window.onscroll = function () {
-            scrollFunction();
-        };
-
-        function scrollFunction() {
-            if (
-                document.body.scrollTop > 20 ||
-                document.documentElement.scrollTop > 20
-            ) {
-                mybutton.style.display = "block";
-            } else {
-                mybutton.style.display = "none";
-            }
-        }
-
-        function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        }
-    </script>
-</div>
-
-<!--------------------------------------------------DARK MODE BUTTON----------------------------------------------------------->
-<div id="dark-btn">
-    <button onclick="DarkMode()" id="dark-btn" title="Toggle Light/Dark Mode">
-        <span><i class="fas fa-adjust fa-lg text-white"></i></span>
-    </button>
-
-    <script>
-        //Dark Mode
-        function DarkMode() {
-            var element = document.body;
-            element.classList.toggle("dark-mode");
-        }
-    </script>
-</div>
-</body>
-</html>
+<br>
+<br>
+<br>

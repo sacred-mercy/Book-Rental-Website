@@ -1,8 +1,16 @@
+body {
+    height: 100%;
+}
+
 /* CUSTOMIZE THE DARK MODE
 ------------------------------------------------------------------------------------------------ */
 .dark-mode {
-    background-color: rgb(24, 26, 27);
-    color: rgb(211, 207, 202);
+    background-color: rgb(24, 26, 27) !important;
+    color: rgb(211, 207, 202) !important;
+}
+
+.dark-mode a {
+    color: white !important;
 }
 
 html {
@@ -16,7 +24,7 @@ html {
 }
 
 .dropdown-item-text:hover {
-    color: rgb(196, 199, 201) !important;
+    color: rgb(212, 214, 216) !important;
 }
 
 .login-btn:hover {
@@ -129,7 +137,7 @@ html {
     }
 }
 
-/* CUSTOMIZE THE PRODUCT CARDS
+/* CUSTOMIZE THE BOOK CARD
 ------------------------------------------------------------------------------------------------ */
 .overlay {
     position: absolute;
@@ -148,8 +156,8 @@ html {
 .rent-btn {
     justify-content: center;
     display: flex;
-    background-color: #fff;
-    color: #252525;
+    background-color: #f00b52;
+    color: #ffffff;
     font-weight: 700;
     width: 60%;
     border-radius: 200px !important;
@@ -158,7 +166,7 @@ html {
 
 .rent-btn:hover {
     color: #fff;
-    background-color: #f15fa3;
+    background-color: #b20909;
     transition: all ease 0.3s;
 }
 
@@ -183,18 +191,23 @@ html {
     }
 }
 
+#bookCardName a {
+    color: black;
+}
+
 /* CUSTOMIZE THE FOOTER
 ------------------------------------------------------------------------------------------------ */
 #footer {
     background: #404040;
-    padding: 0 0 10px 0;
     color: #fff;
     font-size: 14px;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
 }
 
 #footer .copyright {
     text-align: center;
-    padding-top: 10px;
 }
 
 /* CUSTOMIZE THE SCROLL TO TOP BUTTON
