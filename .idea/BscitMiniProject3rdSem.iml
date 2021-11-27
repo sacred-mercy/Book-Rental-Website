@@ -9,5 +9,6 @@
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="all" level="application" />
     <orderEntry type="library" name="@popperjs/core" level="application" />
+    <orderEntry type="library" name="7bd770613a" level="application" />
   </component>
 </module>

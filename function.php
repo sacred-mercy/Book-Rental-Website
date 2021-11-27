@@ -11,7 +11,17 @@
     print_r($arr);
     die();
   }
-  
+
+//  to get data from form
+  function getSafeValue($con, $str)
+  {
+    if ($str != '') {
+      $str = trim($str);
+      return mysqli_real_escape_string($con, $str);
+    }
+  }
+
+//  to get book data from database
   function getProduct($con, $limit = '', $categoryId = '', $bookId = '')
   {
     $sql = "select * from books where status=1";
@@ -36,6 +46,27 @@
     return $data;
   }
   
+  
+  
+  //  class addToCart
+  //  {
+  //    function addBook()
+  //    {
+  //      $_SESSION['cart'] [$id];
+  //    }
   //
+  //    function removeBook()
+  //    {
+  //      if (isset($_SESSION['cart'] [$id])) {
+  //        unsset($_SESSION['cart'] [$id]);
+  //      }
+  //    }
+  //
+  //    function emptyBook()
+  //    {
+  //      unsset($_SESSION['cart']);
+  //
+  //    }
+  //  }
   
   

@@ -87,21 +87,20 @@
     <div class="row gy-3 text-center ">
       <?php
         $getProduct = getProduct($con, 4);
-        foreach ($getProduct
-        
-                 as $list) {
+        foreach ($getProduct as $list) {
+          $img = BOOK_IMAGE_SITE_PATH . $list['img'];
           ?>
             <div class="col-6 col-sm-6 col-md-3 col-lg-3">
                 <div class="card mt-3 shadow-sm product">
                     <img
                             id="card-img"
                             alt="Book Image"
-                            src="<?php echo BOOK_IMAGE_SITE_PATH . $list['img'] ?>"
+                            src="<?php echo $img ?>"
                             class="card-img-top img-fluid rounded"
                     />
                     <div class="overlay">
                         <a href="book.php?id=<?php echo $list['id'] ?>" class="btn-lg text-decoration-none rent-btn">
-                            Rent</a>
+                            Info</a>
                     </div>
                 </div>
                 <div id="bookCardName">
@@ -109,6 +108,7 @@
                        class="card-text text-uppercase text-break fw-bold text-decoration-none">
                       <?php echo $list['name'] ?>
                     </a>
+                    <p class="card-text">Price- <?php echo $list['rent'] ?> </p>
                 </div>
             </div>
         <?php } ?>

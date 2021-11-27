@@ -14,9 +14,11 @@
     $catArr[] = $row;
   }
 ?>
-
-<div class="container-fluid">
-    <div class="row">
+<script>
+    document.title = "Book Categories | Book Rental";
+</script>
+<div class="container-fluid ">
+    <div class="row py-3">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
             <div class="position-sticky pt-3">
                 <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3  mb-1 text-muted">
@@ -37,9 +39,6 @@
                       ?>
                     </li>
                 </ul>
-                <div class="fa-dot-circle">
-
-                </div>
             </div>
         </nav>
 
@@ -67,7 +66,7 @@
                                 <div class="overlay">
                                     <a href="book.php?id=<?php echo $list['id'] ?>"
                                        class="btn-lg text-decoration-none rent-btn">
-                                        Rent</a>
+                                        Info</a>
                                 </div>
                             </div>
                             <div id="bookCardName">
@@ -85,22 +84,6 @@
         </main>
     </div>
 </div>
-
-
-<!--<div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">-->
-<!--    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">-->
-<!--        <svg class="bi me-2" width="40" height="32">-->
-<!--            <use xlink:href="#bootstrap"/>-->
-<!--        </svg>-->
-<!--        <span class="fs-4">Categories</span>-->
-<!--    </a>-->
-<!--    <hr>-->
-<!--    <ul class="nav  flex-column mb-auto">-->
-<!--      -->
-
-<!--    </ul>-->
-<!--    <hr>-->
-<!--</div>-->
 
 <?php require('footer.php') ?>
 

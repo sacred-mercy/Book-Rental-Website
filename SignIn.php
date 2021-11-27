@@ -1,46 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <!-- Icon -->
-    <link rel="shortcut icon" href="Img\icon.png" type="image/x-icon"/>
-    <!-- Google Fonts -->
-    <link
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-            rel="stylesheet"
-    />
-    <!-- Default CSS -->
-    <link rel="stylesheet" href="../css/Style.css"/>
-    <!-- Bootstrap CSS -->
-    <link
-            id="theme"
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-    />
-    <!-- Font Awesome Fonts-->
-    <link
-            rel="stylesheet"
-            href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
-    />
-    <!-- Bootstrap JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Default JS-->
-    <script src="js/script.js"></script>
-    <title>SignIn | Book Rental</title>
-</head>
-
-<body>
-<div class=""><a href="Admin\login.php">Admin Login</a></div>
+<?php require('header.php') ?>
+<?php
+  $msg = '';
+  if (isset($_POST['submit'])) {
+    $email = getSafeValue($con, $_POST['email']);
+    $password = getSafeValue($con, $_POST['password']);
+    $sql = "select * from users where email='$email' and password='$password'";
+    $res = mysqli_query($con, $sql);
+    $row = mysqli_fetch_assoc($res);
+    $count = mysqli_num_rows($res);
+    if ($count > 0) {
+      $_SESSION['USER_LOGIN'] = 'yes';
+      $_SESSION['USER_ID'] = $row['id'];
+      $_SESSION['USER_NAME'] = $row['name'];
+      echo "<script>window.top.location='index.php';</script>";
+      exit;
+    } else {
+      $msg = "Invalid Username/Password";
+    }
+  }
+?>
+<script>
+    document.title = "Login | Book Rental";
+</script>
+<div class="text-end me-3 mt-3">
+    <a href="Admin\login.php" class="text-black" title="Admin Login"><i class="fas fa-user-circle"></i
+        ></a>
+</div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-12 col-xl-11">
             <div class="card-body p-md-5">
                 <div class="row justify-content-center">
                     <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                        <p class="text-center h1 fw-bold mb-5 mt-3">Sign in</p>
-
                         <form class="mx-1 mx-md-4" method="post">
                             <div class="d-flex align-items-center mb-4">
                                 <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
@@ -72,24 +63,27 @@
                                 </div>
                             </div>
 
+                            <div id="error" class="text-center mb-3" style="color: red">
+                              <?php echo $msg ?>
+                            </div>
 
                             <div class="d-flex justify-content-center mt-3 mb-3 mb-lg-4">
                                 <button
                                         type="submit"
                                         name="submit"
-                                        class="btn btn-primary  btn-lg"
+                                        class="btn btn-primary  "
                                 >
                                     Login
                                 </button>
                             </div>
 
-                            <div style="text-align: center; margin-top: 30px">
+                            <div class="text-center mt-2">
                                 <a
-                                        href="../html/SignUp.html"
+                                        href="register.php"
                                         class="text-decoration-none text-black"
                                 >
                                     New to Book Rental?
-                                    <span style="color: blue">Sign up</span></a
+                                    <span style="color: blue">Register</span></a
                                 >
                             </div>
                         </form>
@@ -99,5 +93,4 @@
         </div>
     </div>
 </div>
-</body>
-</html>
+
