@@ -66,7 +66,7 @@
                     <a class="nav-link" href="contactUs.php">Contact Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="html/aboutUs.html">About Us</a>
+                    <a class="nav-link" href="aboutUs.php">About Us</a>
                 </li>
               <?php
                 if (isset($_SESSION['USER_LOGIN'])) {

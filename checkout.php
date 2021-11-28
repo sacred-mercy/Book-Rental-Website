@@ -22,7 +22,7 @@
     if ($paymentMethod == 'COD') {
       $paymentStatus = 'success';
     }
-    $orderStatus = 'pending';
+    $orderStatus = '1';
     $date = date('Y-m-d H:i:s');
     $sql = "INSERT INTO orders(user_id, address, address2, pin, payment_method, total, payment_status, order_status, date)
             VALUES ('$userId', '$address', '$address2', '$pin','$paymentMethod','$total','$paymentStatus','$orderStatus','$date')";
