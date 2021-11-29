@@ -5,6 +5,14 @@
     color: rgb(211, 207, 202) !important;
 }
 
+.dark-mode .book-category-column {
+    background-color: rgb(24, 26, 27) !important;
+}
+
+.dark-mode footer a {
+    color: #3232ff !important;
+}
+
 .dark-mode a {
     color: white !important;
 }

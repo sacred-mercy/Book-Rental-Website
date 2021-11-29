@@ -64,14 +64,15 @@
                                 <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                 <div class="form-floating flex-fill">
                                     <input
-                                            type="tel"
+                                            type="number"
+                                            maxlength="10"
                                             class="form-control"
                                             id="mobile"
                                             name="mobile"
                                             placeholder="number"
                                             required
                                     />
-                                    <label for="mobile">Mobile Number</label>
+                                    <label for="mobile">Mobile Number(Without +91)</label>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center mb-4">

@@ -22,20 +22,21 @@
     }
   }
   
-  $sql = "select books.*, categories.category from books left join categories on books.category_id=categories.id order by books.id asc";
+  $sql = "select books.*, categories.category from books left join categories on books.category_id=categories.id order by books.name asc";
   $res = mysqli_query($con, $sql);
 ?>
 <!--Main layout-->
-<main style="margin-top: 58px">
+<main>
     <div class="container pt-4">
-        <h4 class="fs-2 text-center ">Books</h4><br>
-        <h5 class="btn btn-white ms-4 px-2 py-1 fs-6 "><a class="link-dark" href="manageBooks.php">Add Book</a></h5>
+        <h4 class="fs-2 text-center ">Books</h4>
+        <hr>
+        <br>
     </div>
+    <h5 class="btn btn-white ms-5 px-2 py-1 fs-6 "><a class="link-dark" href="manageBooks.php">Add Book</a></h5>
     <div class="card-body">
         <table class="table">
             <thead>
             <tr>
-                <th>ID</th>
                 <th>ISBN</th>
                 <th>Category</th>
                 <th>img</th>
@@ -55,7 +56,6 @@
             <?php
               while ($row = mysqli_fetch_assoc($res)) { ?>
                   <tr>
-                      <td> <?php echo $row['id'] ?> </td>
                       <td> <?php echo $row['ISBN'] ?> </td>
                       <td> <?php echo $row['category'] ?> </td>
                       <td><img src="<?php echo BOOK_IMAGE_SITE_PATH . $row['img'] ?>" class="card-img"></td>

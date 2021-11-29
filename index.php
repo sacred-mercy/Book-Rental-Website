@@ -86,12 +86,13 @@
     <hr/>
     <div class="row gy-3 text-center ">
       <?php
-        $getProduct = getProduct($con, 4);
+        $orderBy = 'id desc';
+        $getProduct = getProduct($con, 4, '', '', $orderBy);
         foreach ($getProduct as $list) {
           $img = BOOK_IMAGE_SITE_PATH . $list['img'];
           ?>
             <div class="col-6 col-sm-6 col-md-3 col-lg-3">
-                <div class="card mt-3 shadow-sm product">
+                <div class="card border-dark mt-3 shadow-sm product">
                     <img
                             id="card-img"
                             alt="Book Image"

@@ -11,9 +11,9 @@
   $img = '';
   $description = '';
   $short_desc = '';
-  $meta_title = '';
-  $meta_desc = '';
-  $meta_keyword = '';
+  //  $meta_title = '';
+  //  $meta_desc = '';
+  //  $meta_keyword = '';
   $error = '';
   $msg = '';
   $image_required = 'required';
@@ -36,9 +36,9 @@
       $qty = $row['qty'];
       $short_desc = $row['short_desc'];
       $description = $row['description'];
-      $meta_title = $row['meta_title'];
-      $meta_desc = $row['meta_desc'];
-      $meta_keyword = $row['meta_keyword'];
+//      $meta_title = $row['meta_title'];
+//      $meta_desc = $row['meta_desc'];
+//      $meta_keyword = $row['meta_keyword'];
     } else {
       echo "<script>window.location.href='books.php';</script>";
       exit;
@@ -57,9 +57,9 @@
     $qty = getSafeValue($con, $_POST['qty']);
     $short_desc = getSafeValue($con, $_POST['short_desc']);
     $description = getSafeValue($con, $_POST['description']);
-    $meta_title = getSafeValue($con, $_POST['meta_title']);
-    $meta_desc = getSafeValue($con, $_POST['meta_desc']);
-    $meta_keyword = getSafeValue($con, $_POST['meta_keyword']);
+//    $meta_title = getSafeValue($con, $_POST['meta_title']);
+//    $meta_desc = getSafeValue($con, $_POST['meta_desc']);
+//    $meta_keyword = getSafeValue($con, $_POST['meta_keyword']);
     $sql = mysqli_query($con, "select * from books where name='$name'");
     $check = mysqli_num_rows($sql);
     if ($check > 0) {
@@ -75,17 +75,13 @@
       }
     }
     
-    if ($_FILES['img'] ['type'] != '' && ($_FILES['img'] ['type'] != 'image/png' || $_FILES['img'] ['type'] != 'image/jpg' || $_FILES['img'] ['type'] != 'image/jpeg')) {
-      $msg = "please insert PNG,JPG,JPEG image format only";
-    }
-    
     if ($msg == '') {
       if (isset($_GET['id']) && $_GET['id'] != '') {
-        $sql = "update books set category_id='$category_id', ISBN='$ISBN', name='$name', author='$author', mrp='$mrp', security='$security', rent='$rent', qty='$qty', short_desc='$short_desc', description='$description', meta_title='$meta_title', meta_desc='$meta_desc', meta_keyword='$meta_keyword', where id='$id' ";
+        $sql = "update books set category_id='$category_id', ISBN='$ISBN', name='$name', author='$author', mrp='$mrp', security='$security', rent='$rent', qty='$qty', short_desc='$short_desc', description='$description', where id='$id' ";
       } else {
         $img = rand(1111111111, 2147483647) . '_' . $_FILES['img'] ['name'];
         move_uploaded_file($_FILES['img'] ['tmp_name'], BOOK_IMAGE_SERVER_PATH . $img);
-        $sql = "insert into books(category_id, ISBN, name, author, mrp, security, rent, qty, short_desc, description, meta_title, meta_desc, meta_keyword,  status, img) values('$category_id', '$ISBN', '$name', '$author', '$mrp', '$security', '$rent', '$qty', '$short_desc', '$description', '$meta_title', '$meta_desc', '$meta_keyword', '1', '$img')";
+        $sql = "insert into books(category_id, ISBN, name, author, mrp, security, rent, qty, short_desc, description, status, img) values('$category_id', '$ISBN', '$name', '$author', '$mrp', '$security', '$rent', '$qty', '$short_desc', '$description', '1', '$img')";
       }
       if (mysqli_query($con, $sql)) {
         echo "<script>window.location.href='books.php';</script>";
@@ -187,26 +183,26 @@
             <label class="form-label" for="Book name">Enter book description</label>
         </div>
 
-        <!-- meta_title -->
-        <div class="form-outline mb-4 mx-5">
-            <textarea name="meta_title" id="Book name" class="form-control"
-                      required><?php echo $meta_title ?></textarea>
-            <label class="form-label" for="Book name">Enter book meta title</label>
-        </div>
-
-        <!-- meta_desc -->
-        <div class="form-outline mb-4 mx-5">
-            <textarea name="meta_desc" id="Book name" class="form-control"
-                      required><?php echo $meta_desc ?></textarea>
-            <label class="form-label" for="Book name">Enter book meta description</label>
-        </div>
-
-        <!-- meta_keyword -->
-        <div class="form-outline mb-4 mx-5">
-            <textarea name="description" id="Book name" class="form-control"
-            ><?php echo $meta_keyword ?></textarea>
-            <label class="form-label" for="Book name">Enter book meta keyword</label>
-        </div>
+        <!--        <!-- meta_title -->-->
+        <!--        <div class="form-outline mb-4 mx-5">-->
+        <!--            <textarea name="meta_title" id="Book name" class="form-control"-->
+        <!--                      required>--><?php //echo $meta_title ?><!--</textarea>-->
+        <!--            <label class="form-label" for="Book name">Enter book meta title</label>-->
+        <!--        </div>-->
+        <!---->
+        <!--        <!-- meta_desc -->-->
+        <!--        <div class="form-outline mb-4 mx-5">-->
+        <!--            <textarea name="meta_desc" id="Book name" class="form-control"-->
+        <!--                      required>--><?php //echo $meta_desc ?><!--</textarea>-->
+        <!--            <label class="form-label" for="Book name">Enter book meta description</label>-->
+        <!--        </div>-->
+        <!---->
+        <!--        <!-- meta_keyword -->-->
+        <!--        <div class="form-outline mb-4 mx-5">-->
+        <!--            <textarea name="description" id="Book name" class="form-control"-->
+        <!--            >--><?php //echo $meta_keyword ?><!--</textarea>-->
+        <!--            <label class="form-label" for="Book name">Enter book meta keyword</label>-->
+        <!--        </div>-->
 
         <div class="mb-1 d-flex justify-content-center field_error">
           <?php echo $msg ?>

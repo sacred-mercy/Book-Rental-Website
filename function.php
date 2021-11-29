@@ -22,9 +22,13 @@
   }
 
 //  to get book data from database
-  function getProduct($con, $limit = '', $categoryId = '', $bookId = '')
+  function getProduct($con, $limit = '', $categoryId = '', $bookId = '', $orderBy = '')
   {
     $sql = "select * from books where status=1";
+    
+    if ($orderBy != '') {
+      $sql .= " order by $orderBy";
+    }
     
     if ($limit != '') {
       $sql .= " limit $limit";

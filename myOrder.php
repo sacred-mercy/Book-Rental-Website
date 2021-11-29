@@ -5,8 +5,16 @@
     exit;
   }
 ?>
-<div class="container my-5">
-    <table class="table-responsive table">
+<script>
+    document.title = "My Orders | Book Rental";
+</script>
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <h1>My Orders
+            <hr>
+        </h1>
+    </div>
+    <table class="table table-responsive">
         <thead class="">
         <tr>
             <th> OrderID</th>

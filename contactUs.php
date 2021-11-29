@@ -15,25 +15,45 @@
       $msg = "error";
     }
   }
+  if (isset($_SESSION['USER_LOGIN'])) {
+    $userId = $_SESSION['USER_ID'];
+    $res = mysqli_query($con, "select * from users where id='$userId'");
+    $row = mysqli_fetch_assoc($res);
+    $nameAuto = $row['name'];
+    $emailAuto = $row['email'];
+    $mobileAuto = $row['mobile'];
+  } else {
+    $nameAuto = '';
+    $emailAuto = '';
+    $mobileAuto = '';
+  }
 ?>
     <script>
         document.title = "Contact Us | Book Rental";
     </script>
     <div class="container my-5">
+        <div class="d-flex justify-content-center">
+            <h1>Contact Us
+                <hr>
+            </h1>
+        </div>
         <form method="post" class="row g-3 ">
             <div class="col-md-4">
                 <label for="name" class="form-label fw-bold fs-5">Name</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+                <input type="text" class="form-control" id="name" name="name" value="<?php echo $nameAuto ?>"
+                       required>
             </div>
             <div class="col-md-4">
                 <label for="email" class="form-label fw-bold fs-5">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <input type="email" class="form-control" id="email" name="email" value="<?php echo $emailAuto ?>"
+                       required>
             </div>
-            <div class="col-md-4">
+            <div class=" col-md-4">
                 <label for="mobile" class="form-label fw-bold fs-5">Mobile Number</label>
-                <input type="tel" maxlength="12" class="form-control" id="mobile" name="mobile" required>
+                <input type="tel" maxlength="12" class="form-control" id="mobile" name="mobile"
+                       value="<?php echo $mobileAuto ?>" required>
             </div>
-            <div class="col-md-12">
+            <div class=" col-md-12">
                 <label for="message" class="form-label fw-bold fs-5">Message</label>
                 <textarea maxlength="500" type="text" class="form-control" style="height:10rem" id="message"
                           name="message"

@@ -19,7 +19,7 @@
 </script>
 <div class="container-fluid ">
     <div class="row py-3">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse book-category-column">
             <div class="position-sticky pt-3">
                 <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3  mb-1 text-muted">
                     <span>Categories</span>
@@ -56,7 +56,7 @@
                              as $list) {
                       ?>
                         <div class="col-6 col-sm-6 col-md-3 col-lg-3">
-                            <div class="card mt-3 shadow-sm product">
+                            <div class="card border-dark mt-3 shadow-sm product">
                                 <img
                                         id="card-img"
                                         alt="Book Image"

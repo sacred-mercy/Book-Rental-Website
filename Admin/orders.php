@@ -3,14 +3,11 @@
   if (isset($_POST['status_id'])) {
     $order_Id = $_POST['orderId'];
     $status_id = $_POST['status_id'];
-    echo $order_Id;
-    echo $status_id;
-
-//    mysqli_query($con, "update orders set order_status='$status_id' where id='$order_Id'");
+    mysqli_query($con, "update orders set order_status='$status_id' where id='$order_Id'");
   }
 ?>
 <!--Main layout-->
-<main style="margin-top: 58px">
+<main>
     <div class="container pt-4">
         <h4 class="fs-2 text-center ">Orders</h4>
         <hr>
@@ -32,8 +29,6 @@
             </thead>
             <tbody>
             <?php
-              $userId = '';
-              $userId = $_SESSION['USER_ID'];
               $res = mysqli_query($con, "select orders.*,name,status_name from orders
                                             JOIN order_detail ON orders.id=order_detail.order_id
                                             JOIN books ON order_detail.book_id=books.id
@@ -51,7 +46,7 @@
                       <td> <?php echo $row['status_name'] ?> </td>
                       <td>
                           <form method="post">
-                              <input type="text" class="" value="<?php $orderId ?>" name="orderId">
+                              <input type="hidden" class="" value="<?php echo $orderId ?>" name="orderId">
                               <select class="form-select" name="status_id">
                                   <option class="">Select Status</option>
                                 <?php
@@ -62,7 +57,7 @@
                                 ?>
                               </select>
 
-                              <input type="submit" VALUE="Submit" class="btn btn btn-primary">
+                              <input type="submit" VALUE="Submit" class="btn btn btn-primary mt-2">
                           </form>
 
                       </td>

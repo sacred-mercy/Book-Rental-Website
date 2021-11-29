@@ -15,7 +15,7 @@
   $res = mysqli_query($con, $sql);
 ?>
 <!--Main layout-->
-<main style="margin-top: 58px">
+<main>
     <div class="container pt-4">
         <h4 class="fs-2 text-center ">Users</h4>
         <hr>
@@ -29,7 +29,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Mobile</th>
-                <th>doj</th>
+                <th>Date of Joining</th>
                 <th></th>
             </tr>
             </thead>

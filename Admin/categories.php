@@ -26,19 +26,18 @@
   $res = mysqli_query($con, $sql);
 ?>
 <!--Main layout-->
-<main style="margin-top: 58px">
+<main>
     <div class="container pt-4">
         <h4 class="fs-2 text-center ">Categories</h4>
         <hr>
         <br>
-        <h5 class="btn btn-white ms-4 px-2 py-1 fs-6 "><a class="link-dark" href="manageCategories.php">Add
-                Categories</a></h5>
     </div>
+    <h5 class="btn btn-white ms-5 px-2 py-1 fs-6 "><a class="link-dark" href="manageCategories.php">Add
+            Categories</a></h5>
     <div class="card-body">
         <table class="table">
             <thead>
             <tr>
-                <th>ID</th>
                 <th>Categories</th>
                 <th>Status</th>
                 <th></th>
@@ -49,7 +48,6 @@
             <?php
               while ($row = mysqli_fetch_assoc($res)) { ?>
                   <tr>
-                      <td> <?php echo $row['id'] ?> </td>
                       <td> <?php echo $row['category'] ?> </td>
                       <td>
                         <?php
