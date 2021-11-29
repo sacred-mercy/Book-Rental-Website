@@ -50,7 +50,7 @@
   }
 
 ?>
-<main style="margin-top: 58px">
+<main>
     <div class="container pt-4">
         <h4 class="fs-2 text-center ">Manage Category</h4>
         <hr>
