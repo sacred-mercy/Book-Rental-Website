@@ -65,7 +65,8 @@
                                 <div class="form-floating flex-fill">
                                     <input
                                             type="number"
-                                            maxlength="10"
+                                            min="1111111111"
+                                            max="9999999999"
                                             class="form-control"
                                             id="mobile"
                                             name="mobile"
