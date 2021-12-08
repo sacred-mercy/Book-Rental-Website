@@ -6,7 +6,6 @@
   }
   $getProduct = getProduct($con, '', $categoryId);
 ?>
-
 <?php
   $catRes = mysqli_query($con, "select id, category from categories where status=1 order by category asc");
   $catArr = array();
@@ -84,6 +83,5 @@
         </main>
     </div>
 </div>
-
 <?php require('footer.php') ?>
 

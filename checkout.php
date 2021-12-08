@@ -10,6 +10,7 @@
     $bookId = mysqli_real_escape_string($con, $_GET['id']);
   }
   $getProduct = getProduct($con, '', '', $bookId);
+  $totalPrice = $getProduct['0'] ['price'] * 1;
   
   if (isset($_POST['submit'])) {
     $address = getSafeValue($con, $_POST['address']);
@@ -53,22 +54,34 @@
                     <span class="text-primary">Your book</span>
                 </h4>
                 <ul class="list-group mb-3">
-                    <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <li class="list-group-item d-flex justify-content-center fw-bold lh-sm">
                         <div>
                             <h6 class="my-0"><?php echo $getProduct['0'] ['name'] ?></h6>
                         </div>
-                        <strong>₹<?php echo $getProduct['0'] ['price'] ?></strong>
+                        <!--                        <strong>₹-->
+                      <?php //echo $getProduct['0'] ['price'] ?><!--</strong>-->
                     </li>
-                    <li class="list-group-item d-flex justify-content-center lh-sm">
+                    <li class="list-group-item justify-content-start lh-sm">
                         <p>
-                            <span>₹<?php echo $getProduct['0'] ['rent'] ?></span><span>(+₹<?php echo $getProduct['0'] ['security'] ?><abbr
-                                        title="refund on book return">Security Charges</abbr>)</p>
+                            Price =
+                            <span>₹<?php echo $getProduct['0'] ['rent'] ?></span></p>
+                        <p>Duration = 0</p>
+                        <p><abbr
+                                    title="refund on book return">Security Charges</abbr> =
+                            ₹<?php echo $getProduct['0'] ['security'] ?></p>
+                        <p>Total price = <?php echo $totalPrice ?> </p>
                     </li>
                 </ul>
             </div>
             <div class="col-md-7 col-lg-8">
-                <h4 class="mb-3">Shipping address</h4>
                 <form class="needs-validation" method="post" novalidate>
+                    <h4 class="mb-3">Enter the duration of renting(in days)</h4>
+                    <div class="col-2">
+                        <input type="number" class="form-control" name="duration" min="5" placeholder="Days" required>
+                    </div>
+                    <hr class="my-4">
+
+                    <h4 class="mb-3">Shipping address</h4>
                     <div class="row g-3">
                         <div class="col-12">
                             <label for="address" class="form-label">Address Line 1</label>
@@ -83,7 +96,7 @@
                             <input type="text" class="form-control" name="address2" placeholder="">
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-3">
                             <label for="pin" class="form-label">Pin Code</label>
                             <input type="number" maxlength="6" class="form-control" name="pin" placeholder="" required>
                             <div class="invalid-feedback">

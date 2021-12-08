@@ -34,11 +34,10 @@
 
 <body>
 <section id="#navbar">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow lh-1">
         <a
-                class="navbar-brand img-fluid"
+                class="navbar-brand img-fluid ms-2"
                 href="index.php">
-
             <img src="Img/logo.png" alt="logo" height="40vw"
             /></a>
         <button
@@ -91,14 +90,14 @@
             <!--                        <i class="fas fa-search"></i>-->
             <!--                    </button>-->
             <!--                </form>-->
-            <div class="btn-dark btn  btn-outline-light me-2 text-decoration-none login-btn">
+            <div class=" navbar-nav navbar btn-dark btn  btn-outline-light me-2 text-decoration-none login-btn">
               <?php
                 if (isset($_SESSION['USER_LOGIN'])) {
 //                  $userName = $_SESSION['USER_NAME'];
 //                      echo $userName;
-                  echo '<a class="text-decoration-none me-1 text-white" href="logout.php"> Logout</a>';
+                  echo '<a class="text-decoration-none me-1 ms-3 text-white" href="logout.php"> Logout</a>';
                 } else {
-                  echo '<i class="fas fa-user-circle me-1 text-white "></i><a class="text-decoration-none text-white" href="SignIn.php"> Login</a>';
+                  echo '<i class="fas fa-user-circle mx-2 text-white "></i><a class="text-decoration-none text-white" href="SignIn.php"> Login</a>';
                 }
               ?>
             </div>

@@ -12,11 +12,11 @@
         document.title = "<?php echo $getProduct['0'] ['name'] ?> | Book Rental";
     </script>
     <div class="container-fluid py-5">
-        <div class="row">
-            <div class="col-6 col-sm-6 col-md-3 col-lg-3 mb-3  ">
-                <img class="card-img card border-dark rounded"
+        <div class="row mb-3">
+            <div class="col-3 mt-3">
+                <img class="card border-dark rounded"
                      src="<?php echo BOOK_IMAGE_SITE_PATH . $getProduct['0'] ['img'] ?>"
-                     height="350rem">
+                     height="396rem" width="260rem">
             </div>
             <div class="col-9">
                 <h2 id="bookName" class="text-uppercase font-weight-bold"><?php echo $getProduct['0'] ['name'] ?></h2>
