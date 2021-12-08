@@ -37,7 +37,6 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
         <a
                 class="navbar-brand img-fluid"
-                style="line-height: 0% !important"
                 href="index.php">
 
             <img src="Img/logo.png" alt="logo" height="40vw"
