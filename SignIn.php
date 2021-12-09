@@ -22,10 +22,8 @@
 <script>
     document.title = "Login | Book Rental";
 </script>
-<div class="text-end me-3 mt-4">
-    <a href="Admin\login.php" class="text-black" title="Admin Login"><i class="fas fa-user-circle"></i
-        ></a>
-</div>
+<br><br>
+<br>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-12 col-xl-11">

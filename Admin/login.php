@@ -52,7 +52,6 @@
 </head>
 
 <body>
-<div class="btn  text-decoration-none"><a href="..\SignIn.php">User Login</a></div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-12 col-xl-11">
@@ -103,6 +102,15 @@
                                 >
                                     Login
                                 </button>
+                            </div>
+                            <div class="text-center mt-2">
+                                <a
+                                        href="../SignIn.php"
+                                        class="text-decoration-none text-black"
+                                >
+                                    Not An Admin?
+                                    <span style="color: blue">Click here</span></a
+                                >
                             </div>
                         </form>
                     </div>
