@@ -8,8 +8,9 @@
   
   if (isset($_GET['submit'])) {
     $duration = getSafeValue($con, $_GET['duration']);
+    $id = getSafeValue($con, $_GET['bookId']);
     ?>
-      <script>window.top.location = "checkout.php?id=<?php echo $getProduct['0'] ['id']?>&duration=<?php echo $duration?>";</script>
+      <script>window.top.location = "checkout.php?id=<?php echo $id?>&duration=<?php echo $duration?>";</script>
     <?php
   }
 ?>
@@ -43,6 +44,7 @@
                 </script>
                 <div id="after-rent" class="mb-4">
                     <form method="get">
+                        <input type="hidden" name="bookId" value="<?php echo $getProduct['0'] ['id'] ?>">
                         <h4 class="mb-3">Enter the duration of renting(in days)</h4>
                         <!--                        <div class="col-2 d-flex">-->
                         <!--                            <input type="number" class="form-control" name="duration" min="5" placeholder="Days"-->
@@ -52,8 +54,12 @@
                         <!--                               class="btn-primary btn ms-3">Rent</a>-->
                         <!--                        </div>-->
                         <div class="col-2 d-flex">
-                            <input type="number" class="form-control" name="duration" min="5" placeholder="Days"
-                                   required>
+                            <input type="number"
+                                   class="form-control"
+                                   name="duration"
+                                   min="10"
+                                   placeholder="Days"
+                                   required/>
                             <input type="submit"
                                    name="submit"
                                    value="Rent"

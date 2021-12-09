@@ -49,28 +49,3 @@
     }
     return $data;
   }
-  
-  
-  
-  //  class addToCart
-  //  {
-  //    function addBook()
-  //    {
-  //      $_SESSION['cart'] [$id];
-  //    }
-  //
-  //    function removeBook()
-  //    {
-  //      if (isset($_SESSION['cart'] [$id])) {
-  //        unsset($_SESSION['cart'] [$id]);
-  //      }
-  //    }
-  //
-  //    function emptyBook()
-  //    {
-  //      unsset($_SESSION['cart']);
-  //
-  //    }
-  //  }
-  
-  

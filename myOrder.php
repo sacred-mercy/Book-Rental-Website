@@ -20,7 +20,8 @@
             <th> OrderID</th>
             <th>Order Date</th>
             <th>Book Name</th>
-            <th>Book Price</th>
+            <th>Price</th>
+            <th>Duration</th>
             <th>Address</th>
             <th>Payment Method</th>
             <th>Payment Status</th>
@@ -42,6 +43,7 @@
                   <td> <?php echo $row['date'] ?> </td>
                   <td> <?php echo $row['name'] ?> </td>
                   <td> <?php echo $row['total'] ?> </td>
+                  <td> <?php echo $row['duration'] ?> </td>
                   <td> <?php echo $row['address'] ?>, <?php echo $row['address2'] ?> </td>
                   <td> <?php echo $row['payment_method'] ?> </td>
                   <td> <?php echo $row['payment_status'] ?> </td>

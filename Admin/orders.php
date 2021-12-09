@@ -20,6 +20,7 @@
                 <th>Order Date</th>
                 <th>Book Name</th>
                 <th>Book Price</th>
+                <th>Rent Duration</th>
                 <th>Address</th>
                 <th>Payment Method</th>
                 <th>Payment Status</th>
@@ -32,7 +33,7 @@
               $res = mysqli_query($con, "select orders.*,name,status_name from orders
                                             JOIN order_detail ON orders.id=order_detail.order_id
                                             JOIN books ON order_detail.book_id=books.id
-                                            JOIN order_status ON orders.order_status=order_status.id");
+                                            JOIN order_status ON orders.order_status=order_status.id order by date desc ");
               while ($row = mysqli_fetch_assoc($res)) { ?>
                   <tr>
                       <td> <?php echo $row['id'] ?> </td>
@@ -40,6 +41,7 @@
                       <td> <?php echo $row['date'] ?> </td>
                       <td> <?php echo $row['name'] ?> </td>
                       <td> <?php echo $row['total'] ?> </td>
+                      <td> <?php echo $row['duration'] ?> </td>
                       <td> <?php echo $row['address'] ?>, <?php echo $row['address2'] ?> </td>
                       <td> <?php echo $row['payment_method'] ?> </td>
                       <td> <?php echo $row['payment_status'] ?> </td>

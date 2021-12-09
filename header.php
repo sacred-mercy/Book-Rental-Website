@@ -75,21 +75,22 @@
               ?>
 
             </ul>
-
-            <!--                <form class="d-flex" id="searchBar">-->
-            <!--                    <input-->
-            <!--                            class="form-control"-->
-            <!--                            type="text"-->
-            <!--                            placeholder="Search by Title or Author..."-->
-            <!--                    />-->
-            <!--                    <button-->
-            <!--                            title="Search"-->
-            <!--                            class="btn text-white search-btn me-1"-->
-            <!--                            type="submit"-->
-            <!--                    >-->
-            <!--                        <i class="fas fa-search"></i>-->
-            <!--                    </button>-->
-            <!--                </form>-->
+            <form method="get" action="search.php" class="d-flex" id="searchBar">
+                <input
+                        class="form-control"
+                        type="text"
+                        name="search"
+                        placeholder="Search by Title or Author..."
+                />
+                <button
+                        title="Search"
+                        class="btn text-white search-btn me-1"
+                        type="submit"
+                        name="submit"
+                >
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
             <div class=" navbar-nav navbar btn-dark btn  btn-outline-light me-2 text-decoration-none login-btn">
               <?php
                 if (isset($_SESSION['USER_LOGIN'])) {

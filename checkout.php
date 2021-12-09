@@ -14,7 +14,9 @@
     $duration = mysqli_real_escape_string($con, $_GET['duration']);
   }
   $getProduct = getProduct($con, '', '', $bookId);
-  $totalPrice = $getProduct['0'] ['price'] * $duration;
+  $totalRent = $getProduct['0'] ['rent'] * $duration;
+  $totalPrice = $totalRent + $getProduct['0'] ['security'];
+  
   
   if (isset($_POST['submit'])) {
     $address = getSafeValue($con, $_POST['address']);
@@ -35,8 +37,8 @@
     $orderId = mysqli_insert_id($con);
     $productId = $getProduct['0'] ['id'];
     
-    mysqli_query($con, "INSERT INTO order_detail(order_id,book_id,price)
-                                VALUES ('$orderId', '$productId', '$totalPrice')");
+    mysqli_query($con, "INSERT INTO order_detail(order_id,book_id,price,time)
+                                VALUES ('$orderId', '$productId', '$totalPrice', '$duration')");
     ?>
       <script>window.top.location = 'thankYou.php?orderId=<?php echo $orderId ?>';</script>
     <?php
@@ -59,7 +61,7 @@
                 <ul class="list-group mb-3">
                     <li class="list-group-item d-flex justify-content-center fw-bold lh-sm">
                         <div>
-                            <h3 class="my-0 fw-bolder"><?php echo $getProduct['0'] ['name'] ?></h3>
+                            <h2 class="my-0 fw-bold"><?php echo $getProduct['0'] ['name'] ?></h2>
                         </div>
                         <!--                        <strong>₹-->
                       <?php //echo $getProduct['0'] ['price'] ?><!--</strong>-->
@@ -71,6 +73,7 @@
                         <p><span class="fw-bold">Rent Price</span> = ₹<?php echo $getProduct['0'] ['rent'] ?> Per Day
                         </p>
                         <p><span class="fw-bold">Duration</span> = <?php echo $duration ?> Days</p>
+                        <p><span class="fw-bold">Total Rent</span> = ₹<?php echo $totalRent ?></p>
                         <p><span class="fw-bold">Security Charges</span> =
                             ₹<?php echo $getProduct['0'] ['security'] ?><sup>*refund on book return</sup></p>
                         <p><span class="fw-bold">Total price</span> = <?php echo $totalPrice ?> </p>
