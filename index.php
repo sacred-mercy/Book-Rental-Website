@@ -109,7 +109,7 @@
                        class="card-text text-uppercase text-break fw-bold text-decoration-none">
                       <?php echo $list['name'] ?>
                     </a>
-                    <p class="card-text">Price- <?php echo $list['rent'] ?> </p>
+                    <p class="card-text">Price- ₹<?php echo $list['rent'] ?> Per day</p>
                 </div>
             </div>
         <?php } ?>
@@ -120,6 +120,46 @@
 <div class="container mb-5 mt-5">
     <h2 class="fs-2 fw-bold text-center">Most Viewed</h2>
     <hr/>
+    <div class="row gy-3 text-center ">
+      <?php
+        function getBook($con)
+        {
+          $sql = "select *from books where best_seller=1 limit 8";
+          $res = mysqli_query($con, $sql);
+          $data = array();
+          while ($row = mysqli_fetch_assoc($res)) {
+            $data[] = $row;
+          }
+          return $data;
+        }
+        
+        $getBook = getBook($con);
+        foreach ($getBook as $list) {
+          $img = BOOK_IMAGE_SITE_PATH . $list['img'];
+          ?>
+            <div class="col-6 col-sm-6 col-md-3 col-lg-3">
+                <div class="card border-dark mt-3 shadow-sm product">
+                    <img
+                            id="card-img"
+                            alt="Book Image"
+                            src="<?php echo $img ?>"
+                            class="card-img-top img-fluid rounded"
+                    />
+                    <div class="overlay">
+                        <a href="book.php?id=<?php echo $list['id'] ?>" class="btn-lg text-decoration-none rent-btn">
+                            Info</a>
+                    </div>
+                </div>
+                <div id="bookCardName">
+                    <a href="book.php?id=<?php echo $list['id'] ?>"
+                       class="card-text text-uppercase text-break fw-bold text-decoration-none">
+                      <?php echo $list['name'] ?>
+                    </a>
+                    <p class="card-text">Price- ₹<?php echo $list['rent'] ?> Per day</p>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
 </div>
 
 <?php require('footer.php') ?>

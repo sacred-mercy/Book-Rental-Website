@@ -17,8 +17,8 @@
 <script>
     document.title = "Book Categories | Book Rental";
 </script>
-<main class="px-4">
-    <div class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+<main class="px-4 row py-3 container-fluid">
+    <div class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
         <h1 class="h2">Searched Books</h1>
     </div>
   <?php
@@ -32,7 +32,7 @@
                      as $list) {
               ?>
                 <div class="col-6 col-sm-6 col-md-3 col-lg-3">
-                    <div class="card border-dark mt-3 shadow-sm product">
+                    <div class="card border-dark  shadow-sm product">
                         <img
                                 id="card-img"
                                 alt="Book Image"
@@ -55,7 +55,7 @@
             <?php } ?>
         </div>
     <?php } else {
-      echo "No Book Found in this category";
+      echo "No Book Found";
     } ?>
 </main>
 <?php require('footer.php') ?>

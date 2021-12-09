@@ -15,6 +15,18 @@
       mysqli_query($con, $updateStatusSql);
     }
     
+    if ($type == 'best_seller') {
+      $operation = getSafeValue($con, $_GET['operation']);
+      $id = getSafeValue($con, $_GET['id']);
+      if ($operation == 'active') {
+        $bestSeller = '1';
+      } else {
+        $bestSeller = '0';
+      }
+      $updateStatusSql = "update books set best_seller='$bestSeller' where id='$id'";
+      mysqli_query($con, $updateStatusSql);
+    }
+    
     if ($type == 'delete') {
       $id = getSafeValue($con, $_GET['id']);
       $deleteSql = "delete from books where id='$id'";
@@ -50,6 +62,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -74,6 +87,17 @@
                           } else {
                             echo "<a class='link-white btn btn-warning px-2 py-1' href='?type=status&operation=active&id=" . $row['id'] .
                               "'>Deactive</a>&nbsp&nbsp";
+                          }
+                        ?>
+                      </td>
+                      <td>
+                        <?php
+                          if ($row['best_seller'] == 1) {
+                            echo "<a class='link-white btn btn-primary px-2 py-1' href='?type=best_seller&operation=deactive&id=" . $row['id'] .
+                              "'>Top</a>&nbsp&nbsp";
+                          } else {
+                            echo "<a class='link-white btn btn-success px-2 py-1' href='?type=best_seller&operation=active&id=" . $row['id'] .
+                              "'>Normal</a>&nbsp&nbsp";
                           }
                         ?>
                       </td>
