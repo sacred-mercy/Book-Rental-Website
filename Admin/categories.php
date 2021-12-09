@@ -56,7 +56,7 @@
                               "'>Active</a>&nbsp&nbsp";
                           } else {
                             echo "<a class='link-white btn btn-warning px-2 py-1' href='?type=status&operation=active&id=" . $row['id'] .
-                              "'>Deactive</a>&nbsp&nbsp";
+                              "'>Inactive</a>&nbsp&nbsp";
                           }
                         ?>
                       </td>
