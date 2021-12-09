@@ -58,7 +58,7 @@
                 <th>Security</th>
                 <th>Rent</th>
                 <th>Price</th>
-                <th>Qty</th>
+                <!--                <th>Qty</th>-->
                 <th></th>
                 <th></th>
                 <th></th>
@@ -78,7 +78,7 @@
                       <td> <?php echo $row['security'] ?> </td>
                       <td> <?php echo $row['rent'] ?> </td>
                       <td> <?php echo $row['price'] ?> </td>
-                      <td> <?php echo $row['qty'] ?> </td>
+                      <!--                      <td> --><?php //echo $row['qty'] ?><!-- </td>-->
                       <td>
                         <?php
                           if ($row['status'] == 1) {
