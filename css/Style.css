@@ -271,3 +271,7 @@ html {
     text-align: justify;
     text-justify: inter-word;
 }
+
+#after-rent {
+    display: none;
+}

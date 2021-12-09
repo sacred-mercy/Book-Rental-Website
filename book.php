@@ -5,8 +5,13 @@
     $bookId = mysqli_real_escape_string($con, $_GET['id']);
   }
   $getProduct = getProduct($con, '', '', $bookId);
-
-
+  
+  if (isset($_GET['submit'])) {
+    $duration = getSafeValue($con, $_GET['duration']);
+    ?>
+      <script>window.top.location = "checkout.php?id=<?php echo $getProduct['0'] ['id']?>&duration=<?php echo $duration?>";</script>
+    <?php
+  }
 ?>
     <script>
         document.title = "<?php echo $getProduct['0'] ['name'] ?> | Book Rental";
@@ -28,20 +33,33 @@
                     <span class="fs-4 fw-bolder">₹<?php echo $getProduct['0'] ['rent'] ?></span><span
                             class="fs-5"><strong>(Per Day)</strong></span>
                 </p>
-                <!--                    <span>(+₹--><?php //echo $getProduct['0'] ['security'] ?><!-- <abbr-->
-                <!--                                title="refund on book return">Security Charges</abbr>)</span> MRP- <span>₹-->
-                <!--          --><?php //echo $getProduct['0'] ['mrp'] ?><!--</span>-->
-                <div class="d-flex">
-                    <a href="checkout.php?id=<?php echo $getProduct['0'] ['id'] ?>" type="submit"
-                       class="btn-primary btn">Rent</a>
-                    <!--                    <div class="d-flex ms-2">-->
-                    <!--                        <p class=""> For </p>-->
-                    <!--                        <select>-->
-                    <!--                            <option disabled>Select No. of days to rent</option>-->
-                    <!--                            <option></option>-->
-                    <!--                        </select>-->
-                    <!--                        <p>Days</p>-->
-                    <!--                    </div>-->
+
+                <button id="toggle" class="btn-primary btn" onclick="showDiv()">Rent</button>
+                <script>
+                    function showDiv() {
+                        document.getElementById("after-rent").style.display = "block";
+                        document.getElementById("toggle").style.display = "none";
+                    }
+                </script>
+                <div id="after-rent" class="mb-4">
+                    <form method="get">
+                        <h4 class="mb-3">Enter the duration of renting(in days)</h4>
+                        <!--                        <div class="col-2 d-flex">-->
+                        <!--                            <input type="number" class="form-control" name="duration" min="5" placeholder="Days"-->
+                        <!--                                   required>-->
+                        <!--                            <a href="checkout.php?id=-->
+                      <?php //echo $getProduct['0'] ['id'] ?><!--" type="submit"-->
+                        <!--                               class="btn-primary btn ms-3">Rent</a>-->
+                        <!--                        </div>-->
+                        <div class="col-2 d-flex">
+                            <input type="number" class="form-control" name="duration" min="5" placeholder="Days"
+                                   required>
+                            <input type="submit"
+                                   name="submit"
+                                   value="Rent"
+                                   class="btn-primary btn ms-3">
+                        </div>
+                    </form>
                 </div>
 
                 <h6 class="fw-bold fs-5 my-3">Short Description</h6>

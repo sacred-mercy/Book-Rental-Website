@@ -6,11 +6,15 @@
   }
   
   $bookId = '';
+  $duration = '';
   if (isset($_GET['id'])) {
     $bookId = mysqli_real_escape_string($con, $_GET['id']);
   }
+  if (isset($_GET['duration'])) {
+    $duration = mysqli_real_escape_string($con, $_GET['duration']);
+  }
   $getProduct = getProduct($con, '', '', $bookId);
-  $totalPrice = $getProduct['0'] ['price'] * 1;
+  $totalPrice = $getProduct['0'] ['price'] * $duration;
   
   if (isset($_POST['submit'])) {
     $address = getSafeValue($con, $_POST['address']);
@@ -18,22 +22,21 @@
     $pin = getSafeValue($con, $_POST['pin']);
     $paymentMethod = getSafeValue($con, $_POST['paymentMethod']);
     $userId = $_SESSION['USER_ID'];
-    $total = $getProduct['0'] ['price'];
     $paymentStatus = 'pending';
     if ($paymentMethod == 'COD') {
       $paymentStatus = 'success';
     }
     $orderStatus = '1';
     $date = date('Y-m-d H:i:s');
-    $sql = "INSERT INTO orders(user_id, address, address2, pin, payment_method, total, payment_status, order_status, date)
-            VALUES ('$userId', '$address', '$address2', '$pin','$paymentMethod','$total','$paymentStatus','$orderStatus','$date')";
+    $sql = "INSERT INTO orders(user_id, address, address2, pin, payment_method, total, payment_status, order_status, date, duration)
+            VALUES ('$userId', '$address', '$address2', '$pin','$paymentMethod','$totalPrice','$paymentStatus','$orderStatus','$date','$duration')";
     mysqli_query($con, $sql);
     
     $orderId = mysqli_insert_id($con);
     $productId = $getProduct['0'] ['id'];
     
     mysqli_query($con, "INSERT INTO order_detail(order_id,book_id,price)
-                                VALUES ('$orderId', '$productId', '$total')");
+                                VALUES ('$orderId', '$productId', '$totalPrice')");
     ?>
       <script>window.top.location = 'thankYou.php?orderId=<?php echo $orderId ?>';</script>
     <?php
@@ -56,31 +59,26 @@
                 <ul class="list-group mb-3">
                     <li class="list-group-item d-flex justify-content-center fw-bold lh-sm">
                         <div>
-                            <h6 class="my-0"><?php echo $getProduct['0'] ['name'] ?></h6>
+                            <h3 class="my-0 fw-bolder"><?php echo $getProduct['0'] ['name'] ?></h3>
                         </div>
                         <!--                        <strong>₹-->
                       <?php //echo $getProduct['0'] ['price'] ?><!--</strong>-->
                     </li>
                     <li class="list-group-item justify-content-start lh-sm">
-                        <p>
-                            Price =
-                            <span>₹<?php echo $getProduct['0'] ['rent'] ?></span></p>
-                        <p>Duration = 0</p>
-                        <p><abbr
-                                    title="refund on book return">Security Charges</abbr> =
-                            ₹<?php echo $getProduct['0'] ['security'] ?></p>
-                        <p>Total price = <?php echo $totalPrice ?> </p>
+                        <p><span class="fw-bold">MRP</span> = ₹<span
+                                    class="text-decoration-line-through"><?php echo $getProduct['0'] ['mrp'] ?></span>
+                        </p>
+                        <p><span class="fw-bold">Rent Price</span> = ₹<?php echo $getProduct['0'] ['rent'] ?> Per Day
+                        </p>
+                        <p><span class="fw-bold">Duration</span> = <?php echo $duration ?> Days</p>
+                        <p><span class="fw-bold">Security Charges</span> =
+                            ₹<?php echo $getProduct['0'] ['security'] ?><sup>*refund on book return</sup></p>
+                        <p><span class="fw-bold">Total price</span> = <?php echo $totalPrice ?> </p>
                     </li>
                 </ul>
             </div>
             <div class="col-md-7 col-lg-8">
                 <form class="needs-validation" method="post" novalidate>
-                    <h4 class="mb-3">Enter the duration of renting(in days)</h4>
-                    <div class="col-2">
-                        <input type="number" class="form-control" name="duration" min="5" placeholder="Days" required>
-                    </div>
-                    <hr class="my-4">
-
                     <h4 class="mb-3">Shipping address</h4>
                     <div class="row g-3">
                         <div class="col-12">
@@ -98,7 +96,8 @@
 
                         <div class="col-3">
                             <label for="pin" class="form-label">Pin Code</label>
-                            <input type="number" maxlength="6" class="form-control" name="pin" placeholder="" required>
+                            <input type="number" maxlength="6" class="form-control" name="pin" placeholder="246401"
+                                   required>
                             <div class="invalid-feedback">
                                 Pin code required.
                             </div>
