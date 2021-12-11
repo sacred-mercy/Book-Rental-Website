@@ -91,14 +91,14 @@
                     <i class="fas fa-search"></i>
                 </button>
             </form>
-            <div class=" navbar-nav navbar btn-dark btn  btn-outline-light me-2 text-decoration-none login-btn">
+            <div class=" navbar-nav navbar btn-dark btn btn-outline-light me-2 text-decoration-none login-btn">
               <?php
                 if (isset($_SESSION['USER_LOGIN'])) {
 //                  $userName = $_SESSION['USER_NAME'];
 //                      echo $userName;
                   echo '<a class="text-decoration-none me-1 ms-3 text-white" href="logout.php"> Logout</a>';
                 } else {
-                  echo '<i class="fas fa-user-circle mx-2 text-white "></i><a class="text-decoration-none text-white" href="SignIn.php"> Login</a>';
+                  echo '<a class="text-decoration-none me-1 ms-3 text-white" role="button" href="SignIn.php"> Login</a>';
                 }
               ?>
             </div>
