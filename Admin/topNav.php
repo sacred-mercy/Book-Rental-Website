@@ -34,7 +34,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
     <div class="container-fluid">
         <button
                 class="navbar-toggler"
@@ -53,7 +53,6 @@
                         src="..\Img\logo.png"
                         height="30"
                         alt="Logo"
-                        loading="lazy"
                 />
             </a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">

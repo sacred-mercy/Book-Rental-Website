@@ -34,7 +34,7 @@
     </div>
     <h5 class="btn btn-white ms-5 px-2 py-1 fs-6 "><a class="link-dark" href="manageCategories.php">Add
             Categories</a></h5>
-    <div class="card-body">
+    <div class="">
         <table class="table">
             <thead>
             <tr>

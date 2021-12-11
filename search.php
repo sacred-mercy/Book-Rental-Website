@@ -50,6 +50,7 @@
                            class="card-text text-uppercase text-break fw-bold text-decoration-none">
                           <?php echo $list['name'] ?>
                         </a>
+                        <p class="card-text text-break"><strong>Author</strong> - <?php echo $list['author'] ?></p>
                     </div>
                 </div>
             <?php } ?>
