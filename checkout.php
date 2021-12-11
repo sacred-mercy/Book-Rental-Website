@@ -33,12 +33,19 @@
     $sql = "INSERT INTO orders(user_id, address, address2, pin, payment_method, total, payment_status, order_status, date, duration)
             VALUES ('$userId', '$address', '$address2', '$pin','$paymentMethod','$totalPrice','$paymentStatus','$orderStatus','$date','$duration')";
     mysqli_query($con, $sql);
+
+//    $orderIdSql = mysqli_query($con, "SELECT id FROM orders ORDER BY id DESC LIMIT 1");
+//    $row = mysqli_fetch_assoc($orderIdSql);
+//    $orderIdArr = array();
+//    $orderIdArr[] = $row;
     
     $orderId = mysqli_insert_id($con);
     $productId = $getProduct['0'] ['id'];
-    
     mysqli_query($con, "INSERT INTO order_detail(order_id,book_id,price,time)
                                 VALUES ('$orderId', '$productId', '$totalPrice', '$duration')");
+    
+    $newQty = $getProduct['0'] ['qty'] - 1;
+    mysqli_query($con, "UPDATE books SET qty = '$newQty' WHERE id='$bookId';");
     ?>
       <script>window.top.location = 'thankYou.php?orderId=<?php echo $orderId ?>';</script>
     <?php

@@ -53,7 +53,7 @@
                     Due to the disruptions caused by Covid - 19 pandemic, our deliveries
                     have been affected . We would like to inform you that due to
                     various restrictions and precautions, there would be delays in
-                    servicing your request . We would request for your co - operation and
+                    servicing your request . We would request for your co-operation and
                     support during this time .
                 </p>
                 <p> Team - Book Rental </p>

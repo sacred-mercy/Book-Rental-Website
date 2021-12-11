@@ -49,3 +49,9 @@
     }
     return $data;
   }
+
+//To check if a book is in stock
+  function checkBookStock()
+  {
+  
+  }

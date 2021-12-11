@@ -110,14 +110,6 @@
                                     </li>
                                     <li>
                                         <a class="dropdown-item-text text-white-50 text-decoration-none"
-                                                href="changePassword.php"
-                                        >Change Password</a>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider"/>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item-text text-white-50 text-decoration-none"
                                                 href="logout.php"
                                         >Logout</a>
                                     </li>

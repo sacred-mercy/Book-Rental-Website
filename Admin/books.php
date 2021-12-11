@@ -58,7 +58,7 @@
                 <th>Security</th>
                 <th>Rent</th>
                 <th>Price</th>
-                <!--                <th>Qty</th>-->
+                <th>Qty</th>
                 <!--                <th></th>-->
                 <th></th>
                 <th></th>
@@ -71,14 +71,19 @@
                   <tr>
                       <td> <?php echo $row['ISBN'] ?> </td>
                       <td> <?php echo $row['category'] ?> </td>
-                      <td><img src="<?php echo BOOK_IMAGE_SITE_PATH . $row['img'] ?>" class="card-img"></td>
+                      <td>
+                          <img src="<?php echo BOOK_IMAGE_SITE_PATH . $row['img'] ?>"
+                               class="card-img"
+                               height="80px"
+                               width="50px">
+                      </td>
                       <td> <?php echo $row['name'] ?> </td>
                       <td> <?php echo $row['author'] ?> </td>
                       <td> <?php echo $row['mrp'] ?> </td>
                       <td> <?php echo $row['security'] ?> </td>
                       <td> <?php echo $row['rent'] ?> </td>
                       <td> <?php echo $row['price'] ?> </td>
-                      <!--                      <td> --><?php //echo $row['qty'] ?><!-- </td>-->
+                      <td> <?php echo $row['qty'] ?> </td>
                       <!--                      <td>-->
                       <!--                        --><?php
                       //                          if ($row['status'] == 1) {

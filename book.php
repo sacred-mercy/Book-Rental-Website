@@ -34,8 +34,19 @@
                     <span class="fs-4 fw-bolder">₹<?php echo $getProduct['0'] ['rent'] ?></span><span
                             class="fs-5"><strong>(Per Day)</strong></span>
                 </p>
+              
+              <?php
+                $qtySql = mysqli_query($con, "select qty from books where id='$bookId'");
+                $row = mysqli_fetch_assoc($qtySql);
+                $qtyArr = array();
+                $qtyArr[] = $row;
+                if ($qtyArr['0'] ['qty'] == 0) {
+                  echo '<p class="fs-4" style="color: gray">Sorry currently the book is out os stock</p>';
+                } else {
+                  echo '<button id="toggle" class="btn-primary btn" onclick="showDiv()">Rent</button>';
+                }
+              ?>
 
-                <button id="toggle" class="btn-primary btn" onclick="showDiv()">Rent</button>
                 <script>
                     function showDiv() {
                         document.getElementById("after-rent").style.display = "block";

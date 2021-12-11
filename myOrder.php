@@ -36,7 +36,7 @@
                                             JOIN order_detail ON orders.id=order_detail.order_id
                                             JOIN books ON order_detail.book_id=books.id
                                             JOIN order_status ON orders.order_status=order_status.id
-                                            where user_id = $userId");
+                                            where user_id = $userId order by orders.id desc");
           while ($row = mysqli_fetch_assoc($res)) { ?>
               <tr>
                   <td> <?php echo $row['id'] ?> </td>
