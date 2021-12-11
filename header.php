@@ -63,9 +63,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="contactUs.php">Contact Us</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="aboutUs.php">About Us</a>
-                </li>
               <?php
                 if (isset($_SESSION['USER_LOGIN'])) {
                   echo '<li class="nav-item">
@@ -91,35 +88,49 @@
                     <i class="fas fa-search"></i>
                 </button>
             </form>
-            <div class=" navbar-nav navbar btn-dark btn btn-outline-light me-2 text-decoration-none login-btn">
+            <div class=" navbar-nav navbar ">
               <?php
                 if (isset($_SESSION['USER_LOGIN'])) {
-//                  $userName = $_SESSION['USER_NAME'];
-//                      echo $userName;
-                  echo '<a class="text-decoration-none me-1 ms-3 text-white" href="logout.php"> Logout</a>';
+                  $userName = $_SESSION['USER_NAME'];
+                  echo '<ul class="navbar-nav navb me-4">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle"
+                                   href="#"
+                                   role="button"
+                                   data-bs-toggle="dropdown"
+                                >' . $userName . '</a>
+                                <ul class="dropdown-menu bg-dark">
+                                    <li>
+                                        <a class="dropdown-item-text text-white-50 text-decoration-none"
+                                                href="profile.php"
+                                        >Profile</a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider"/>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item-text text-white-50 text-decoration-none"
+                                                href="changePassword.php"
+                                        >Change Password</a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider"/>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item-text text-white-50 text-decoration-none"
+                                                href="logout.php"
+                                        >Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>';
                 } else {
-                  echo '<a class="text-decoration-none me-1 ms-3 text-white" role="button" href="SignIn.php"> Login</a>';
+                  echo '<a class="text-decoration-none me-1 ms-3 text-white btn-dark btn btn-outline-light me-2 login-btn"
+                           role="button" href="SignIn.php"> Login</a>';
                 }
               ?>
             </div>
         </div>
-        <!--            <div id="Username" class="navbar-nav me-auto fs-5 me-3">-->
-        <!--                <li class="nav-item dropdown">-->
-        <!--                    <a-->
-        <!--                            class="nav-link dropdown-toggle"-->
-        <!--                            href="#"-->
-        <!--                            role="button"-->
-        <!--                            data-bs-toggle="dropdown"-->
-        <!--                    >Hello, --><?php //echo $userName ?><!-- </a-->
-        <!--                    >-->
-        <!--                    <ul class="dropdown-menu dropdown-menu-dark">-->
-        <!--                        <li>-->
-        <!--                            <a class="dropdown-item-text text-white-50 text-decoration-none"-->
-        <!--                               href="logout.php">Logout</a>-->
-        <!--                        </li>-->
-        <!--                    </ul>-->
-        <!--                </li>-->
-        <!--            </div>-->
     </nav>
 </section>
 <br>

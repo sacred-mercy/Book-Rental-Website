@@ -59,7 +59,7 @@
                 <th>Rent</th>
                 <th>Price</th>
                 <!--                <th>Qty</th>-->
-                <th></th>
+                <!--                <th></th>-->
                 <th></th>
                 <th></th>
                 <th></th>
@@ -79,17 +79,17 @@
                       <td> <?php echo $row['rent'] ?> </td>
                       <td> <?php echo $row['price'] ?> </td>
                       <!--                      <td> --><?php //echo $row['qty'] ?><!-- </td>-->
-                      <td>
-                        <?php
-                          if ($row['status'] == 1) {
-                            echo "<a class='link-white btn btn-success px-2 py-1' href='?type=status&operation=deactive&id=" . $row['id'] .
-                              "'>Active</a>&nbsp&nbsp";
-                          } else {
-                            echo "<a class='link-white btn btn-warning px-2 py-1' href='?type=status&operation=active&id=" . $row['id'] .
-                              "'>Inactive</a>&nbsp&nbsp";
-                          }
-                        ?>
-                      </td>
+                      <!--                      <td>-->
+                      <!--                        --><?php
+                      //                          if ($row['status'] == 1) {
+                      //                            echo "<a class='link-white btn btn-success px-2 py-1' href='?type=status&operation=deactive&id=" . $row['id'] .
+                      //                              "'>Active</a>&nbsp&nbsp";
+                      //                          } else {
+                      //                            echo "<a class='link-white btn btn-warning px-2 py-1' href='?type=status&operation=active&id=" . $row['id'] .
+                      //                              "'>Inactive</a>&nbsp&nbsp";
+                      //                          }
+                      //                        ?>
+                      <!--                      </td>-->
                       <td>
                         <?php
                           if ($row['best_seller'] == 1) {
