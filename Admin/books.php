@@ -74,8 +74,8 @@
                       <td>
                           <img src="<?php echo BOOK_IMAGE_SITE_PATH . $row['img'] ?>"
                                class="card-img"
-                               height="80px"
-                               width="50px">
+                               height="60px"
+                               width="80px">
                       </td>
                       <td> <?php echo $row['name'] ?> </td>
                       <td> <?php echo $row['author'] ?> </td>

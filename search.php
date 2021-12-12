@@ -31,14 +31,14 @@
             
                      as $list) {
               ?>
-                <div class="col-6 col-sm-6 col-md-3 col-lg-3">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
                     <div class="card border-dark  shadow-sm product">
                         <img
                                 id="card-img"
                                 alt="Book Image"
                                 src="<?php echo BOOK_IMAGE_SITE_PATH . $list['img'] ?>"
                                 class="card-img-top rounded"
-                                height="356rem" width="260rem"
+                                height="250rem"
                         />
                         <div class="overlay">
                             <a href="book.php?id=<?php echo $list['id'] ?>"
