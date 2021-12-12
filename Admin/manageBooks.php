@@ -13,10 +13,8 @@
   $short_desc = '';
   $error = '';
   $msg = '';
-  $image_required = 'required';
   
   if (isset($_GET['id']) && $_GET['id'] != '') {
-    $image_required = '';
     $id = getSafeValue($con, $_GET['id']);
     $sql = mysqli_query($con, "select * from books where id='$id'");
     $check = mysqli_num_rows($sql);
@@ -25,7 +23,7 @@
       $category_id = $row['category_id'];
       $ISBN = $row['ISBN'];
       $name = $row['name'];
-      $img = $row['img'];
+//      $img = $row['img'];
       $author = $row['author'];
       $mrp = $row['mrp'];
       $security = $row['security'];
@@ -43,7 +41,7 @@
     $category_id = getSafeValue($con, $_POST['category_id']);
     $ISBN = getSafeValue($con, $_POST['ISBN']);
     $name = getSafeValue($con, $_POST['name']);
-//    $img = getSafeValue($con, $_POST['img']);
+    $img = getSafeValue($con, $_POST['img']);
     $author = getSafeValue($con, $_POST['author']);
     $mrp = getSafeValue($con, $_POST['mrp']);
     $security = getSafeValue($con, $_POST['security']);
@@ -98,6 +96,7 @@
     <form method="post" enctype="multipart/form-data">
         <div class="row g-3">
             <div class="col-sm-8">
+
                 <!-- ISBN -->
                 <div class="form-outline mb-4 ms-5">
                     <input type="text" name="ISBN" value="<?php echo $ISBN ?>" id="Book name" class="form-control"
@@ -106,6 +105,7 @@
                 </div>
             </div>
             <div class="col-sm">
+
                 <!-- Categories selector-->
                 <div>
                     <select class="form-select" name="category_id">
@@ -126,34 +126,40 @@
                 </div>
             </div>
         </div>
+
         <!-- Book Name -->
         <div class="form-outline mb-4 mx-5">
             <input type="text" name="name" value="<?php echo $name ?>" id="Book name" class="form-control" required/>
             <label class="form-label" for="Book name">Enter book name</label>
         </div>
+
         <!-- Book Author -->
         <div class="form-outline mb-4 mx-5">
             <input type="text" name="author" value="<?php echo $author ?>" id="Book name" class="form-control"
                    required/>
             <label class="form-label" for="Book name">Enter book author name</label>
         </div>
+
         <!-- MRP -->
         <div class="form-outline mb-4 mx-5">
             <input type="number" name="mrp" value="<?php echo $mrp ?>" id="Book name" class="form-control" required/>
             <label class="form-label" for="Book name">Enter MRP</label>
         </div>
+
         <!-- security -->
         <div class="form-outline mb-4 mx-5">
             <input type="number" name="security" value="<?php echo $security ?>" id="Book name" class="form-control"
                    required/>
             <label class="form-label" for="Book name">Enter book security charges</label>
         </div>
+
         <!-- rent -->
         <div class="form-outline mb-4 mx-5">
             <input type="number" name="rent" value="<?php echo $rent ?>" id="Book name" class="form-control"
                    required/>
             <label class="form-label" for="Book name">Enter book rent Cost</label>
         </div>
+
         <!-- qty -->
         <div class="form-outline mb-4 mx-5">
             <input type="number" name="qty" value="<?php echo $qty ?>" id="Book name" class="form-control" required/>
@@ -162,7 +168,7 @@
         <!-- img -->
         <div class="form-outline mb-4 mx-5">
             <label class="form-label ms-2 p-1" for="Book name">Enter book image</label>
-            <input type="file" name="img" id="Book name" class="form-control" <?php echo $image_required ?>/>
+            <input type="file" name="img" id="Book name" class="form-control"/>
         </div>
 
         <!-- short_desc -->
