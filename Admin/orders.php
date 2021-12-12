@@ -3,8 +3,20 @@
   if (isset($_POST['status_id'])) {
     $order_Id = $_POST['orderId'];
     $status_id = $_POST['status_id'];
+    if ($status_id == 6) {
+      $qtyRes = mysqli_query($con, "SELECT books.qty,books.id FROM orders
+                                            JOIN order_detail ON orders.id=order_detail.order_id
+                                            JOIN books ON order_detail.book_id=books.id
+                                            where order_detail.order_id='$order_Id'");
+      $qtyRow = mysqli_fetch_assoc($qtyRes);
+      $newQty = $qtyRow['qty'] + 1;
+      $bookId = $qtyRow['id'];
+      mysqli_query($con, "UPDATE books SET qty = '$newQty' WHERE id='$bookId';");
+    }
+    
     mysqli_query($con, "update orders set order_status='$status_id' where id='$order_Id'");
   }
+
 ?>
 <!--Main layout-->
 <main>
@@ -47,21 +59,25 @@
                       <td> <?php echo $row['payment_status'] ?> </td>
                       <td> <?php echo $row['status_name'] ?> </td>
                       <td>
-                          <form method="post">
-                              <input type="hidden" class="" value="<?php echo $orderId ?>" name="orderId">
-                              <select class="form-select" name="status_id">
-                                  <option class="">Select Status</option>
-                                <?php
-                                  $sql = mysqli_query($con, "select * from order_status order by id asc");
-                                  while ($row = mysqli_fetch_assoc($sql)) {
-                                    echo "<option value=" . $row['id'] . ">" . $row['status_name'] . "</option>";
-                                  }
-                                ?>
-                              </select>
+                        <?php
+                          $statusName = $row['status_name'];
+                          if ($statusName !== 'Cancelled') {
+                            ?>
+                              <form method="post">
+                                  <input type="hidden" class="" value="<?php echo $orderId ?>" name="orderId">
+                                  <select class="form-select" name="status_id">
+                                      <option class="">Select Status</option>
+                                    <?php
+                                      $sql = mysqli_query($con, "select * from order_status order by status_name");
+                                      while ($row = mysqli_fetch_assoc($sql)) {
+                                        echo "<option value=" . $row['id'] . ">" . $row['status_name'] . "</option>";
+                                      }
+                                    ?>
+                                  </select>
 
-                              <input type="submit" VALUE="Submit" class="btn btn btn-primary mt-2">
-                          </form>
-
+                                  <input type="submit" VALUE="Submit" class="btn btn btn-primary mt-2">
+                              </form>
+                          <?php } ?>
                       </td>
                   </tr>
               <?php } ?>

@@ -60,7 +60,8 @@
                                         id="card-img"
                                         alt="Book Image"
                                         src="<?php echo BOOK_IMAGE_SITE_PATH . $list['img'] ?>"
-                                        class="card-img-top img-fluid rounded"
+                                        class="card-img-top rounded"
+                                        height="356rem" width="260rem"
                                 />
                                 <div class="overlay">
                                     <a href="book.php?id=<?php echo $list['id'] ?>"

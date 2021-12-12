@@ -92,12 +92,13 @@
           $img = BOOK_IMAGE_SITE_PATH . $list['img'];
           ?>
             <div class="col-6 col-sm-6 col-md-3 col-lg-3">
-                <div class="card border-dark mt-3 shadow-sm product">
+                <div class=" card border-dark mt-3 shadow-sm product">
                     <img
                             id="card-img"
                             alt="Book Image"
                             src="<?php echo $img ?>"
-                            class="card-img-top img-fluid rounded"
+                            class="card-img-top rounded"
+                            height="396rem" width="260rem"
                     />
                     <div class="overlay">
                         <a href="book.php?id=<?php echo $list['id'] ?>" class="btn-lg text-decoration-none rent-btn">
@@ -143,7 +144,8 @@
                             id="card-img"
                             alt="Book Image"
                             src="<?php echo $img ?>"
-                            class="card-img-top img-fluid rounded"
+                            class="card-img-top rounded"
+                            height="396rem" width="260rem"
                     />
                     <div class="overlay">
                         <a href="book.php?id=<?php echo $list['id'] ?>" class="btn-lg text-decoration-none rent-btn">
