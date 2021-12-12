@@ -9,7 +9,13 @@
     <ul class="list-inline">
         <li class="list-inline-item"><a href="aboutUs.php">About Us</a></li>
         <li class="list-inline-item"><a href="contactUs.php">Support</a></li>
-        <li class="list-inline-item"><a href="Admin\login.php">Admin Login</a></li>
+      <?php
+        if (isset($_SESSION['USER_LOGIN'])) {
+        } else {
+          echo '<li class="list-inline-item"><a href="Admin\login.php">Admin Login</a></li>';
+        }
+      ?>
+
 
     </ul>
 </footer>
