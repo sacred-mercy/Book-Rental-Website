@@ -13,6 +13,9 @@
     <link rel="shortcut icon" href="Img/icon.png" type="image/x-icon"/>
     <!-- Default CSS -->
     <link rel="stylesheet" href="css/Style.css"/>
+    <link rel="stylesheet" href="css/responsive.css"/>
+    <link rel="stylesheet" href="css/darkMode.css"/>
+
     <!-- Bootstrap -->
     <link
             id="theme"

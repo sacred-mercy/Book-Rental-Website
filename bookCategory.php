@@ -18,43 +18,49 @@
 </script>
 <div class="container-fluid ">
     <div class="row py-3">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse book-category-column">
-            <div class="position-sticky pt-3">
-                <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3  mb-1 text-muted">
-                    <span>Categories</span>
-                </h3>
-                <ul class="nav flex-column">
-                  <?php
-                    foreach ($catArr
-                    
-                    as $list) {
-                  ?>
-                    <li>
-                        <a class="nav-link nav-pills link-dark " aria-current="page"
-                           href="bookCategory.php?id=<?php echo $list['id'] ?>">
-                          <?php echo $list['category'] ?> </a>
+        <a href="#" data-bs-target="#sidebar" data-bs-toggle="collapse"
+           class="fs-5 p-1 mt-2 text-decoration-none"><i class="fas fa-bars py-2 p-1"></i>Category
+            Menu</a>
+        <div class="col-auto px-0">
+            <div id="sidebar" class="collapse collapse-horizontal">
+                <div id="sidebar-nav" class="text-sm-start min-vh-100">
+                    <h3 class="text-decoration-none text-dark px-2 fs-4  d-flex justify-content-center"
+                        data-bs-parent="#sidebar"><span class="">Categories</span></h3>
+                    <ul class="nav flex-column">
                       <?php
+                        foreach ($catArr
+                        
+                                 as $list) {
+                          ?>
+                            <li>
+                                <a class="nav-link  link-dark " aria-current="page"
+                                   href="bookCategory.php?id=<?php echo $list['id'] ?>">
+                                  <?php echo $list['category'] ?> </a>
+                            </li>
+                          
+                          <?php
                         }
                       ?>
-                    </li>
-                </ul>
+                    </ul>
+                </div>
             </div>
-        </nav>
+        </div>
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Select Category from sidebar</h1>
-            </div>
+        <main class=" ms-sm-auto col ps-md-2 pt-2 px-md-4">
+            <!--            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">-->
+            <!---->
+            <!--                <h1 class="h2">Select Category from sidebar</h1>-->
+            <!--            </div>-->
           <?php
             if (count($getProduct) > 0) {
               ?>
-                <div class="row gy-3 text-center ">
+                <div class="row gy-3 text-center d-flex justify-content-start flex-wrap ms-3">
                   <?php
                     foreach ($getProduct
                     
                              as $list) {
                       ?>
-                        <div class="col-6 col-sm-6 col-md-3 col-lg-3">
+                        <div class="col-auto">
                             <div class="card border-dark mt-3 shadow-sm product">
                                 <img
                                         id="card-img"

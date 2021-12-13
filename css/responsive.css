@@ -1,0 +1,63 @@
+@media only screen and (max-width: 1400px) {
+    #myCarousel .carousel-inner .carousel-item p {
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width: 988px) {
+    .login-margin {
+        margin-top: 8px;
+    }
+}
+
+@media only screen and (max-width: 802px) {
+    #myCarousel .carousel-inner .carousel-item p {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+
+    .card card-text {
+        font-size: 200px !important;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    #myCarousel .carousel-inner .carousel-item p {
+        font-size: 15px;
+    }
+
+    .carousel-item {
+        height: 26rem;
+    }
+
+    .carousel-item > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 26rem;
+    }
+}
+
+@media only screen and (max-width: 510px) {
+    .carousel-item {
+        height: 18.8rem;
+    }
+
+    .carousel-item > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 23rem;
+    }
+
+    #myCarousel .carousel-inner .carousel-item p {
+        font-size: 9px;
+    }
+}

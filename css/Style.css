@@ -1,22 +1,3 @@
-/* CUSTOMIZE THE DARK MODE
------------------------------------------------------------------------------------------------- */
-.dark-mode {
-    background-color: rgb(24, 26, 27) !important;
-    color: rgb(211, 207, 202) !important;
-}
-
-.dark-mode .book-category-column {
-    background-color: rgb(24, 26, 27) !important;
-}
-
-.dark-mode footer a {
-    color: #3232ff !important;
-}
-
-.dark-mode a {
-    color: white !important;
-}
-
 html {
     scroll-behavior: smooth;
 }
@@ -42,12 +23,6 @@ html {
 
 .dropdown-divider {
     color: white !important;
-}
-
-@media only screen and (max-width: 988px) {
-    .login-margin {
-        margin-top: 8px;
-    }
 }
 
 /* CUSTOMIZE THE CAROUSEL
@@ -85,61 +60,6 @@ html {
     flex-wrap: wrap;
 }
 
-@media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-    }
-}
-
-@media only screen and (max-width: 1400px) {
-    #myCarousel .carousel-inner .carousel-item p {
-        font-size: 25px;
-    }
-}
-
-@media only screen and (max-width: 802px) {
-    #myCarousel .carousel-inner .carousel-item p {
-        font-size: 20px;
-    }
-}
-
-@media only screen and (max-width: 576px) {
-    #myCarousel .carousel-inner .carousel-item p {
-        font-size: 15px;
-    }
-}
-
-@media only screen and (max-width: 575px) {
-    .carousel-item {
-        height: 26rem;
-    }
-
-    .carousel-item > img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 26rem;
-    }
-}
-
-@media only screen and (max-width: 510px) {
-    .carousel-item {
-        height: 18.8rem;
-    }
-
-    .carousel-item > img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 23rem;
-    }
-
-    #myCarousel .carousel-inner .carousel-item p {
-        font-size: 9px;
-    }
-}
 
 /* CUSTOMIZE THE BOOK CARD
 ------------------------------------------------------------------------------------------------ */
@@ -186,12 +106,6 @@ html {
 
     100% {
         opacity: 1;
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    .card card-text {
-        font-size: 200px !important;
     }
 }
 
@@ -274,4 +188,8 @@ html {
 
 #after-rent {
     display: none;
+}
+
+#sidebar-nav {
+    width: 160px;
 }
