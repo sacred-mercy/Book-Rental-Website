@@ -1,14 +1,9 @@
 <?php require('header.php') ?>
 <!--------------------------------------------------CAROUSEL------------------------------------------------------------------->
 
-<div
-        id="myCarousel"
-        class="carousel slide carousel-fade"
-        data-bs-ride="carousel"
->
+<div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-indicators">
-        <button
-                type="button"
+        <button type="button"
                 data-bs-target="#myCarousel"
                 data-bs-slide-to="0"
                 class="active"

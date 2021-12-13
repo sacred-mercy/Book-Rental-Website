@@ -61,7 +61,7 @@
                       <td>
                         <?php
                           $statusName = $row['status_name'];
-                          if ($statusName !== 'Cancelled') {
+                          if ($statusName !== 'Returned') {
                             ?>
                               <form method="post">
                                   <input type="hidden" class="" value="<?php echo $orderId ?>" name="orderId">
