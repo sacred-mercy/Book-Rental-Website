@@ -86,7 +86,7 @@
         foreach ($getProduct as $list) {
           $img = BOOK_IMAGE_SITE_PATH . $list['img'];
           ?>
-            <div class="col-6 col-sm-6 col-md-3 col-lg-3">
+            <div class="col-6 col-md-4 col-lg-3">
                 <div class=" card border-dark mt-3 shadow-sm product">
                     <img
                             id="card-img"
@@ -133,7 +133,7 @@
         foreach ($getBook as $list) {
           $img = BOOK_IMAGE_SITE_PATH . $list['img'];
           ?>
-            <div class="col-6 col-sm-6 col-md-3 col-lg-3">
+            <div class="col-6 col-md-4 col-lg-3">
                 <div class="card border-dark mt-3 shadow-sm product">
                     <img
                             id="card-img"

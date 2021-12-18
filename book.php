@@ -41,7 +41,7 @@
                 $qtyArr = array();
                 $qtyArr[] = $row;
                 if ($qtyArr['0'] ['qty'] == 0) {
-                  echo '<p class="fs-4" style="color: gray">Sorry currently the book is out os stock</p>';
+                  echo '<p class="fs-4" style="color: #ff0000">Sorry currently the book is out of stock</p>';
                 } else {
                   echo '<button id="toggle" class="btn-primary btn" onclick="showDiv()">Rent</button>';
                 }

@@ -22,7 +22,7 @@
            class="fs-5 p-1 mt-2 text-decoration-none"><i class="fas fa-bars py-2 p-1"></i>Category
             Menu</a>
         <div class="col-auto px-0">
-            <div id="sidebar" class="collapse collapse-horizontal">
+            <div id="sidebar" class=" collapse-horizontal">
                 <div id="sidebar-nav" class="text-sm-start min-vh-100">
                     <h3 class="text-decoration-none text-dark px-2 fs-4  d-flex justify-content-center"
                         data-bs-parent="#sidebar"><span class="">Categories</span></h3>
@@ -60,14 +60,14 @@
                     
                              as $list) {
                       ?>
-                        <div class="col-auto">
+                        <div class="col-6 col-md-4 col-lg-3 ">
                             <div class="card border-dark mt-3 shadow-sm product">
                                 <img
                                         id="card-img"
                                         alt="Book Image"
                                         src="<?php echo BOOK_IMAGE_SITE_PATH . $list['img'] ?>"
                                         class="card-img-top rounded"
-                                        height="356rem" width="260rem"
+                                        height="356rem" width="60rem"
                                 />
                                 <div class="overlay">
                                     <a href="book.php?id=<?php echo $list['id'] ?>"
