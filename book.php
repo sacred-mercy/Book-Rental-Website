@@ -19,12 +19,12 @@
     </script>
     <div class="container-fluid py-5">
         <div class="row mb-3">
-            <div class="col-3 mt-3">
-                <img class="card border-dark rounded"
+            <div class="col-6 col-sm-6 col-md-3 mt-3">
+                <img class="card card-img-top border-dark rounded"
                      src="<?php echo BOOK_IMAGE_SITE_PATH . $getProduct['0'] ['img'] ?>"
                      height="396rem" width="260rem">
             </div>
-            <div class="col-9">
+            <div class="col-12 col-md-9">
                 <h2 id="bookName" class="text-uppercase font-weight-bold"><?php echo $getProduct['0'] ['name'] ?></h2>
                 <hr>
                 <h6>ISBN:- <span class="fw-normal"><?php echo $getProduct['0'] ['ISBN'] ?></span></h6>

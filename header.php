@@ -1,5 +1,5 @@
 <?php
-  require('connection.php');
+  require('Admin\connection.php');
   require('function.php');
 ?>
 
@@ -102,14 +102,6 @@
                                    data-bs-toggle="dropdown"
                                 >' . $userName . '</a>
                                 <ul class="dropdown-menu bg-dark">
-                                    <li>
-                                        <a class="dropdown-item-text text-white-50 text-decoration-none"
-                                                href="profile.php"
-                                        >Profile</a>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider"/>
-                                    </li>
                                     <li>
                                         <a class="dropdown-item-text text-white-50 text-decoration-none"
                                                 href="logout.php"
