@@ -85,7 +85,7 @@
                   <?php echo $getProduct['0'] ['short_desc'] ?></p>
             </div>
         </div>
-        <div class="accordion" id="accordionExample">
+        <div class="accordion" id="accordion">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -95,7 +95,7 @@
                     </button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                     data-bs-parent="#accordionExample">
+                     data-bs-parent="#accordion">
                     <div class="accordion-body">
                         <p id="description" class="mb-3 text-justify"><?php echo $getProduct['0'] ['description'] ?></p>
                     </div>

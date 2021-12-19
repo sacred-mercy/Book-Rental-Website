@@ -59,16 +59,15 @@
         <div class="py-5 text-center">
             <h2>Checkout</h2>
         </div>
-
         <div class="row g-5">
             <div class="col-md-5 col-lg-4 order-md-last">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-primary">Your book</span>
                 </h4>
-                <ul class="list-group mb-3">
-                    <li class="list-group-item d-flex justify-content-center fw-bold lh-sm">
+                <ul class="list-group mb-3 dark-background">
+                    <li class="list-group-item d-flex justify-content-center fw-bold lh-sm ">
                         <div>
-                            <h2 class="my-0 fw-bold"><?php echo $getProduct['0'] ['name'] ?></h2>
+                            <h2 class="my-0 fs-5 fw-bold"><?php echo $getProduct['0'] ['name'] ?></h2>
                         </div>
                         <!--                        <strong>₹-->
                       <?php //echo $getProduct['0'] ['price'] ?><!--</strong>-->
@@ -81,9 +80,28 @@
                         </p>
                         <p><span class="fw-bold">Duration</span> = <?php echo $duration ?> Days</p>
                         <p><span class="fw-bold">Total Rent</span> = ₹<?php echo $totalRent ?></p>
-                        <p><span class="fw-bold">Security Charges</span> =
-                            ₹<?php echo $getProduct['0'] ['security'] ?><sup>*refund on book return</sup></p>
+                        <p><span class="fw-bold">Security Deposit<span style="color: red"><sup>*</sup></span></span> =
+                            ₹<?php echo $getProduct['0'] ['security'] ?></p>
                         <p><span class="fw-bold">Total price</span> = <?php echo $totalPrice ?> </p>
+                    </li>
+                </ul>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-center fw-bold lh-sm">
+                        <div>
+                            <h2 class="my-0 fs-5 fw-bold"><span style="color: red"><sup>*</sup></span>Deposit Terms</h2>
+                        </div>
+                        <!--                        <strong>₹-->
+                      <?php //echo $getProduct['0'] ['price'] ?><!--</strong>-->
+                    </li>
+                    <li class="list-group-item justify-content-start lh-sm">
+                        <ol type="1">
+                            <li>
+                                You need to submit a photocopy and show Aadhar Card in original.
+                            </li>
+                            <li>
+                                Security Deposit is refundable once we receive the book in the proper condition.
+                            </li>
+                        </ol>
                     </li>
                 </ul>
             </div>
@@ -125,12 +143,12 @@
                         </div>
                         <div class="form-check">
                             <input id="payU" name="paymentMethod" type="radio" value="payU" class="form-check-input"
-                                   required>
+                                   required disabled>
                             <label class="form-check-label" for="payU">Online Payment</label>
                         </div>
                     </div>
 
-                    <hr class="my-4">
+                    <hr class="my-4 invisible">
 
                     <button class="w-100 btn btn-primary btn-lg" type="submit" name="submit">Continue to checkout
                     </button>
