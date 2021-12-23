@@ -96,7 +96,7 @@
                     <li class="list-group-item justify-content-start lh-sm">
                         <ol type="1">
                             <li>
-                                You need to submit a photocopy and show Aadhar Card in original.
+                                You need to submit a photocopy and show Aadhar Card in original to the delivery person.
                             </li>
                             <li>
                                 Security Deposit is refundable once we receive the book in the proper condition.

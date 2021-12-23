@@ -9,7 +9,7 @@
         </h1>
     </div>
 
-    <div class="">
+    <div class="text-justify">
 
         We make it easy to access and afford the learning experiences you need, anytime, anywhere.<br>
         Book Rental is a platform operating since 2021. It aims to provide quality literature to the enthusiasts at
@@ -22,7 +22,7 @@
         profit hungry online book renter, but a small book store at the corner of your street. Based out of Dehradun,
         Book Rental was started with an aim to promote reading culture in India, to make reading cool again. Main aim is
         to bring down the cost of books which suits your budget.As we grew, we diversified from just renting books
-        online to a platform, where you can find all type of books- e.g.children books and adult books, academic and
+        online to a platform, where you can find all type of books- e.g. children books, academic and
         non-academic books and everything bookish under the sun. We pivoted from an online bookstore from where you buy
         books to a platform, which celebrate books and literature. Every pre-loved book is carefully inspected to ensure
         that you get value for money for your purchases.<br>

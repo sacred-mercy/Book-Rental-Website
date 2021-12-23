@@ -99,7 +99,7 @@
                         <?php
                           if ($row['best_seller'] == 1) {
                             echo "<a class='link-white btn btn-primary px-2 py-1' href='?type=best_seller&operation=deactive&id=" . $row['id'] .
-                              "'>Top Seller</a>&nbsp&nbsp";
+                              "'>Most Viewed</a>&nbsp&nbsp";
                           } else {
                             echo "<a class='link-white btn btn-success px-2 py-1' href='?type=best_seller&operation=active&id=" . $row['id'] .
                               "'>Normal</a>&nbsp&nbsp";

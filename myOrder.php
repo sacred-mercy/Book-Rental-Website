@@ -39,7 +39,7 @@
                                             where user_id = $userId order by orders.id desc");
           while ($row = mysqli_fetch_assoc($res)) { ?>
               <tr>
-                  <td> <?php echo $row['id'] ?> </td>
+                  <td> #<?php echo $row['id'] ?> </td>
                   <td> <?php echo $row['date'] ?> </td>
                   <td> <?php echo $row['name'] ?> </td>
                   <td> <?php echo $row['total'] ?> </td>
