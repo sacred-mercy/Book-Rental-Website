@@ -6,6 +6,7 @@
     $email = getSafeValue($con, $_POST['email']);
     $mobile = getSafeValue($con, $_POST['mobile']);
     $message = getSafeValue($con, $_POST['message']);
+    date_default_timezone_set('Asia/Kolkata');
     $dateTime = date('Y-m-d H:i:s');
     $sql = "insert into contact_us(name, email, mobile, message, date)
             values('$name', '$email', '$mobile', '$message','$dateTime')";

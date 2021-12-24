@@ -3,7 +3,7 @@
   if (isset($_POST['status_id'])) {
     $order_Id = $_POST['orderId'];
     $status_id = $_POST['status_id'];
-    if ($status_id == 6) {
+    if ($status_id === 6 || $status_id === 4) {
       $qtyRes = mysqli_query($con, "SELECT books.qty,books.id FROM orders
                                             JOIN order_detail ON orders.id=order_detail.order_id
                                             JOIN books ON order_detail.book_id=books.id
@@ -61,7 +61,8 @@
                       <td>
                         <?php
                           $statusName = $row['status_name'];
-                          if ($statusName !== 'Returned') {
+                          if ($statusName === 'Returned' || $statusName === 'Cancelled') {
+                          } else {
                             ?>
                               <form method="post">
                                   <input type="hidden" class="" value="<?php echo $orderId ?>" name="orderId">
@@ -77,7 +78,8 @@
 
                                   <input type="submit" VALUE="Submit" class="btn btn btn-primary mt-2">
                               </form>
-                          <?php } ?>
+                            <?php
+                          } ?>
                       </td>
                   </tr>
               <?php } ?>

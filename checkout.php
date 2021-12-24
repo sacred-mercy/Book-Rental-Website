@@ -29,6 +29,7 @@
       $paymentStatus = 'success';
     }
     $orderStatus = '1';
+    date_default_timezone_set('Asia/Kolkata');
     $date = date('Y-m-d H:i:s');
     $sql = "INSERT INTO orders(user_id, address, address2, pin, payment_method, total, payment_status, order_status, date, duration)
             VALUES ('$userId', '$address', '$address2', '$pin','$paymentMethod','$totalPrice','$paymentStatus','$orderStatus','$date','$duration')";
@@ -150,7 +151,7 @@
 
                     <hr class="my-4 invisible">
 
-                    <button class="w-100 btn btn-primary btn-lg" type="submit" name="submit">Continue to checkout
+                    <button class="w-100 btn btn-primary btn-lg" type="submit" name="submit">Place Your Order
                     </button>
                 </form>
             </div>

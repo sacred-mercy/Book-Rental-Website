@@ -66,10 +66,10 @@
                     <a class="nav-link" href="orders.php">Orders</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="users.php">User</a>
+                    <a class="nav-link" href="users.php">Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contactUs.php">Contact Us</a>
+                    <a class="nav-link" href="feedback.php">Feedbacks</a>
                 </li>
             </ul>
         </div>

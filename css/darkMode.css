@@ -45,3 +45,15 @@
     border: 1px solid rgba(211, 207, 202, .125);
 
 }
+
+.dark-mode .table {
+    background-color: rgb(24, 26, 27) !important;
+    color: rgb(211, 207, 202) !important;
+}
+
+.dark-mode .form-floating {
+    color: rgb(211, 207, 202) !important;
+    background-color: rgb(24, 26, 27) !important;
+    border: 1px solid rgba(211, 207, 202, .125) !important;
+}
+

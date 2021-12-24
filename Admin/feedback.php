@@ -17,7 +17,7 @@
 <!--Main layout-->
 <main>
     <div class="container pt-4">
-        <h4 class="fs-2 text-center ">Contact Us</h4>
+        <h4 class="fs-2 text-center ">Feedbacks</h4>
         <hr>
         <br>
     </div>

@@ -1,4 +1,10 @@
-<?php require('header.php') ?>
+<?php
+  require('header.php');
+  if (isset($_SESSION['USER_LOGIN'])) {
+    echo "<script>window.top.location='index.php';</script>";
+    exit;
+  }
+?>
 <?php
   $msg = '';
   if (isset($_POST['submit'])) {
@@ -12,8 +18,14 @@
       $_SESSION['USER_LOGIN'] = 'yes';
       $_SESSION['USER_ID'] = $row['id'];
       $_SESSION['USER_NAME'] = $row['name'];
-      echo "<script>window.top.location='index.php';</script>";
-      exit;
+      if (isset($_SESSION['BeforeCheckoutLogin'])) {
+        $checkoutAfterLogin = $_SESSION['BeforeCheckoutLogin'];
+        echo "<script>window.top.location='$checkoutAfterLogin';</script>";
+      } else {
+        echo "<script>window.top.location='index.php';</script>";
+        exit;
+      }
+      
     } else {
       $msg = "Invalid Username/Password";
     }
@@ -28,8 +40,11 @@
     <div class="row justify-content-center">
         <div class="col-lg-12 col-xl-11">
             <div class="card-body p-md-5">
-                <div class="row justify-content-center">
+                <div class="row justify-content-center align-content-center">
                     <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                        <div class="d-flex justify-content-center mt-3 mb-3 mb-lg-4">
+                            <h2>Login</h2>
+                        </div>
                         <form class="mx-1 mx-md-4" method="post">
                             <div class="d-flex align-items-center mb-4">
                                 <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
@@ -81,7 +96,7 @@
                                         class="text-decoration-none text-black"
                                 >
                                     New to Book Rental?
-                                    <span style="color: blue">Register</span></a
+                                    <span style="color: rgb(138, 110, 253)">Register</span></a
                                 >
                             </div>
                         </form>
@@ -90,5 +105,19 @@
             </div>
         </div>
     </div>
+</div>
+<!--------------------------------------------------DARK MODE BUTTON----------------------------------------------------------->
+<div id="dark-btn">
+    <button onclick="DarkMode()" id="dark-btn" title="Toggle Light/Dark Mode">
+        <span><i class="fas fa-adjust fa-lg text-white"></i></span>
+    </button>
+
+    <script>
+        //Dark Mode
+        function DarkMode() {
+            let element = document.body;
+            element.classList.toggle("dark-mode");
+        }
+    </script>
 </div>
 

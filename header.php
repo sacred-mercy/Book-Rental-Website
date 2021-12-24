@@ -104,6 +104,12 @@
                                 <ul class="dropdown-menu bg-dark">
                                     <li>
                                         <a class="dropdown-item-text text-white-50 text-decoration-none"
+                                                href="profile.php"
+                                        >Edit Profile</a>
+                                    </li>
+                                    <hr class="bg-white m-2">
+                                    <li>
+                                        <a class="dropdown-item-text text-white-50 text-decoration-none"
                                                 href="logout.php"
                                         >Logout</a>
                                     </li>

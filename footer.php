@@ -8,7 +8,7 @@
     <p class="mb-1">&copy; 2021 Book Rental</p>
     <ul class="list-inline">
         <li class="list-inline-item"><a href="aboutUs.php">About Us</a></li>
-        <li class="list-inline-item"><a href="contactUs.php">Support</a></li>
+        <li class="list-inline-item"><a href="termsAndCondition.php">Terms and conditions</a></li>
       <?php
         if (isset($_SESSION['USER_LOGIN'])) {
         } else {

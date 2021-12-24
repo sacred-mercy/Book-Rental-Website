@@ -9,6 +9,7 @@
   if (isset($_GET['submit'])) {
     $duration = getSafeValue($con, $_GET['duration']);
     $id = getSafeValue($con, $_GET['bookId']);
+    $_SESSION['BeforeCheckoutLogin'] = 'checkout.php?id=' . $id . '&duration=' . $duration;
     ?>
       <script>window.top.location = "checkout.php?id=<?php echo $id?>&duration=<?php echo $duration?>";</script>
     <?php

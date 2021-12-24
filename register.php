@@ -1,4 +1,10 @@
-<?php require('header.php') ?>
+<?php
+  require('header.php');
+  if (isset($_SESSION['USER_LOGIN'])) {
+    echo "<script>window.top.location='index.php';</script>";
+    exit;
+  }
+?>
 <?php
   $msg = '';
   if (isset($_POST['submit'])) {
@@ -7,6 +13,7 @@
     $mobile = getSafeValue($con, $_POST['mobile']);
     $password = getSafeValue($con, $_POST['password']);
     $check_user = mysqli_num_rows(mysqli_query($con, "select * from users where email='$email'"));
+    date_default_timezone_set('Asia/Kolkata');
     $doj = date('Y-m-d H:i:s');
     if ($check_user > 0) {
       $msg = "Email ID already exists please login";
@@ -14,7 +21,7 @@
       $sql = "insert into users(name, email, mobile, password ,doj)
             values('$name', '$email', '$mobile', '$password', '$doj')";
       if (mysqli_query($con, $sql)) {
-        $msg = "Registered successfully please login";
+        echo "<script>window.top.location='SignIn.php';</script>";
       } else {
         $msg = "error";
       }
@@ -28,8 +35,11 @@
     <div class="row justify-content-center">
         <div class="col-lg-12 col-xl-11">
             <div class="card-body p-md-5">
-                <div class="row justify-content-center">
+                <div class="row justify-content-center align-content-center">
                     <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                        <div class="d-flex justify-content-center mb-3 mb-lg-4">
+                            <h2>Registration</h2>
+                        </div>
                         <form class="mx-1 mx-md-4" method="post">
                             <div class="d-flex align-items-center mb-4">
                                 <i class="fas fa-user fa-lg me-3 fa-fw"></i>
@@ -107,7 +117,7 @@
                                         class="text-decoration-none text-black"
                                 >
                                     Already have an account?
-                                    <span style="color: blue">Login</span></a
+                                    <span style="color: rgb(138, 110, 253)">Login</span></a
                                 >
                             </div>
                         </form>
@@ -116,4 +126,18 @@
             </div>
         </div>
     </div>
+</div>
+<!--------------------------------------------------DARK MODE BUTTON----------------------------------------------------------->
+<div id="dark-btn">
+    <button onclick="DarkMode()" id="dark-btn" title="Toggle Light/Dark Mode">
+        <span><i class="fas fa-adjust fa-lg text-white"></i></span>
+    </button>
+
+    <script>
+        //Dark Mode
+        function DarkMode() {
+            let element = document.body;
+            element.classList.toggle("dark-mode");
+        }
+    </script>
 </div>
