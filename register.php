@@ -7,25 +7,59 @@
 ?>
 <?php
   $msg = '';
+  $nameErr = $emailErr = $mobileErr = $passwordErr = "";
+  $nameTemp = $emailTemp = $mobileTemp = $passwordTemp = "";
   if (isset($_POST['submit'])) {
-    $name = getSafeValue($con, $_POST['name']);
-    $email = getSafeValue($con, $_POST['email']);
-    $mobile = getSafeValue($con, $_POST['mobile']);
-    $password = getSafeValue($con, $_POST['password']);
-    $check_user = mysqli_num_rows(mysqli_query($con, "select * from users where email='$email'"));
-    date_default_timezone_set('Asia/Kolkata');
-    $doj = date('Y-m-d H:i:s');
-    if ($check_user > 0) {
-      $msg = "Email ID already exists please login";
+    //validation for name
+    if (empty($_POST["name"])) {
+      $nameErr = "Please enter a name";
     } else {
-      $sql = "insert into users(name, email, mobile, password ,doj)
+      $nameTemp = getSafeValue($con, $_POST['name']);
+      if (preg_match("/^[a-zA-Z-' ]*$/", $nameTemp)) {
+        $name = getSafeValue($con, $_POST['name']);
+        //validation for email
+        if (empty($_POST["email"])) {
+          $emailErr = "Please enter Email address";
+        } else {
+          $emailTemp = getSafeValue($con, $_POST['email']);
+          if (filter_var($emailTemp, FILTER_VALIDATE_EMAIL)) {
+            $email = getSafeValue($con, $_POST['email']);
+            //validation for mobile
+//    if (empty($_POST["mobile"])) {
+//      $mobileErr = "Please enter Phone Number";
+//    } else {
+//      $mobileTemp = getSafeValue($con, $_POST['mobile']);
+//      if (preg_match("/^[0-9]{10}+$/", $mobileTemp)) {
+            $mobile = getSafeValue($con, $_POST['mobile']);
+//      } else {
+//        $mobileErr = "Only numbers allowed";
+//      }
+//    }
+            $password = getSafeValue($con, $_POST['password']);
+            date_default_timezone_set('Asia/Kolkata');
+            $doj = date('Y-m-d H:i:s');
+            $check_user = mysqli_num_rows(mysqli_query($con, "select * from users where email='$email'"));
+            if ($check_user > 0) {
+              $msg = "Email ID already exists please login";
+            } else {
+              $sql = "insert into users(name, email, mobile, password ,doj)
             values('$name', '$email', '$mobile', '$password', '$doj')";
-      if (mysqli_query($con, $sql)) {
-        echo "<script>window.top.location='SignIn.php';</script>";
+              if (mysqli_query($con, $sql)) {
+                echo "<script>window.top.location='SignIn.php';</script>";
+              } else {
+                $msg = "error";
+              }
+            }
+          } else {
+            $emailErr = "Please enter valid Email address";
+          }
+        }
       } else {
-        $msg = "error";
+        $nameErr = "Only letters and white space allowed in Name";
       }
     }
+    
+    
   }
 ?>
 <script>
@@ -54,7 +88,9 @@
                                     />
                                     <label for="name">Name</label>
                                 </div>
+
                             </div>
+
 
                             <div class="d-flex align-items-center mb-4">
                                 <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
@@ -102,7 +138,12 @@
                             </div>
 
                             <div id="error" class="text-center mb-3">
-                              <?php echo $msg ?>
+                              <?php
+                                echo $msg . "\n";
+                                echo $nameErr . "\n";
+                                echo $emailErr . "\n";
+                                echo $mobileErr . "\n";
+                              ?>
                             </div>
 
                             <div class="d-flex justify-content-center mb-3 mb-lg-4">

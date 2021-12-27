@@ -17,6 +17,8 @@
   {
     if ($str != '') {
       $str = trim($str);
+      $str = stripslashes($str);
+      $str = htmlspecialchars($str);
       return mysqli_real_escape_string($con, $str);
     }
   }
