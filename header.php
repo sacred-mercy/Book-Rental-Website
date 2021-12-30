@@ -1,9 +1,7 @@
 <?php
-  include('razorpay-php\Razorpay.php');
-  require('Admin\connection.php');
-  require('function.php');
+require('Admin\connection.php');
+require('function.php');
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +14,6 @@
     <link rel="stylesheet" href="css/Style.css"/>
     <link rel="stylesheet" href="css/responsive.css"/>
     <link rel="stylesheet" href="css/darkMode.css"/>
-
     <!-- Bootstrap -->
     <link
             id="theme"
@@ -66,13 +63,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="contactUs.php">Contact Us</a>
                 </li>
-              <?php
+                <?php
                 if (isset($_SESSION['USER_LOGIN'])) {
-                  echo '<li class="nav-item">
+                    echo '<li class="nav-item">
                     <a class="nav-link" href="myOrder.php">My Orders</a>
                 </li>';
                 }
-              ?>
+                ?>
 
             </ul>
             <form method="get" action="search.php" class="d-flex" id="searchBar">
@@ -92,10 +89,10 @@
                 </button>
             </form>
             <div class=" navbar-nav navbar ">
-              <?php
+                <?php
                 if (isset($_SESSION['USER_LOGIN'])) {
-                  $userName = $_SESSION['USER_NAME'];
-                  echo '<ul class="navbar-nav navb me-4">
+                    $userName = $_SESSION['USER_NAME'];
+                    echo '<ul class="navbar-nav navb me-4">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle"
                                    href="#"
@@ -118,10 +115,10 @@
                             </li>
                         </ul>';
                 } else {
-                  echo '<a class="text-decoration-none me-1 ms-3 text-white btn-dark btn btn-outline-light me-2 login-btn"
+                    echo '<a class="text-decoration-none me-1 ms-3 text-white btn-dark btn btn-outline-light me-2 login-btn"
                            role="button" href="SignIn.php"> Login</a>';
                 }
-              ?>
+                ?>
             </div>
         </div>
     </nav>

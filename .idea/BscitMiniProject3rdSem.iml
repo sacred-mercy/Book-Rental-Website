@@ -2,8 +2,6 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/razorpay-php/src" isTestSource="false" packagePrefix="Razorpay\Api\" />
-      <sourceFolder url="file://$MODULE_DIR$/razorpay-php/tests" isTestSource="false" packagePrefix="Razorpay\Tests\" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources" />
     </content>
     <orderEntry type="inheritedJdk" />
