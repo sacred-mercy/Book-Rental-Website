@@ -58,18 +58,12 @@
                     <form method="get">
                         <input type="hidden" name="bookId" value="<?php echo $getProduct['0'] ['id'] ?>">
                         <h4 class="mb-3">Enter the duration of renting(in days)</h4>
-                        <!--                        <div class="col-2 d-flex">-->
-                        <!--                            <input type="number" class="form-control" name="duration" min="5" placeholder="Days"-->
-                        <!--                                   required>-->
-                        <!--                            <a href="checkout.php?id=-->
-                      <?php //echo $getProduct['0'] ['id'] ?><!--" type="submit"-->
-                        <!--                               class="btn-primary btn ms-3">Rent</a>-->
-                        <!--                        </div>-->
                         <div class="col-2 d-flex">
                             <input type="number"
                                    class="form-control"
                                    name="duration"
                                    min="10"
+                                   max="200"
                                    placeholder="Days"
                                    required/>
                             <input type="submit"

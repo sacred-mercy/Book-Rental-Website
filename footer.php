@@ -63,5 +63,3 @@
         }
     </script>
 </div>
-</body>
-</html>

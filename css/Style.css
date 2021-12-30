@@ -94,6 +94,7 @@ html {
     transition: all ease 0.3s;
 }
 
+
 .card:hover .overlay {
     visibility: visible;
     animation: fade 0.5s;

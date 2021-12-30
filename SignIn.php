@@ -6,10 +6,11 @@
   }
 ?>
 <?php
-  $msg = '';
+  $msg = $passwordTemp = '';
   if (isset($_POST['submit'])) {
     $email = getSafeValue($con, $_POST['email']);
-    $password = getSafeValue($con, $_POST['password']);
+    $passwordTemp = getSafeValue($con, $_POST['password']);
+    $password = md5($passwordTemp);
     $sql = "select * from users where email='$email' and password='$password'";
     $res = mysqli_query($con, $sql);
     $row = mysqli_fetch_assoc($res);

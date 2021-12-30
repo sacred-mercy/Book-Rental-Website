@@ -1,17 +1,4 @@
 <?php
-  function pr($arr)
-  {
-    echo '<pre>';
-    print_r($arr);
-  }
-  
-  function prx($arr)
-  {
-    echo '<pre>';
-    print_r($arr);
-    die();
-  }
-
 //  to get data from form
   function getSafeValue($con, $str)
   {
@@ -52,8 +39,24 @@
     return $data;
   }
 
-//To check if a book is in stock
-  function checkBookStock()
+//To update the user data
+  function updateProfile($con, $changeName = '', $changeEmail = '', $changeMobile = '', $changePassword = '')
   {
-  
+    $sql = "UPDATE user Set";
+    
+    if ($changeName != '') {
+      $sql .= " name=$changeName";
+    }
+    
+    if ($changeEmail != '') {
+      $sql .= " and email=$changeEmail";
+    }
+    
+    if ($changeMobile != '') {
+      $sql .= " and mobile=$changeMobile";
+    }
+    
+    if ($changePassword != '') {
+      $sql .= " and password=$changePassword";
+    }
   }

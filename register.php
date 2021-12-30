@@ -35,7 +35,13 @@
 //        $mobileErr = "Only numbers allowed";
 //      }
 //    }
-            $password = getSafeValue($con, $_POST['password']);
+            //Validation for password
+            if (empty($_POST["password"])) {
+              $passwordErr = "Please enter a password";
+            } else {
+              $passwordTemp = getSafeValue($con, $_POST['password']);
+            }
+            $password = md5($passwordTemp);
             date_default_timezone_set('Asia/Kolkata');
             $doj = date('Y-m-d H:i:s');
             $check_user = mysqli_num_rows(mysqli_query($con, "select * from users where email='$email'"));
@@ -58,8 +64,6 @@
         $nameErr = "Only letters and white space allowed in Name";
       }
     }
-    
-    
   }
 ?>
 <script>
