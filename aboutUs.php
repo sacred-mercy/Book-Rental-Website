@@ -1,6 +1,6 @@
 <?php require('header.php') ?>
 <script>
-    document.title = "About Us | Book Rental";
+document.title = "About Us | Book Rental";
 </script>
 <div class="container my-5">
     <div class="d-flex justify-content-center">
