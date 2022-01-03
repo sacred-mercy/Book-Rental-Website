@@ -49,12 +49,12 @@ require('function.php');
                         <a class="nav-link" href="contactUs.php">Contact Us</a>
                     </li>
                     <?php
-                if (isset($_SESSION['USER_LOGIN'])) {
-                    echo '<li class="nav-item">
+                    if (isset($_SESSION['USER_LOGIN'])) {
+                        echo '<li class="nav-item">
                     <a class="nav-link" href="myOrder.php">My Orders</a>
                 </li>';
-                }
-                ?>
+                    }
+                    ?>
 
                 </ul>
                 <form method="get" action="search.php" class="d-flex" id="searchBar">
@@ -65,35 +65,26 @@ require('function.php');
                 </form>
                 <div class=" navbar-nav navbar ">
                     <?php
-                if (isset($_SESSION['USER_LOGIN'])) {
-                    $userName = $_SESSION['USER_NAME'];
-                    echo '<ul class="navbar-nav navb me-4">
+                    if (isset($_SESSION['USER_LOGIN'])) {
+                        $userName = $_SESSION['USER_NAME'];
+                        echo '<ul class="navbar-nav navb me-4">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle"
-                                   href="#"
-                                   role="button"
-                                   data-bs-toggle="dropdown"
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 >' . $userName . '</a>
                                 <ul class="dropdown-menu bg-dark">
                                     <li>
-                                        <a class="dropdown-item-text text-white-50 text-decoration-none"
-                                                href="profile.php"
-                                        >Edit Profile</a>
+                                        <a class="dropdown-item-text text-white-50 text-decoration-none" href="profile.php" >Edit Profile</a>
                                     </li>
                                     <hr class="bg-white m-2">
-                                    <li>
-                                        <a class="dropdown-item-text text-white-50 text-decoration-none"
-                                                href="logout.php"
-                                        >Logout</a>
-                                    </li>
+                                    <li><a class="dropdown-item-text text-white-50 text-decoration-none" href="logout.php">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>';
-                } else {
-                    echo '<a class="text-decoration-none me-1 ms-3 text-white btn-dark btn btn-outline-light me-2 login-btn"
+                    } else {
+                        echo '<a class="text-decoration-none me-1 ms-3 text-white btn-dark btn btn-outline-light me-2 login-btn"
                            role="button" href="SignIn.php"> Login</a>';
-                }
-                ?>
+                    }
+                    ?>
                 </div>
             </div>
         </nav>

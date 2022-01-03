@@ -1,14 +1,14 @@
-<?php require('header.php'); 
-  $categoryId = '';
-  if (isset($_GET['id'])) {
+<?php require('header.php');
+$categoryId = '';
+if (isset($_GET['id'])) {
     $categoryId = mysqli_real_escape_string($con, $_GET['id']);
-  }
-  $getProduct = getProduct($con, '', $categoryId);
-  $catRes = mysqli_query($con, "select id, category from categories where status=1 order by category asc");
-  $catArr = array();
-  while ($row = mysqli_fetch_assoc($catRes)) {
+}
+$getProduct = getProduct($con, '', $categoryId);
+$catRes = mysqli_query($con, "select id, category from categories where status=1 order by category asc");
+$catArr = array();
+while ($row = mysqli_fetch_assoc($catRes)) {
     $catArr[] = $row;
-  }
+}
 ?>
 <script>
 document.title = "Book Categories | Book Rental";
@@ -31,7 +31,7 @@ document.title = "Book Categories | Book Rental";
                         </li>
                         <?php
                         }
-                      ?>
+                        ?>
                     </ul>
                 </div>
             </div>
@@ -40,7 +40,7 @@ document.title = "Book Categories | Book Rental";
         <main class=" ms-sm-auto col ps-md-2 pt-2 px-md-4">
             <?php
             if (count($getProduct) > 0) {
-              ?>
+            ?>
             <div class="row gy-3 text-center d-flex justify-content-start flex-wrap ms-3">
                 <?php foreach ($getProduct as $list) { ?>
                 <div class="col-6 col-md-4 col-lg-3 ">
@@ -63,7 +63,7 @@ document.title = "Book Categories | Book Rental";
                 <?php } ?>
             </div>
             <?php } else {
-              echo "No Book Found in this category";
+                echo "No Book Found in this category";
             } ?>
         </main>
     </div>
