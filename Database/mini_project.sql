@@ -267,10 +267,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `mobile`, `doj`, `password`) VALUES
-(5, 'Gaurav Singh', 'gauravnegi9634@gmail.com', 9368967077, '2021-11-23 15:36:35', '29be54a52396750258d886abc5417fda'),
+(5, 'Gaurav Singh', 'gauravnegi9634@gmail.com', 9368963477, '2021-11-23 15:36:35', '29be54a52396750258d886abc5417fda'),
 (6, 'Charu Rawat', 'charu@gmail.com', 1234567890, '2021-11-25 15:10:27', '560f9bb94e9f9fc27d85f0175eff2d5c'),
 (9, 'Gaurav Sharma', 'gs0896614@gmail.com', 7830508740, '2021-12-13 05:10:00', '29be54a52396750258d886abc5417fda'),
-(10, 'Nikhil Parki', 'nikhilparki31@gmail.com', 9149104828, '2021-12-20 07:10:52', '350d89c1cd6592bbbd1ed2e8a4f3ddba'),
+(10, 'Nikhil Parki', 'nikhilparki31@gmail.com', 9156104828, '2021-12-20 07:10:52', '350d89c1cd6592bbbd1ed2e8a4f3ddba'),
 (11, 'Vaibhav Pradhan', 'vaibhav@gmail.com', 1234567890, '2021-12-22 06:10:12', '23b431acfeb41e15d466d75de822307c');
 
 --
