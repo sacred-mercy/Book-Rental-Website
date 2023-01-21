@@ -156,7 +156,7 @@ CREATE TABLE `contact_us` (
 --
 
 INSERT INTO `contact_us` (`id`, `name`, `email`, `mobile`, `message`, `date`) VALUES
-(17, 'Rajendra Singh', 'rajendranegi767@gmail.com', 7780983667, 'Loved it', '2021-11-23 15:41:13'),
+(17, 'Rajendra Singh', 'rajendranegi767@gmail.com', 7280980667, 'Loved it', '2021-11-23 15:41:13'),
 (18, 'Nikhil Parki', 'nikhilparki31@gmail.com', 9149104828, 'good website loved it', '2021-12-20 07:12:16'),
 (19, 'Vaibhav', 'vaibhav@gmail.com', 1234567890, 'Your website is very good.', '2021-12-22 06:11:22'),
 (20, 'Mohan', 'mohan@gmail.com', 1234567890, 'This website is mediocre at best. You need to improve a lot of things in this website and I hope you don\'t take this criticism personally. First of all use high quality images in your website so that your site looks more professional.', '2021-12-22 07:03:54'),
